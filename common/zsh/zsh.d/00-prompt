@@ -1,0 +1,9 @@
+# vim: set ft=zsh :
+
+autoload -U promptinit
+promptinit
+
+setopt transient_rprompt
+
+PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]\%# '
+RPS1=[%/]

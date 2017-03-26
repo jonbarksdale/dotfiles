@@ -1,0 +1,29 @@
+let mapleader = ","
+
+set surround
+set number
+set ignorecase
+set smartcase
+
+map <C-w>r :action MoveEditorToOppositeTabGroup<CR>
+map <C-w><C-r> :action MoveEditorToOppositeTabGroup<CR>
+nmap <leader>mr :action MarkNotifcationsAsRead<CR>
+
+map <leader>o :action OptimizeImports<CR>
+map <leader>h :action HideAllWindows<CR>
+map <leader>a :action Annotate<CR>
+
+map <leader>rr :action Rerun<CR>
+map <leader>rc :action RunClass<CR>
+
+map <leader>rl :action RunConfiguration<CR>
+map <leader>dc :action DebugClass<CR>
+map <leader>tb :action ToggleLineBreakpoint<CR>
+
+map <leader>ic :action InspectCode<CR>
+
+nmap [a :previous<CR>
+nmap ]a :next<CR>
+nmap [A :first<CR>
+nmap ]A :last<CR>
+

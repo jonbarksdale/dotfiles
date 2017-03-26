@@ -1,0 +1,26 @@
+# shell and globbing options
+set extended_glob
+set numeric_glob_sort
+set glob_dots
+set nomatch
+
+set autocd
+set autopushd
+
+export CDPATH=".:~"
+
+set correct
+
+# jobs
+set notify
+
+# Source all files from .zsh.d, unless they contain ~ (assumes vim temp files)
+for zshrc_config in ~/.zsh.d/*[^~] ; do
+  echo "Sourcing $zshrc_config"
+  source $zshrc_config
+done
+
+# Source a local zshrc if found (though that is better managed with profiles)
+test -f ~/.zshrc_local && source ~/.zshrc_local
+
+

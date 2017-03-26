@@ -1,0 +1,28 @@
+# vim: set filetype=zsh :
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' completions 1
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' ignore-parents parent pwd .. directory
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' substitute 1
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:-command-:*:(commands|builtins|reserved-words|aliases)' group-name commands
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:messages' format %d
+zstyle ':completion:*:corrections' format '%B%d (err: %e)%b'
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
+zstyle ':completion:*:*:*:(cd|ls):*' ignored-patterns '\.svn'
+
+autoload -Uz compinit
+compinit

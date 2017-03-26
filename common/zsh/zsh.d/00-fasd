@@ -1,0 +1,6 @@
+# vim: set ft=zsh :
+
+# Initialize fasd if it's present
+if (( $+commands[fasd] )) then;
+..eval "$(fasd --init auto)"
+fi
