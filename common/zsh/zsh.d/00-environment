@@ -1,6 +1,5 @@
 # vim: set ft=zsh :
 
-# TODO: add LSCOLORS
 # TODO: how to add a github api token in a reasonable way? is it available via
 # api? might be an extension from one of the env setup dealies.  Other thoughts
 # - store it in the keychain, retrieve it from there?  I could also store them
@@ -13,7 +12,13 @@ EDITOR=vim
 export EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
+# MAC
 # set java home if we're on a mac
-if [[ -x"/usr/libexec/java_home" ]]; then
+if [[ -x "/usr/libexec/java_home" ]]; then
   export JAVA_HOME="$(/usr/libexec/java_home)"
 if
+
+# source profile if we have one for local path modifications
+if [[ -x "$HOME/.profile" ]]; then
+  source "$HOME/.profile"
+fi
