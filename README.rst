@@ -10,9 +10,9 @@ So far, no tool for managing the symlinks or installation has been chosen, in
 favor of just getting the configuration into source control.  Possible options
 include Homemaker_, dotfiler_, `GNU Stow`_, or battleschool_.
 
-.. _dotfiler: github.com/svetlyak40wt/dotfiler
-.. _Homemaker: github.com/FooSoft/homemaker
-.. _GNU Stow: gnu.org/software/stow/
+.. _dotfiler: https://github.com/svetlyak40wt/dotfiler
+.. _Homemaker: https://github.com/FooSoft/homemaker
+.. _GNU Stow: https://gnu.org/software/stow/
 .. _battleschool: https://github.com/spencergibb/battleschool
 
 The general layout should be something like this::
