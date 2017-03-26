@@ -26,7 +26,6 @@ The general layout should be something like this::
 TODO List
 ---------
 
-* Add in LSCOLORS to zsh config
 * Build out vim config
 * Build out gitconfig
 * Build out tmux config
