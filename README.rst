@@ -30,4 +30,4 @@ TODO List
 * Build out gitconfig
 * Build out tmux config
 * Build out neovim config
-
+* Extract out mac specific stuff, move to a separate profile
