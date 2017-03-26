@@ -1,0 +1,13 @@
+# vim: set ft=gitconfig :
+[user]
+	name = Jon Barksdale
+	email = jon.barksdale@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+# Maybe break these out? 
+[alias]
+	st = status
+	ci = commit
+[push]
+	default = simple
