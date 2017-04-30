@@ -16,7 +16,7 @@ export VISUAL=$EDITOR
 # set java home if we're on a mac
 if [[ -x "/usr/libexec/java_home" ]]; then
   export JAVA_HOME="$(/usr/libexec/java_home)"
-if
+fi
 
 # source profile if we have one for local path modifications
 if [[ -x "$HOME/.profile" ]]; then

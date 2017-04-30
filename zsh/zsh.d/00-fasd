@@ -2,5 +2,5 @@
 
 # Initialize fasd if it's present
 if (( $+commands[fasd] )) then;
-..eval "$(fasd --init auto)"
+  eval "$(fasd --init auto)"
 fi
