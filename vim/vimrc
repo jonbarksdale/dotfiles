@@ -5,3 +5,6 @@ syntax on
 set modeline
 set modelines=5
 
+let mapleader = ','
+
+nmap <silent> <Char-92> :silent nohls<CR>
