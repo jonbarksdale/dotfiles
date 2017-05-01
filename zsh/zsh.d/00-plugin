@@ -9,14 +9,7 @@ fi
 # Essential
 source ~/.zplug/init.zsh
 
-# Source all files from .zsh.d, unless they contain ~ (assumes vim temp files)
-for zshrc_config in ~/.zsh.d/*[^~] ; do
-  echo "Sourcing $zshrc_config"
-  source $zshrc_config
-done
-
 # plugins
-
 zplug "zdharma/fast-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
