@@ -3,7 +3,10 @@
 	name = Jon Barksdale
 	email = jon.barksdale@gmail.com
 [core]
+	pager = less -FMRiX
 	editor = vim
+[color]
+	ui = auto
 [push]
 	default = simple
 [include]
