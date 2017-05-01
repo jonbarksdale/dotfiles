@@ -71,4 +71,3 @@ TODO List
 * Build out tmux config
 * Build out neovim config
 * Extract out mac specific stuff, move to a separate profile
-* Update zsh config to use a plugin manager instead of homebrew
