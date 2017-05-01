@@ -3,8 +3,6 @@
 autoload -U promptinit
 promptinit
 
-zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
-
 setopt transient_rprompt
 
 PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]$(git_super_status)\%# '

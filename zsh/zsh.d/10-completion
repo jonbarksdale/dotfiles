@@ -32,5 +32,3 @@ zstyle ':completion:*:*:*:(cd|ls):*' ignored-patterns '\.svn'
 
 autoload -Uz compinit
 compinit
-
-zplug zsh-users/zsh-completions
