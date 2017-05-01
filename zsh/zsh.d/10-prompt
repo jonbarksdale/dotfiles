@@ -5,5 +5,11 @@ promptinit
 
 setopt transient_rprompt
 
-PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]$(git_super_status)\%# '
+if [[ $(type git_super_status) ]]; then
+  PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]$(git_super_status)\%# '
+else
+
+  PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]\%# '
+fi
+
 RPS1=[%/]
