@@ -14,11 +14,33 @@ set correct
 # jobs
 set notify
 
+# Install zplug
+# Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
+fi
+
+# Essential
+source ~/.zplug/init.zsh
+
 # Source all files from .zsh.d, unless they contain ~ (assumes vim temp files)
 for zshrc_config in ~/.zsh.d/*[^~] ; do
   echo "Sourcing $zshrc_config"
   source $zshrc_config
 done
+
+# Install packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+zplug load
 
 # Source a local zshrc if found (though that is better managed with profiles)
 test -f ~/.zshrc_local && source ~/.zshrc_local
