@@ -4,6 +4,7 @@ autoload -U promptinit
 promptinit
 
 setopt transient_rprompt
+setopt promptsubst
 
 if [[ $(type git_super_status) ]]; then
   PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]$(git_super_status)\%# '
