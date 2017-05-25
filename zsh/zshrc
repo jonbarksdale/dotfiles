@@ -16,7 +16,7 @@ set notify
 
 # Source all files from .zsh.d, unless they contain ~ (assumes vim temp files)
 for zshrc_config in ~/.zsh.d/*[^~] ; do
-  echo "Sourcing $zshrc_config"
+#  echo "Sourcing $zshrc_config"
   source $zshrc_config
 done
 
