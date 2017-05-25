@@ -14,7 +14,7 @@ realpath() {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
-dotfiles_repo="$(dirname $(realpath $0))"
+dotfiles_repo="$(dirname $(realpath $0/..))"
 
 if [[ ! -e "${base}/$(basename $dotfiles_repo)" ]]; then
   (cd $base && ln -s $dotfiles_repo)
