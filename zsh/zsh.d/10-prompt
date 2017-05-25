@@ -7,10 +7,10 @@ setopt transient_rprompt
 setopt promptsubst
 
 if [[ $(type git_super_status) ]]; then
-  PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]$(git_super_status)\%# '
+  PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]$(git_super_status) \%# '
 else
 
-  PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]\%# '
+  PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*] \%# '
 fi
 
 RPS1=[%/]
