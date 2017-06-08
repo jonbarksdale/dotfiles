@@ -1,16 +1,21 @@
 # vim: set ft=zsh :
 
-autoload -U promptinit
-promptinit
+autoload -U colors && colors
+autoload -U promptinit && promptinit
 
 setopt transient_rprompt
 setopt promptsubst
 
 if [[ $(type git_super_status) ]]; then
-  PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*]$(git_super_status) \%# '
+    # time - dir _____ user@host
+    # vcsinfo - exit code
+    # RPS1 - vim mode
+  PS1=$'[%{$fg_bold[white]%}%~%{$reset_color%}] [%{$fg[green]%}%n@%m%{$reset_color%} %*]
+$(git_super_status) \%# '
 else
 
-  PS1=$'[%{\e[32m%}%n@%m%{\e[0m%} %*] \%# '
+  PS1=$'[%{$fg_bold[white]%}%~%{$reset_color%}] [%{$fg[green]%}%n@%m%{$reset_color%} %*]
+\%# '
 fi
 
-RPS1=[%/]
+#RPS1=[%/]
