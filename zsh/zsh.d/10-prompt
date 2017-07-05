@@ -7,11 +7,20 @@ setopt transient_rprompt
 setopt promptsubst
 
 if [[ $(type git_super_status) ]]; then
+    # Simple function to add a space after the super status if it's present
+    git_prompt() {
+        local git_status=$(git_super_status)
+        if [[ -n "$git_status" ]]
+        then
+            git_status="$git_status "
+        fi
+        echo "$git_status"
+    }
     # time - dir _____ user@host
     # vcsinfo - exit code
     # RPS1 - vim mode
   PS1=$'[%{$fg[green]%}%n@%m%{$reset_color%} %*] [%{$fg_bold[white]%}%~%{$reset_color%}]
-$(git_super_status) \%# '
+$(git_prompt)\%# '
 else
 
   PS1=$'[%{$fg[green]%}%n@%m%{$reset_color%} %*] [%{$fg_bold[white]%}%~%{$reset_color%}]
