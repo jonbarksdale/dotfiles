@@ -4,3 +4,11 @@ alias ls='ls -hFG'
 alias ll='ls -l'
 alias df='df -h'
 alias du='du -h'
+
+function gr {
+  if [ -x "gradlew" ]; then
+    ./gradlew $@
+  else
+    gradle $@
+  fi
+}
