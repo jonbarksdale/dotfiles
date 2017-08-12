@@ -27,8 +27,7 @@ Plug 'honza/vim-snippets' " Snippets for use with snipMate
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'othree/eregex.vim' "better regex support
-
-
+Plug 'vim-scripts/matchit.zip' " Better matching
 
 " Initialize plugin system
 call plug#end()
