@@ -1,10 +1,117 @@
 set nocompatible
+let mapleader = ","
+
+" Remove all autocmds for the current group
+autocmd!
+
+
+" Plugins
+" Set plugin directory
+call plug#begin('~/.vim/plugged')
+
+Plug 'morhetz/gruvbox' " Color scheme
+Plug 'tpope/vim-fugitive' " git
+Plug 'airblade/vim-gitgutter'
+Plug 'thinca/vim-logcat' " syntax for logcat
+Plug 'andreshazard/vim-logreview' " syntax for logs
+Plug 'tpope/vim-surround' " surround is magic
+Plug 'tpope/vim-repeat' " allow surround to be repeated
+Plug 'bling/vim-airline' " better statusline
+Plug 'kien/ctrlp.vim' " Open files quicklike
+Plug 'mileszs/ack.vim' " Ack/ag
+Plug 'ntpeters/vim-better-whitespace' " Fix whitespace madness
+Plug 'mattn/emmet-vim' " emmet.io aka zen coding
+Plug 'garbas/vim-snipmate' " Snippets
+Plug 'honza/vim-snippets' " Snippets for use with snipMate
+" SnipMate requirements
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'othree/eregex.vim' "better regex support
+
+
+
+" Initialize plugin system
+call plug#end()
+
+" better whitespace plugin
+
+nmap <leader>fs :StripWhitespace<cr>
+" automatically do this on save
+autocmd BufEnter * EnableStripWhitespaceOnSave
+
+
+" ack plugin
+
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+
+" Create ExtraWhitespace matching group , do this before setting colorscheme
+" Sets background to red for anything matched as extra whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+
+" Setup this group before any other colorscheme is applied
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * syntax enable
+
+match ExtraWhitespace /\s\+\%#\@<!$/
+
+" Redraw as soon as you leave insert so you can see the extra whitespace
+autocmd InsertLeave * redraw!
+"
+" enable gruvbox scheme
+set background=dark
+colorscheme gruvbox
+
+" line number on, with relative numbers
+set number
+set relativenumber
+
+" if we have powerline fonts, we can make things look a little nicer.
+let g:airline_powerline_fonts = 1
+
+" set status bar to always on
+set laststatus=2
+
+" search stuff
+set incsearch
+set hls
+set ignorecase
+set smartcase
+set wrapscan
+
+"tabs and indentation
+set tabstop=8 " size of a real tab character
+set shiftwidth=4 " number of spaces reindent will move
+set expandtab
+set softtabstop=4 "Number of spaces you move when you hit the tab key
+set autoindent " stupid auto indent, simply keeps the level of indentation from the previous line
+
+" Disable encryption - anti idiot measure
+set key=
+
+" Fix common mistakes
+abbreviate teh the
+
+" show end of line and tab characters
+set listchars=eol:¬,tab:›\
+set list
+
+" Trim trailing whitespace from java, and xml files
+autocmd BufWritePre *.{java,xml} %s/\s\+$//e
 
 syntax on
 
 set modeline
 set modelines=5
 
-let mapleader = ','
-
+" map \ to turn of search matches
 nmap <silent> <Char-92> :silent nohls<CR>
+
+" Set up netrw
+let g:netrw_liststyle = 3
+
+" set gui font
+if has("gui_running")
+    set guifont=Input:h12
+endif
