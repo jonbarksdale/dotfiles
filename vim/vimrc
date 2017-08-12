@@ -30,6 +30,8 @@ Plug 'tomtom/tlib_vim'
 Plug 'othree/eregex.vim' "better regex support
 Plug 'vim-scripts/matchit.zip' " Better matching
 Plug 'sjl/gundo.vim' "undo management
+Plug 'udalov/kotlin-vim'
+
 
 
 " Initialize plugin system
