@@ -1,7 +1,7 @@
 # vim: set filetype=zsh :
 zstyle ':completion:*' add-space true
 zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _ignored _match _correct _approximate _prefix
+zstyle ':completion:*' completer _expand _complete _ignored _match _approximate _correct _prefix
 zstyle ':completion:*' completions 1
 zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*' glob 1
