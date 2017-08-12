@@ -9,6 +9,7 @@ autocmd!
 " Set plugin directory
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible' " sensible defaults
 Plug 'morhetz/gruvbox' " Color scheme
 Plug 'tpope/vim-fugitive' " git
 Plug 'airblade/vim-gitgutter'
@@ -28,6 +29,8 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'othree/eregex.vim' "better regex support
 Plug 'vim-scripts/matchit.zip' " Better matching
+Plug 'sjl/gundo.vim' "undo management
+
 
 " Initialize plugin system
 call plug#end()
