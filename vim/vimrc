@@ -30,9 +30,9 @@ Plug 'tomtom/tlib_vim'
 Plug 'othree/eregex.vim' "better regex support
 Plug 'vim-scripts/matchit.zip' " Better matching
 Plug 'sjl/gundo.vim' "undo management
-Plug 'udalov/kotlin-vim'
-
-
+Plug 'udalov/kotlin-vim' "kotlin syntax
+Plug 'luochen1990/rainbow' "rainbow parens
+Plug 'chrisbra/csv.vim'
 
 " Initialize plugin system
 call plug#end()
