@@ -37,6 +37,9 @@ Plug 'chrisbra/csv.vim'
 " Initialize plugin system
 call plug#end()
 
+" support excel style csv
+let g:csv_nl = 1
+
 " better whitespace plugin
 
 nmap <leader>fs :StripWhitespace<cr>
