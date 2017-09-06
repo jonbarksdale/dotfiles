@@ -14,6 +14,7 @@ zplug "zdharma/fast-syntax-highlighting"
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "jreese/zsh-titles", as:plugin
 
 # Install packages that have not been installed yet
 if ! zplug check --verbose; then
