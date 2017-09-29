@@ -1,3 +1,5 @@
+test -f ~/.zshrc_before && source ~/.zshrc_before
+
 # shell and globbing options
 set extended_glob
 set numeric_glob_sort
