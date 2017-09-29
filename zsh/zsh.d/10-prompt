@@ -1,5 +1,12 @@
 # vim: set ft=zsh :
 
+if [[ -n "${SSH_TTY}" ]]; then
+    echo "In ssh connection"
+    host_color=cyan
+else
+    host_color=green
+fi
+
 autoload -Uz colors && colors
 autoload -Uz promptinit && promptinit
 
@@ -19,12 +26,13 @@ if [[ $(type git_super_status) ]]; then
     # time - dir _____ user@host
     # vcsinfo - exit code
     # RPS1 - vim mode
-  PS1=$'[%{$fg[green]%}%n@%m%{$reset_color%} %*] [%{$fg_bold[white]%}%~%{$reset_color%}]
+  PS1=$'[%{$fg[$host_color]%}%n@%m%{$reset_color%} %*] [%{$fg_bold[white]%}%~%{$reset_color%}]
 $(git_prompt)\%# '
 else
 
-  PS1=$'[%{$fg[green]%}%n@%m%{$reset_color%} %*] [%{$fg_bold[white]%}%~%{$reset_color%}]
+  PS1=$'[%{$fg[$host_color]%}%n@%m%{$reset_color%} %*] [%{$fg_bold[white]%}%~%{$reset_color%}]
 \%# '
 fi
 
-#RPS1=[%/]
+# Unset right prompt, just in case it was set before
+RPS1=
