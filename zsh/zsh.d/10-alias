@@ -1,7 +1,13 @@
 # vim: set ft=zsh :
 
+if [[ $(uname) == "Linux" ]]
+then
+  alias ls='ls --color=auto'
+else
+    alias ls='ls -hFG'
+fi
 alias ls='ls -hFG'
-alias ll='ls -l'
+alias ll='ls -lh'
 alias df='df -h'
 alias du='du -h'
 
