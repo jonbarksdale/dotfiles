@@ -17,3 +17,12 @@ function gr {
     gradle $@
   fi
 }
+
+function updateall {
+    echo "Homeshick:"
+    homeshick refresh
+    echo "Brew:"
+    brew upgrade --cleanup
+    echo "zplug"
+    zplug update
+}
