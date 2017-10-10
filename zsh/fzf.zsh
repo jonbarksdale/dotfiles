@@ -11,4 +11,7 @@ fi
 # Key bindings
 # ------------
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
-
+if [[ -f "$(which rg)" ]]; then
+    export FZF_DEFAULT_COMMAND="rg -g '' --files"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
