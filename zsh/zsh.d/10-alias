@@ -9,6 +9,7 @@ fi
 alias ll='ls -lh'
 alias df='df -h'
 alias du='du -h'
+alias fixtmux='killall -s SIGUSR1 tmux'
 
 function gr {
   if [ -x "gradlew" ]; then
