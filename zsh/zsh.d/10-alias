@@ -26,4 +26,6 @@ function updateall {
     brew upgrade --cleanup
     echo "zplug"
     zplug update
+    echo "vim"
+    vim -c "PlugUpgrade|PlugUpdate|qa"
 }
