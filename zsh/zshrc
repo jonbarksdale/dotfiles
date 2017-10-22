@@ -24,5 +24,3 @@ done
 
 # Source a local zshrc if found (though that is better managed with profiles)
 test -f ~/.zshrc_local && source ~/.zshrc_local
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
