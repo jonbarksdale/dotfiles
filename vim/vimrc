@@ -29,7 +29,8 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'othree/eregex.vim' "better regex support
 Plug 'vim-scripts/matchit.zip' " Better matching
-Plug 'sjl/gundo.vim' "undo management
+" Plug 'sjl/gundo.vim' "undo management
+Plug 'simnalamburt/vim-mundo' "undo management
 Plug 'udalov/kotlin-vim' "kotlin syntax
 Plug 'luochen1990/rainbow' "rainbow parens
 Plug 'chrisbra/csv.vim'
