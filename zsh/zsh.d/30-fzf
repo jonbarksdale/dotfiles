@@ -3,7 +3,6 @@
 # Must occur after completion has started
 # ---------
 if [[ -d /usr/local/opt/fzf/bin ]]; then
-    echo 'found fzf'
 
     if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
       export PATH="$PATH:/usr/local/opt/fzf/bin"
