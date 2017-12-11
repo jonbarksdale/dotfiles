@@ -1,15 +1,17 @@
 # vim: set ft=gitconfig :
 [user]
-	name = Jon Barksdale
-	email = jon.barksdale@gmail.com
+    name = Jon Barksdale
+    email = jon.barksdale@gmail.com
 [core]
-	pager = less -FMRiX
-	editor = vim
+    pager = less -FMRiX
+    editor = vim
 [color]
-	ui = auto
+    ui = auto
 [push]
-	default = simple
+    default = simple
+[pull]
+    rebase = true
 [include]
-  path = includes/alias
+    path = includes/alias
 # Read in order, last set wins
-  path = ~/.gitconfig-local
+    path = ~/.gitconfig-local
