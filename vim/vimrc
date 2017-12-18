@@ -127,3 +127,5 @@ let g:netrw_preview = 1
 if has("gui_running")
     set guifont=Input:h12
 endif
+
+autocmd Filetype gitcommit setlocal spell
