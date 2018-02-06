@@ -35,6 +35,9 @@ Plug 'udalov/kotlin-vim' "kotlin syntax
 Plug 'luochen1990/rainbow' "rainbow parens
 Plug 'chrisbra/csv.vim'
 
+Plug 'chikamichi/mediawiki.vim'
+Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-pencil'
 " Initialize plugin system
 call plug#end()
 
