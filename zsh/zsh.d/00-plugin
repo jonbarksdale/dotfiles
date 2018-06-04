@@ -11,7 +11,7 @@ source ~/.zplug/init.zsh
 
 # plugins
 zplug "zdharma/fast-syntax-highlighting"
-zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh
+zplug "starcraftman/zsh-git-prompt", use:zshrc.sh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "jreese/zsh-titles", as:plugin
