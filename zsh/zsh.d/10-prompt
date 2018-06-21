@@ -19,7 +19,7 @@ setopt promptsubst
 if [[ $(type git_super_status) ]]; then
     # Simple function to add a space after the super status if it's present
     git_prompt() {
-        local git_status=$(git_super_status)
+        git_status=$(git_super_status)
         if [[ -n "$git_status" ]]
         then
             git_status="$git_status "
