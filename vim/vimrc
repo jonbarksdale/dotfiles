@@ -38,6 +38,8 @@ Plug 'chrisbra/csv.vim'
 Plug 'chikamichi/mediawiki.vim'
 Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-pencil'
+
+Plug 'cespare/vim-toml' "TOML syntax
 " Initialize plugin system
 call plug#end()
 
