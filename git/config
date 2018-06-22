@@ -15,3 +15,5 @@
     path = includes/alias
 # Read in order, last set wins
     path = ~/.gitconfig-local
+[commit]
+    verbose = true
