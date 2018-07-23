@@ -17,3 +17,5 @@
     path = ~/.gitconfig-local
 [commit]
     verbose = true
+[diff]
+    colorMoved = true
