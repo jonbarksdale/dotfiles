@@ -27,3 +27,4 @@ nmap ]a :next<CR>
 nmap [A :first<CR>
 nmap ]A :last<CR>
 
+map J :action EditorJoinLines<CR>
