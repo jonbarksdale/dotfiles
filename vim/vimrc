@@ -40,6 +40,8 @@ Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-pencil'
 
 Plug 'cespare/vim-toml' "TOML syntax
+
+Plug 'vimwiki/vimwiki'
 " Initialize plugin system
 call plug#end()
 
