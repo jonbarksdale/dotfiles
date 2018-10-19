@@ -135,4 +135,6 @@ if has("gui_running")
     set guifont=Input:h12
 endif
 
+let g:vimwiki_list = [{'path': '~/mdwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
 autocmd Filetype gitcommit setlocal spell
