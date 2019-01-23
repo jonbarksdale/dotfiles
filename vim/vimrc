@@ -42,6 +42,7 @@ Plug 'reedes/vim-pencil'
 Plug 'cespare/vim-toml' "TOML syntax
 
 Plug 'vimwiki/vimwiki'
+Plug 'fatih/vim-go'
 " Initialize plugin system
 call plug#end()
 
