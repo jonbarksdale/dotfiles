@@ -54,6 +54,9 @@ let g:csv_nl = 1
 nmap <leader>fs :StripWhitespace<cr>
 " automatically do this on save
 autocmd BufEnter * EnableStripWhitespaceOnSave
+" Remove the confirmation
+let g:strip_whitespace_confirm=0
+let g:strip_only_modified_lines=1
 
 
 " ack plugin
