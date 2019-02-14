@@ -43,6 +43,7 @@ Plug 'cespare/vim-toml' "TOML syntax
 
 Plug 'vimwiki/vimwiki'
 Plug 'fatih/vim-go'
+Plug 'itspriddle/vim-marked'
 " Initialize plugin system
 call plug#end()
 
@@ -50,7 +51,6 @@ call plug#end()
 let g:csv_nl = 1
 
 " better whitespace plugin
-
 nmap <leader>fs :StripWhitespace<cr>
 " automatically do this on save
 autocmd BufEnter * EnableStripWhitespaceOnSave
@@ -58,9 +58,11 @@ autocmd BufEnter * EnableStripWhitespaceOnSave
 let g:strip_whitespace_confirm=0
 let g:strip_only_modified_lines=1
 
+"marked
+nmap <leader>mo :MarkedOpen!<CR>
+
 
 " ack plugin
-
 if executable('rg')
     let g:ackprg = 'rg --vimgrep'
 elseif executable('ag')
