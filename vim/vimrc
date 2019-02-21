@@ -40,12 +40,18 @@ Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-pencil'
 
 Plug 'cespare/vim-toml' "TOML syntax
+Plug 'leshill/vim-json' "JSON
 
 Plug 'vimwiki/vimwiki'
 Plug 'fatih/vim-go'
 Plug 'itspriddle/vim-marked'
+" For markdown goodness
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 " Initialize plugin system
 call plug#end()
+
+let g:vimwiki_list = [{'path': '~/mdwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " support excel style csv
 let g:csv_nl = 1
@@ -60,6 +66,10 @@ let g:strip_only_modified_lines=1
 
 "marked
 nmap <leader>mo :MarkedOpen!<CR>
+
+"Markdown
+let g:vim_markdown_autowrite = 1
+let g:vim_markdown_strikethrough = 1
 
 
 " ack plugin
@@ -141,6 +151,5 @@ if has("gui_running")
     set guifont=Input:h12
 endif
 
-let g:vimwiki_list = [{'path': '~/mdwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 autocmd Filetype gitcommit setlocal spell
