@@ -23,7 +23,7 @@ function updateall {
     echo "Homeshick:"
     homeshick refresh
     echo "Brew:"
-    brew upgrade --cleanup
+    brew upgrade
     echo "zplug"
     zplug update
     echo "vim"
