@@ -48,6 +48,9 @@ Plug 'itspriddle/vim-marked'
 " For markdown goodness
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+
+Plug 'pangloss/vim-javascript'
+
 " Initialize plugin system
 call plug#end()
 
