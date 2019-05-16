@@ -10,6 +10,7 @@ alias ll='ls -lh'
 alias df='df -h'
 alias du='du -h'
 alias fixtmux='killall -s SIGUSR1 tmux'
+alias gitlog='git log --graph --decorate --oneline $(git rev-list -g --all)'
 
 function gr {
   if [ -x "gradlew" ]; then
