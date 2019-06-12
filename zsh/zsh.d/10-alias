@@ -22,7 +22,7 @@ function gr {
 
 function updateall {
     echo "Homeshick:"
-    homeshick refresh
+    homeshick pull
     echo "Brew:"
     brew upgrade
     echo "zplug"
