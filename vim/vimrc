@@ -15,6 +15,7 @@ Plug 'tpope/vim-fugitive' " git
 Plug 'airblade/vim-gitgutter'
 Plug 'thinca/vim-logcat' " syntax for logcat
 Plug 'andreshazard/vim-logreview' " syntax for logs
+Plug 'dzeban/vim-log-syntax'
 Plug 'tpope/vim-surround' " surround is magic
 Plug 'tpope/vim-repeat' " allow surround to be repeated
 Plug 'bling/vim-airline' " better statusline
