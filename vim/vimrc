@@ -43,7 +43,7 @@ Plug 'reedes/vim-pencil'
 Plug 'cespare/vim-toml' "TOML syntax
 Plug 'leshill/vim-json' "JSON
 
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'fatih/vim-go'
 Plug 'itspriddle/vim-marked'
 " For markdown goodness
