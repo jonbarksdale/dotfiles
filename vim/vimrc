@@ -74,6 +74,7 @@ nmap <leader>mo :MarkedOpen!<CR>
 "Markdown
 let g:vim_markdown_autowrite = 1
 let g:vim_markdown_strikethrough = 1
+set foldlevelstart=20
 
 
 " ack plugin
