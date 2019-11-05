@@ -23,7 +23,8 @@ Plug 'kien/ctrlp.vim' " Open files quicklike
 Plug 'mileszs/ack.vim' " Ack/ag
 Plug 'ntpeters/vim-better-whitespace' " Fix whitespace madness
 Plug 'mattn/emmet-vim' " emmet.io aka zen coding
-Plug 'garbas/vim-snipmate' " Snippets
+" Snippets
+Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets' " Snippets for use with snipMate
 " SnipMate requirements
 Plug 'MarcWeber/vim-addon-mw-utils'
