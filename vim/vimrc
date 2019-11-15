@@ -53,6 +53,8 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'pangloss/vim-javascript'
 
+Plug 'rhysd/vim-grammarous'
+
 " Initialize plugin system
 call plug#end()
 
@@ -154,7 +156,8 @@ let g:netrw_preview = 1
 
 " set gui font
 if has("gui_running")
-    set guifont=Input:h12
+    set guifont=Victor_Mono:h12
+    set macligatures
 endif
 
 
