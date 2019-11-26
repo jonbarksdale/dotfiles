@@ -1,0 +1,106 @@
+(require 'package)
+
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(add-to-list 'auto-mode-alist '("\\.\\(org\\)$" . org-mode))
+
+
+(setq package-enable-at-startup nil)
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
+(use-package evil)
+(use-package evil-surround)
+(use-package evil-matchit)
+
+(use-package org)
+(use-package org-evil)
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+        (lambda ()
+          (evil-org-set-key-theme)))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-use))
+
+(setq evil-want-keybinding nil)
+(use-package evil-collection)
+
+(use-package deft
+  :commands (deft)
+  :config (
+       setq deft-directory "~/notes"
+        deft-extensions '("md" "markdown" "org" "txt" "text")
+        deft-use-filter-string-for-filename t
+        deft-file-naming-rules
+          '((noslash . "-")
+            (nospace . "-")
+            (case-fn . downcase))
+	  deft-markdown-mode-title-level 1
+	  deft-org-mode-title-prefix t))
+
+(use-package markdown-mode
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+(use-package helm)
+(use-package magit)
+(use-package projectile)
+
+(use-package kotlin-mode)
+
+(use-package zenburn-theme)
+(load-theme 'zenburn t)
+
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+
+(require 'evil)
+(evil-mode t)
+
+(require 'org-evil)
+
+(set-default 'truncate-lines t)
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c b") 'org-switchb)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fill-column 100)
+ '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
+ '(package-selected-packages
+   (quote
+    (evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+ '(safe-local-variable-values (quote ((truncate-lines . f)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
