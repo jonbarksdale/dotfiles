@@ -6,7 +6,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.\\(org\\)$" . org-mode))
 
-
 (setq package-enable-at-startup nil)
 (package-initialize)
 
@@ -20,9 +19,14 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+(setq evil-want-keybinding nil)
 (use-package evil)
 (use-package evil-surround)
 (use-package evil-matchit)
+(use-package evil-collection)
+
+;; (require 'evil)
+(evil-mode t)
 
 (use-package org)
 (use-package org-evil)
@@ -35,10 +39,9 @@
         (lambda ()
           (evil-org-set-key-theme)))
   (require 'evil-org-agenda)
-  (evil-org-agenda-set-use))
+  (evil-org-agenda-set-keys))
 
-(setq evil-want-keybinding nil)
-(use-package evil-collection)
+;; (require 'org-evil)
 
 (use-package deft
   :commands (deft)
@@ -74,10 +77,12 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
-(require 'evil)
-(evil-mode t)
 
-(require 'org-evil)
+(ido-mode t)
+
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
 
 (set-default 'truncate-lines t)
 
@@ -96,7 +101,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+    (ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
  '(safe-local-variable-values (quote ((truncate-lines . f)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
