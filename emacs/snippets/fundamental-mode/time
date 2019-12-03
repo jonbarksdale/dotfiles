@@ -1,0 +1,4 @@
+# name: Time
+# key: time
+# --
+`(format-time-string "%H:%M")`$0

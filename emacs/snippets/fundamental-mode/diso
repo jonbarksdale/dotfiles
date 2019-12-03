@@ -1,0 +1,4 @@
+# name: ISO date time
+# key: diso
+# --
+`(format-time-string "%Y-%m-%dT%H:%M:%S")`$0

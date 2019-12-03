@@ -1,0 +1,4 @@
+# name: Long form Date
+# key: ddate
+# --
+`(format-time-string "%B %d, %Y")`$0
