@@ -28,7 +28,8 @@
 ;; (require 'evil)
 (evil-mode t)
 
-(use-package org)
+(use-package org
+  :bind ("A-<tab>" . pcomplete))
 (use-package org-evil)
 (use-package evil-org
   :ensure t
@@ -41,20 +42,18 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
-;; (require 'org-evil)
+(use-package deft :commands deft)
 
-(use-package deft
-  :commands (deft)
-  :config (
-       setq deft-directory "~/notes"
-        deft-extensions '("md" "markdown" "org" "txt" "text")
-        deft-use-filter-string-for-filename t
-        deft-file-naming-rules
-          '((noslash . "-")
-            (nospace . "-")
-            (case-fn . downcase))
-	  deft-markdown-mode-title-level 1
-	  deft-org-mode-title-prefix t))
+
+(setq deft-directory "~/notes"
+      deft-extensions '("org" "md" "markdown" "txt" "text")
+      deft-use-filter-string-for-filename t
+      deft-file-naming-rules
+        '((noslash . "-")
+          (nospace . "-")
+          (case-fn . downcase))
+      deft-markdown-mode-title-level 1
+      deft-org-mode-title-prefix t)
 
 (use-package markdown-mode
   :mode (("README\\.md\\'" . gfm-mode)
@@ -76,7 +75,6 @@
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
-
 
 (ido-mode t)
 
@@ -106,17 +104,28 @@
     delete-old-versions t ;; Don't ask to delete excess backup versions.
     backup-by-copying t) ;; Copy all files, don't rename them.
 
+;; set the default font to victor on a mac
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil :family "Victor Mono"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(face-font-family-alternatives
+   (quote
+    (("Monospace" "Victor Mono" "courier" "fixed")
+     ("Monospace Serif" "Victor Mono" "Courier 10 Pitch" "Consolas" "Courier Std" "FreeMono" "Nimbus Mono L" "courier" "fixed")
+     ("courier" "CMU Typewriter Text" "fixed")
+     ("Sans Serif" "helv" "helvetica" "arial" "fixed")
+     ("helv" "helvetica" "arial" "fixed"))))
  '(fill-column 100)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+    (mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
  '(safe-local-variable-values (quote ((truncate-lines . f)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
