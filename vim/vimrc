@@ -134,6 +134,10 @@ set key=
 " Fix common mistakes
 abbreviate teh the
 
+" Grammar config
+" g:grammarous#use_vim_spelllang=1
+nmap <leader>g :GrammarousCheck<CR>
+
 " show end of line and tab characters
 set listchars=eol:¬,tab:›\
 set list
@@ -159,6 +163,5 @@ if has("gui_running")
     set guifont=Victor_Mono:h12
     set macligatures
 endif
-
 
 autocmd Filetype gitcommit setlocal spell
