@@ -43,8 +43,6 @@
   (evil-org-agenda-set-keys))
 
 (use-package deft :commands deft)
-
-
 (setq deft-directory "~/notes"
       deft-extensions '("org" "md" "markdown" "txt" "text")
       deft-use-filter-string-for-filename t
@@ -69,6 +67,20 @@
 
 (use-package zenburn-theme)
 (load-theme 'zenburn t)
+
+(setq plantuml-jar-path
+      (expand-file-name "~/.emacs.d/plantuml/plantuml.jar"))
+
+(use-package plantuml-mode
+  :config 
+          (setq plantuml-jar-path plantuml-jar-path)
+          (setq plantuml-default-exec-mode 'jar))
+
+(setq org-plantuml-jar-path plantuml-jar-path)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (plantuml . t)))
 
 (use-package auto-package-update
   :config
@@ -123,9 +135,10 @@
  '(fill-column 100)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(org-agenda-files (quote ("~/notes/vnext-emulator.org")))
  '(package-selected-packages
    (quote
-    (mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+    (plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
  '(safe-local-variable-values (quote ((truncate-lines . f)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
