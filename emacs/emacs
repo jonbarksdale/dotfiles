@@ -29,7 +29,14 @@
 (evil-mode t)
 
 (use-package org
-  :bind ("A-<tab>" . pcomplete))
+  :bind ("A-<tab>" . pcomplete)
+  :config
+  (setq org-refile-targets '((nil :maxlevel . 9))
+        org-refile-use-outline-path 'file
+        org-outline-path-complete-in-steps nil
+        )
+  )
+
 (use-package org-evil)
 (use-package evil-org
   :ensure t
