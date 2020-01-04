@@ -1,0 +1,16 @@
+* <Design Doc>
+** TODO Introduction
+** TODO Glossary
+** TODO Requirements [0/3]
+*** TODO Fuctional
+*** TODO Operational
+    - includes security & privacy
+*** TODO Performance
+*** TODO Out of scope
+** TODO Assumptions
+** TODO Success Criteria
+** TODO Proposed Design [0/0]
+** TODO FAQ [0/0]
+** TODO References
+** TODO Appendix
+** TODO Open questions
