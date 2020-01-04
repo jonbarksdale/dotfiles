@@ -142,7 +142,9 @@
  '(fill-column 100)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(org-agenda-files (quote ("~/notes/vnext-emulator.org")))
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org")))
  '(package-selected-packages
    (quote
     (plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
