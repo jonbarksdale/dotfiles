@@ -145,6 +145,8 @@
  '(org-agenda-files
    (quote
     ("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org")))
+ '(org-log-done (quote time))
+ '(org-log-into-drawer t)
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
