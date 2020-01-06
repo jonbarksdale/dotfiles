@@ -89,6 +89,8 @@
  '(
    (plantuml . t)))
 
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+
 (use-package auto-package-update
   :config
   (setq auto-package-update-delete-old-versions t)
