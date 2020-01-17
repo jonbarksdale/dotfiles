@@ -106,6 +106,19 @@
 (use-package yasnippet-snippets
   :after yasnippet )
 
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package langtool
+  :config
+;;  (setq langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.8/libexec/languagetool-commandline.jar")
+  (setq langtool-bin "/usr/local/bin/languagetool"
+        langtool-disabled-rules '("WHITESPACE_RULE"
+                                  "ARROWS"
+                                  "DASH_RULE"
+                                  "COMMA_PARENTHESIS_WHITESPACE"
+                                  "EN_QUOTES")))
+
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -125,7 +138,8 @@
 
 ;; set the default font to victor on a mac
 (when (eq system-type 'darwin)
-  (set-face-attribute 'default nil :family "Victor Mono"))
+  (set-face-attribute 'default nil :family "Victor Mono")
+  (mac-auto-operator-composition-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -152,7 +166,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+    (rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
  '(safe-local-variable-values (quote ((truncate-lines . f)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
