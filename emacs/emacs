@@ -21,7 +21,9 @@
 
 (setq evil-want-keybinding nil)
 (use-package evil)
-(use-package evil-surround)
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1))
 (use-package evil-matchit)
 (use-package evil-collection)
 
