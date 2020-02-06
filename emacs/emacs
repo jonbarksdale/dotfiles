@@ -20,7 +20,9 @@
 (setq use-package-always-ensure t)
 
 (setq evil-want-keybinding nil)
-(use-package evil)
+(use-package evil
+  :config
+  (evil-ex-define-cmd "ls" 'ibuffer))
 (use-package evil-surround
   :config
   (global-evil-surround-mode 1))
@@ -102,7 +104,10 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
-(ido-mode t)
+(progn
+  (unless (or (fboundp 'helm-mode) (fboundp 'ivy-mode))
+    (ido-mode t)
+    (setq ido-enable-flex-matching t)))
 
 (use-package yasnippet
   :config
@@ -127,10 +132,36 @@
   :init
   (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode)))
 
+(use-package org-brain
+  :init
+  (setq org-brain-path "~/amazon-brain")
+  (with-eval-after-load 'evil
+    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+  :config 
+    (setq org-id-track-globally t)
+)
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-switchb)
+
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
+
+;; Save last place I was in a file
+;; https://www.emacswiki.org/emacs/SavePlace
+(save-place-mode 1)
+
+;; show matching parens
+(show-paren-mode 1)
 
 ;; backup configuration
 ;; Default and per-save backups go here:
@@ -154,6 +185,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(apropos-do-all t)
  '(face-font-family-alternatives
    (quote
     (("Monospace" "Victor Mono" "courier" "fixed")
@@ -164,6 +196,7 @@
  '(fill-column 100)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(load-prefer-newer t)
  '(org-agenda-files
    (quote
     ("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org")))
@@ -174,8 +207,11 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
- '(safe-local-variable-values (quote ((truncate-lines . f)))))
+    (org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+ '(require-final-newline t)
+ '(safe-local-variable-values (quote ((truncate-lines . f))))
+ '(save-interprogram-paste-before-kill t)
+ '(visible-bell t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
