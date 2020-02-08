@@ -54,6 +54,25 @@
         )
   )
 
+(setq org-capture-templates
+      '(
+        ("i" "inbox")
+        ("iw" "Work inbox" entry (file+headline "~/Dropbox/org/work.org" "Inbox")
+         "** TODO %?\n %i")
+        ("ip" "Personal inbox" entry (file+headline "~/Dropbox/org/personal.org" "Inbox")
+         "** TODO %?\n %i")
+        ("p" "project")
+        ("pw" "Work project" entry (file+headline "~/Dropbox/org/work.org" "Active Projects")
+         "** TODO %?\n %i")
+        ("pp" "Personal project" entry (file+headline "~/Dropbox/org/personal.org" "Projects")
+         "** TODO %?\n %i")
+        ("b" "Book suggestion" entry (file+headline "~/Dropbox/org/personal.org" "Media")
+         "** BACKLOG %^{title} :book:%^g" :immediate-finish t)
+        ("g" "Game suggestion" entry (file+headline "~/Dropbox/org/personal.org" "Media")
+         "** BACKLOG %^{title} :game:%^g" :immediate-finish t)
+        )
+      )
+
 (use-package org-evil
   :ensure t)
 (use-package evil-org
