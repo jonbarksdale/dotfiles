@@ -16,35 +16,46 @@
 (eval-when-compile
   (require 'use-package))
 
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
-
 (setq evil-want-keybinding nil)
 (use-package evil
+  :ensure t
   :config
-  (evil-ex-define-cmd "ls" 'ibuffer))
+  (setq
+    evil-mode-line-format 'before
+    evil-emacs-state-cursor  '("red" box)
+    evil-normal-state-cursor '("gray" box)
+    evil-visual-state-cursor '("gray" box)
+    evil-insert-state-cursor '("gray" bar)
+    evil-motion-state-cursor '("gray" box))
+  (evil-ex-define-cmd "ls" 'ibuffer)
+  (evil-mode 1)
+  )
 (use-package evil-surround
+  :ensure t
   :config
   (global-evil-surround-mode 1))
-(use-package evil-matchit)
-(use-package evil-collection)
+(use-package evil-matchit
+  :ensure t)
+(use-package evil-collection
+  :ensure t)
 
-;; (require 'evil)
-(evil-mode t)
 ;; Fix paste from clipboard in evil mode
 ;; ref - https://emacs.stackexchange.com/questions/14940/emacs-doesnt-paste-in-evils-visual-mode-with-every-os-clipboard/15054
 (fset 'evil-visual-update-x-selection 'ignore)
 
 (use-package org
+  :ensure t
   :bind ("A-<tab>" . pcomplete)
   :config
-  (setq org-refile-targets '((nil :maxlevel . 9))
+  (setq org-refile-targets '((nil :maxlevel . 9)
+                             (org-agenda-files :maxlevel . 2))
         org-refile-use-outline-path 'file
         org-outline-path-complete-in-steps nil
         )
   )
 
-(use-package org-evil)
+(use-package org-evil
+  :ensure t)
 (use-package evil-org
   :ensure t
   :after org
@@ -56,7 +67,10 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
-(use-package deft :commands deft)
+(use-package deft
+  :ensure t
+  :commands deft)
+
 (setq deft-directory "~/notes"
       deft-extensions '("org" "md" "markdown" "txt" "text")
       deft-use-filter-string-for-filename t
@@ -68,24 +82,69 @@
       deft-org-mode-title-prefix t)
 
 (use-package markdown-mode
+  :ensure t
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
-(use-package helm)
-(use-package magit)
-(use-package projectile)
 
-(use-package kotlin-mode)
+(use-package helm-config
+  :ensure nil
+  :init
+  (custom-set-variables '(helm-command-prefix-key "C-c h"))
+  :config
+  (bind-keys :map helm-command-map
+             ("o" . helm-occur)
+             ("g" . helm-do-grep)
+             ("y" . yas-insert-snippet)))
+(use-package helm
+  :ensure t
+  :config
+  (setq
+   helm-split-window-in-side-p t
+   helm-buffers-fuzzy-matching t
+   helm-move-to-line-cycle-in-source t
+   helm-ff-search-library-in-sexp t
+   helm-ff-file-name-history-use-recentf t
+   )
+  (bind-keys ("C-x b" . helm-mini)
+             ("M-x" . helm-M-x)
+             ("M-y" . helm-show-kill-ring)
+             ("C-x C-b" . helm-buffers-list)
+             ("C-x C-f" . helm-find-files)
+             ("C-h f" . helm-apropos)
+             ("C-h r" . helm-info-emacs)
+             ("C-h C-l" . helm-locate-library))
+  (bind-keys :map isearch-mode-map
+             ("C-o" . helm-occur-from-isearch)))
+(use-package helm-mode
+  :ensure nil
+  :config
+  (helm-mode 1))
 
-(use-package zenburn-theme)
+(use-package helm-ag
+  :ensure t)
+(use-package helm-descbinds
+  :ensure t)
+
+(use-package magit
+  :ensure t)
+(use-package projectile
+  :ensure t)
+
+(use-package kotlin-mode
+  :ensure t)
+
+(use-package zenburn-theme
+  :ensure t)
 (load-theme 'zenburn t)
 
 (setq plantuml-jar-path
       (expand-file-name "~/.emacs.d/plantuml/plantuml.jar"))
 
 (use-package plantuml-mode
+  :ensure t
   :config 
           (setq plantuml-jar-path plantuml-jar-path)
           (setq plantuml-default-exec-mode 'jar))
@@ -93,12 +152,12 @@
 (setq org-plantuml-jar-path plantuml-jar-path)
 (org-babel-do-load-languages
  'org-babel-load-languages
- '(
-   (plantuml . t)))
+ '((plantuml . t)))
 
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 
 (use-package auto-package-update
+  :ensure t
   :config
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
@@ -110,16 +169,20 @@
     (setq ido-enable-flex-matching t)))
 
 (use-package yasnippet
+  :ensure t
   :config
   (yas-global-mode 1))
 
 (use-package yasnippet-snippets
+  :ensure t
   :after yasnippet )
 
 (use-package rainbow-delimiters
+  :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package langtool
+  :ensure t
   :config
 ;;  (setq langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.8/libexec/languagetool-commandline.jar")
   (setq langtool-bin "/usr/local/bin/languagetool"
@@ -129,10 +192,12 @@
                                   "COMMA_PARENTHESIS_WHITESPACE"
                                   "EN_QUOTES")))
 (use-package csv-mode
+  :ensure t
   :init
   (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode)))
 
 (use-package org-brain
+  :ensure t
   :init
   (setq org-brain-path "~/brain")
   (with-eval-after-load 'evil
@@ -194,6 +259,9 @@
      ("Sans Serif" "helv" "helvetica" "arial" "fixed")
      ("helv" "helvetica" "arial" "fixed"))))
  '(fill-column 100)
+ '(helm-command-prefix-key "C-c h")
+ '(helm-completion-style (quote emacs))
+ '(helm-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(load-prefer-newer t)
@@ -207,7 +275,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+    (helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
  '(require-final-newline t)
  '(safe-local-variable-values (quote ((truncate-lines . f))))
  '(save-interprogram-paste-before-kill t)
