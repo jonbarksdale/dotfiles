@@ -134,7 +134,7 @@
 
 (use-package org-brain
   :init
-  (setq org-brain-path "~/amazon-brain")
+  (setq org-brain-path "~/brain")
   (with-eval-after-load 'evil
     (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
   :config 
