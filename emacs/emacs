@@ -65,7 +65,12 @@
         (lambda ()
           (evil-org-set-key-theme)))
   (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+  (evil-org-agenda-set-keys)
+  (evil-declare-key 'normal org-mode-map
+    "t" 'org-todo ; mark a TODO item as done
+    "$" 'org-end-of-line ; org specific eol behavor
+    "^" 'org-beginning-of-line ; org specific eol behavor
+    ))
 
 (use-package deft
   :ensure t
