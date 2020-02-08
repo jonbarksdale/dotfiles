@@ -133,6 +133,14 @@
 (use-package helm-descbinds
   :ensure t)
 
+(use-package helm-org
+  :ensure t
+  :after (helm org)
+  :config
+    (add-to-list 'helm-completing-read-handlers-alist '(org-capture . helm-org-completing-read-tags))
+    (add-to-list 'helm-completing-read-handlers-alist '(org-set-tags . helm-org-completing-read-tags))
+  )
+
 (use-package magit
   :ensure t)
 (use-package evil-magit
@@ -282,7 +290,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (evil-magit helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+    (helm-org evil-magit helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
  '(require-final-newline t)
  '(safe-local-variable-values (quote ((truncate-lines . f))))
  '(save-interprogram-paste-before-kill t)
