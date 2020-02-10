@@ -267,6 +267,11 @@
 ;; show matching parens
 (show-paren-mode 1)
 
+;; mode line settings
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
+
 ;; backup configuration
 ;; Default and per-save backups go here:
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup/per-save")))
