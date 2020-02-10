@@ -235,6 +235,11 @@
   :config
   (which-key-mode +1))
 
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode +1))
+
 (use-package org-brain
   :ensure t
   :init
@@ -319,7 +324,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (which-key helm-org evil-magit helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+    (beacon which-key helm-org evil-magit helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
  '(require-final-newline t)
  '(safe-local-variable-values (quote ((truncate-lines . f))))
  '(save-interprogram-paste-before-kill t)
