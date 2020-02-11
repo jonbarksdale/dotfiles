@@ -1,10 +1,10 @@
 (require 'package)
 
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
-(add-to-list 'auto-mode-alist '("\\.\\(org\\)$" . org-mode))
+;;(add-to-list 'auto-mode-alist '("\\.\\(org\\)$" . org-mode))
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -258,6 +258,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-switchb)
+(global-set-key (kbd "C-c v") 'org-brain-visualize)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -325,7 +326,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (beacon which-key helm-org evil-magit helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+    (org orgit beacon which-key helm-org evil-magit helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
  '(require-final-newline t)
  '(safe-local-variable-values (quote ((truncate-lines . f))))
  '(save-interprogram-paste-before-kill t)
