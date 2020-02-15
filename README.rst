@@ -20,6 +20,7 @@ Install notes
 Homeshick installer is under bin.
 
 Good fonts:
+
 - Input_ - I like the last i style, and the last l style, light weight, narrow width.
 - fantasque-sans_
 - powerline_
