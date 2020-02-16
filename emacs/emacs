@@ -45,6 +45,7 @@
 
 (use-package org
   :ensure t
+  :pin org
   :bind ("A-<tab>" . pcomplete)
   :config
   (setq org-refile-targets '((nil :maxlevel . 9)
