@@ -14,6 +14,14 @@
 
 (straight-use-package 'use-package)
 
+;; for monkey patching stuff
+(use-package el-patch
+  :straight (:host github
+                   :repo "raxod502/el-patch"
+                   :branch "develop"))
+(eval-when-compile
+  (require 'el-patch))
+
 (setq evil-want-keybinding nil)
 (use-package evil
   :straight t
@@ -72,7 +80,9 @@
       )
 
 (use-package org-evil
-  :straight t)
+  :straight t
+  :after org
+  )
 (use-package evil-org
   :straight t
   :after org
@@ -90,18 +100,48 @@
     ))
 
 (use-package deft
+  :after org
+  :bind
+  ("C-c n d" . deft)
   :straight t
-  :commands deft)
+  :commands deft
+  :custom
+  (deft-default-extension "org")
+  (deft-recursive t)
+  (deft-directory "~/Dropbox/org-roam")
+  (deft-extensions '("org" "md" "markdown" "txt" "text"))
+  ;; 100% stolen from https://github.com/jethrokuan/.emacs.d/blob/master/init.el
+  :config/el-patch
+  (defun deft-parse-title (file contents)
+    "Parse the given FILE and CONTENTS and determine the title.
+If `deft-use-filename-as-title' is nil, the title is taken to
+be the first non-empty line of the FILE.  Else the base name of the FILE is
+used as title."
+    (el-patch-swap (if deft-use-filename-as-title
+                       (deft-base-filename file)
+                     (let ((begin (string-match "^.+$" contents)))
+                       (if begin
+                           (funcall deft-parse-title-function
+                                    (substring contents begin (match-end 0))))))
+                   (org-roam--get-title-or-slug file))))
+  
+;; (setq deft-use-filter-string-for-filename t
+;;       deft-file-naming-rules
+;;         '((noslash . "-")
+;;           (nospace . "-")
+;;           (case-fn . downcase))
+;;       deft-markdown-mode-title-level 1
+;;       deft-org-mode-title-prefix t)
 
-(setq deft-directory "~/notes"
-      deft-extensions '("org" "md" "markdown" "txt" "text")
-      deft-use-filter-string-for-filename t
-      deft-file-naming-rules
-        '((noslash . "-")
-          (nospace . "-")
-          (case-fn . downcase))
-      deft-markdown-mode-title-level 1
-      deft-org-mode-title-prefix t)
+(use-package org-journal
+  :after org
+  :bind
+  ("C-c n j" . org-journal-new-entry)
+  :custom
+  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-dir "~/Dropbox/org-roam")
+  (org-journal-date-format "%A, %d %B %Y"))
 
 (use-package org-roam
   :ensure t
@@ -110,9 +150,9 @@
   ((org-mode . org-roam-mode)
    (after-init . org-roam--build-cache-async)
    )
- ;; :straight (:host github :repo "jethrokuan/org-roam" :branch "develop")
+  :straight (:host github :repo "jethrokuan/org-roam" :branch "develop")
   :custom
-  (org-roam-directory "~/notes")
+  (org-roam-directory "~/Dropbox/org-roam")
   :bind
       ("C-c n l" . org-roam)
       ("C-c n t" . org-roam-today)
