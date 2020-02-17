@@ -134,6 +134,7 @@ used as title."
 ;;       deft-org-mode-title-prefix t)
 
 (use-package org-journal
+  :straight t
   :after org
   :bind
   ("C-c n j" . org-journal-new-entry)
