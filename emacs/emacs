@@ -54,7 +54,8 @@
   :bind ("A-<tab>" . pcomplete)
   :config
   (setq org-refile-targets '((nil :maxlevel . 9)
-                             (org-agenda-files :maxlevel . 2))
+                             (org-agenda-files :maxlevel . 2)
+                             (org-roam--find-all-files :maxlevel . 2))
         org-refile-use-outline-path 'file
         org-outline-path-complete-in-steps nil
         )
@@ -97,6 +98,7 @@
     "t" 'org-todo ; mark a TODO item as done
     "$" 'org-end-of-line ; org specific eol behavor
     "^" 'org-beginning-of-line ; org specific eol behavor
+    (kbd "RET") 'org-open-at-point
     ))
 
 (use-package deft
@@ -138,11 +140,18 @@ used as title."
   :after org
   :bind
   ("C-c n j" . org-journal-new-entry)
+  :config
+  (defun org-journal-weekly-file-header ()
+    (format-time-string "#+TITLE: Week %-V, %Y"))
   :custom
-  (org-journal-date-prefix "#+TITLE: ")
-  (org-journal-file-format "%Y-%m-%d.org")
+  ;; only works ok for daily files
+;;  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-file-type 'weekly)
+  (org-journal-file-header 'org-journal-weekly-file-header)
+  (org-journal-file-format "%Y-week-%V.org")
   (org-journal-dir "~/Dropbox/org-roam")
-  (org-journal-date-format "%A, %d %B %Y"))
+  (org-journal-date-format "%A, %d %B %Y")
+  )
 
 (use-package org-roam
   :ensure t
@@ -289,7 +298,7 @@ used as title."
 
 (use-package org-ac
   :straight t
-  :init
+  :config
   (org-ac/config-default))
 
 (use-package which-key
