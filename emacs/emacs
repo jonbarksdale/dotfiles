@@ -382,15 +382,50 @@ used as title."
   :init
   (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode)))
 
-(use-package auto-complete
-  :straight t
-  :config
-  (ac-config-default))
+;; pop up library
+(use-package pos-tip
+  :straight t)
 
-(use-package org-ac
+;; Auto complete configuration
+
+(defun company-mode/backend-with-yas (backend)
+  (if (and (listp backend) (member 'company-yasnippet backend))
+      backend
+    (append (if (consp backend) backend (list backend))
+            '(:with company-yasnippet))))
+
+(use-package company
   :straight t
+  :defer t ;; implicit through having a hook set
+
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+
+  :custom
+  (company-idle-delay 0)
+  (company-minimum-prefix-length 1)
+  (company-require-match 'never)
+
+  :bind
+  (:map company-active-map
+        ("C-n" . company-select-next)
+        ("C-p" . company-select-previous))
+
   :config
-  (org-ac/config-default))
+  (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
+  )
+
+(use-package company-quickhelp
+  :straight t
+  :after (company pos-tip)
+  :config
+  (company-quickhelp-mode))
+
+(use-package company-statistics
+  :straight t
+  :after company
+  :config
+  (company-statistics-mode))
 
 (use-package which-key
   :straight t
