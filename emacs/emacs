@@ -77,8 +77,99 @@
          "* BACKLOG %^{title} :book:%^g" :immediate-finish t)
         ("g" "Game suggestion" entry (file+headline "~/Dropbox/org/personal.org" "Media")
          "* BACKLOG %^{title} :game:%^g" :immediate-finish t)
-        )
-      )
+        ("t" "templates")
+        ("tc" "Train COE BRIT" entry (file+headline "~/Dropbox/org/work.org" "Tech lead responsibilities")
+"* TODO %t - COE BRIT - %^{name} [/]%?                                       :coebr:
+   :PROPERTIES:
+   :ORDERED:  t
+   :END:
+** TODO Assign ticket to self and follow COE
+** TODO Sync call
+** TODO First pass - full
+** TODO Midway checkup
+** TODO Final Pass
+** TODO prepare notes for debrief
+** TODO debrief call
+** TODO submit feedback")
+        ("tp" "Packing checklist" entry (file+headline "~/Dropbox/org/personal.org" "Projects")
+"* TODO %^{departure}t Packing for trip to %^{place} [/]%?                                      :travel:
+   :PROPERTIES:
+   :COOKIE_DATA: todo recursive
+   :END:
+** TODO [#A] Remove *sharp* things from backpack!
+** Work stuff [/]
+*** TODO [#A] Pack Badge!
+*** TODO Keyboard?
+*** TODO Mouse?
+*** TODO Mac Power supply?
+*** TODO HDMI cable and adapter?
+*** TODO Bluetooth Headset?
+** Clothing [/]
+*** TODO Shirts
+*** TODO Pants
+*** TODO Belts
+*** TODO Underwear
+*** TODO Socks
+*** TODO Pajamas?
+*** TODO Hat?
+*** TODO Shoes?
+*** TODO Swimsuit?
+*** TODO Coat/outerwear?
+*** TODO Nice/formal attire?
+** Toiletries [/]
+*** TODO [#A] Toothbrush
+*** TODO [#A] Toothpaste
+*** TODO Floss
+*** TODO Mouthwash
+*** TODO Waterpik?
+*** TODO Beard balm
+*** TODO Beard comb/brush
+*** TODO Razor?
+*** TODO Shave Oil?
+*** TODO Hair pomade
+*** TODO [#A] Deodorant
+*** TODO Moisturizer
+*** TODO Body soap/wash
+*** TODO Face wash 
+*** TODO Shampoo/conditioner?
+*** TODO Vitamins
+*** TODO Cologne
+*** TODO Tweezers?
+*** TODO Nail Clippers?
+*** TODO Travel Cutlery
+** Toys [/]
+*** TODO Phone Charger
+*** TODO Garmin Charger
+*** TODO Headphones
+*** TODO Fire TV
+*** TODO Power strip/cube
+*** TODO Travel Router
+*** TODO Kindle
+*** TODO Kindle charger
+*** TODO Switch
+*** TODO Switch Charger
+*** TODO Switch Controller
+*** TODO Power Brick
+*** TODO Pens & Notebooks
+*** TODO Tak?
+*** TODO iPad
+*** TODO iPad Charger
+*** TODO Flashlight?
+** Road trip [/]
+*** TODO 5 hour
+*** TODO Granola bars/road snacks
+*** TODO Trash bag
+*** TODO Extra water
+*** TODO Blankets
+** Special equipment/weather [/]
+*** TODO Umbrella
+*** TODO Snow gear?
+*** TODO Hand warmers
+*** TODO Monkii Bars
+*** TODO Lacrosse ball/fitness roller
+*** TODO Exercise bands
+*** TODO Hand exercisers")
+      ))
 
 (use-package org-evil
   :straight t
