@@ -402,6 +402,15 @@ used as title."
                                   "DASH_RULE"
                                   "COMMA_PARENTHESIS_WHITESPACE"
                                   "EN_QUOTES")))
+
+(use-package flyspell
+  :straight t
+  :custom
+    (ispell-program-name "aspell") ; use aspell instead of ispell
+    (ispell-extra-args '("--sug-mode=ultra"))
+  :hook
+  (text-mode . flyspell-mode))
+
 (use-package csv-mode
   :straight t
   :init
