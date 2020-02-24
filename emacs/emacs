@@ -77,7 +77,8 @@ Start an unlimited search at `point-min' otherwise."
   :straight t
   :bind ("A-<tab>" . pcomplete)
   :config
-  (setq org-refile-targets '((nil :maxlevel . 9)
+  (setq org-agenda-files '("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org")
+        org-refile-targets '((nil :maxlevel . 9)
                              (org-agenda-files :maxlevel . 2)
                              (org-roam--find-all-files :maxlevel . 2))
         org-refile-use-outline-path 'file
@@ -541,9 +542,6 @@ used as title."
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(load-prefer-newer t)
- '(org-agenda-files
-   (quote
-    ("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org")))
  '(org-log-done (quote time))
  '(org-log-into-drawer t)
  '(org-modules
