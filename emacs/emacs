@@ -86,6 +86,41 @@ Start an unlimited search at `point-min' otherwise."
   (add-hook 'org-mode-hook #'org+-buffer-name-to-title-config)
   )
 
+(setq org-agenda-custom-commands
+      '(
+        ("n" "Next actions"
+         ((tags-todo "-someday-inactive-media-hobby-habit"
+                     ((org-agenda-overriding-header "Next actions:")
+                      (org-agenda-prefix-format '((tags . "%i %?:e%-2b")))
+                      ;; should I also skip the inbox subtree?
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if
+                                                  'timestamp))))))
+        ("u" "Unscheduled/unfiled tasks"
+         (
+          (agenda ""
+                  ((org-agenda-overriding-header "Unscheduled/unfiled tasks:")
+                   (org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")))
+                   ))
+          (tags-todo "-someday-inactive-media-hobby-habit-project"
+                     ((org-agenda-overriding-header "Unscheduled/unfiled tasks:")
+                      (org-agenda-prefix-format '((tags . " %i %?:e%-2b")))
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if
+                                                  'timestamp))))
+          ))
+        ("h" "Home Agenda"
+         (
+          (agenda ""
+                  ((org-agenda-overriding-header "Agenda")
+                   (org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")))
+                   ))
+          (tags-todo "-someday-inactive-media-work"
+                     ((org-agenda-overriding-header "Available")
+                      (org-agenda-prefix-format '((tags . " %i %?:e%-2b")))
+                      (org-agenda-skip-function '(org-agenda-skip-entry-if
+                                                  'scheduled))))
+          ))
+        ))
+
 (setq org-capture-templates
       '(
         ("i" "inbox")
