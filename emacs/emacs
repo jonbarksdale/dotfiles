@@ -49,6 +49,30 @@
 ;; ref - https://emacs.stackexchange.com/questions/14940/emacs-doesnt-paste-in-evils-visual-mode-with-every-os-clipboard/15054
 (fset 'evil-visual-update-x-selection 'ignore)
 
+
+;; org mode
+(defun org+-buffer-name-to-title (&optional end)
+  "Rename buffer to value of #+TITLE:.
+If END is non-nil search for #+TITLE: at `point' and
+delimit it to END.
+Start an unlimited search at `point-min' otherwise."
+  (interactive)
+  (let ((beg (or (and end (point))
+         (point-min))))
+    (save-excursion
+      (when end
+    (goto-char end)
+    (setq end (line-end-position)))
+      (goto-char beg)
+      (when (re-search-forward "^[[:space:]]*#\\+TITLE:[[:space:]]*\\(.*?\\)[[:space:]]*$" end t)
+    (rename-buffer (match-string 1)))))
+  nil)
+
+(defun org+-buffer-name-to-title-config ()
+  "Configure Org to rename buffer to value of #+TITLE:."
+  (font-lock-add-keywords nil '(org+-buffer-name-to-title)))
+
+
 (use-package org
   :straight t
   :bind ("A-<tab>" . pcomplete)
@@ -57,8 +81,8 @@
                              (org-agenda-files :maxlevel . 2)
                              (org-roam--find-all-files :maxlevel . 2))
         org-refile-use-outline-path 'file
-        org-outline-path-complete-in-steps nil
-        )
+        org-outline-path-complete-in-steps nil)
+  (add-hook 'org-mode-hook #'org+-buffer-name-to-title-config)
   )
 
 (setq org-capture-templates
