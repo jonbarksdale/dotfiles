@@ -77,7 +77,7 @@ Start an unlimited search at `point-min' otherwise."
   :straight t
   :bind ("A-<tab>" . pcomplete)
   :config
-  (setq org-agenda-files '("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org")
+  (setq org-agenda-files '("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org" "~/Dropbox/org-roam")
         org-refile-targets '((nil :maxlevel . 9)
                              (org-agenda-files :maxlevel . 2)
                              (org-roam--find-all-files :maxlevel . 2))
