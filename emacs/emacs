@@ -256,15 +256,11 @@ used as title."
   :after org
   :bind
   ("C-c n j" . org-journal-new-entry)
-  :config
-  (defun org-journal-weekly-file-header ()
-    (format-time-string "#+TITLE: Week %-V, %Y"))
   :custom
+  (org-journal-file-type 'daily)
   ;; only works ok for daily files
-;;  (org-journal-date-prefix "#+TITLE: ")
-  (org-journal-file-type 'weekly)
-  (org-journal-file-header 'org-journal-weekly-file-header)
-  (org-journal-file-format "%Y-week-%V.org")
+  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-dir "~/Dropbox/org-roam")
   (org-journal-date-format "%A, %d %B %Y")
   )
