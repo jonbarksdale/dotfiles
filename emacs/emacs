@@ -88,8 +88,14 @@ Start an unlimited search at `point-min' otherwise."
 
 (setq org-agenda-custom-commands
       '(
+        ;; TODO: filter by work or home?
         ("n" "Next actions"
-         ((tags-todo "-someday-inactive-media-hobby-habit"
+         ((agenda ""
+                  ((org-agenda-overriding-header "Agenda:")
+                   (org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")))
+                   (org-agenda-span 'day)
+                   ))
+          (tags-todo "-someday-inactive-media-hobby-habit"
                      ((org-agenda-overriding-header "Next actions:")
                       (org-agenda-prefix-format '((tags . "%i %?:e%-2b")))
                       ;; should I also skip the inbox subtree?
@@ -98,8 +104,9 @@ Start an unlimited search at `point-min' otherwise."
         ("u" "Unscheduled/unfiled tasks"
          (
           (agenda ""
-                  ((org-agenda-overriding-header "Unscheduled/unfiled tasks:")
+                  ((org-agenda-overriding-header "Week agenda")
                    (org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")))
+                   (org-agenda-span 'week)
                    ))
           (tags-todo "-someday-inactive-media-hobby-habit-project"
                      ((org-agenda-overriding-header "Unscheduled/unfiled tasks:")
