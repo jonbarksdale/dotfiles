@@ -298,6 +298,10 @@ used as title."
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-dir "~/Dropbox/org-roam")
   (org-journal-date-format "%A, %d %B %Y")
+  :bind
+  (:map org-journal-mode-map
+        ("C-c C-/" . org-journal-search)
+        ("C-c C-s" . org-schedule))
   )
 
 (use-package org-roam
