@@ -380,7 +380,14 @@ used as title."
 
 (use-package magit
   :straight t
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+  :hook
+  (git-commit-setup . git-commit-turn-on-flyspell)
+  :config
+  (setq git-commit-summary-max-length 50
+        git-commit-fill-column 72)
+  )
+
 (use-package evil-magit
   :straight t)
 (use-package projectile
