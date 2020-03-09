@@ -76,6 +76,8 @@ Start an unlimited search at `point-min' otherwise."
 (use-package org
   :straight t
   :bind ("A-<tab>" . pcomplete)
+  :hook
+  (org-mode . auto-fill-mode)
   :config
   (setq org-agenda-files '("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org" "~/Dropbox/org-roam")
         org-refile-targets '((nil :maxlevel . 9)
@@ -373,9 +375,6 @@ used as title."
 (use-package helm-org
   :straight t
   :after (helm org)
-  :config
-    (add-to-list 'helm-completing-read-handlers-alist '(org-capture . helm-org-completing-read-tags))
-    (add-to-list 'helm-completing-read-handlers-alist '(org-set-tags . helm-org-completing-read-tags))
   )
 
 (use-package magit
@@ -436,6 +435,7 @@ used as title."
 (use-package yasnippet-snippets
   :straight t
   :after yasnippet )
+
 
 (use-package rainbow-delimiters
   :straight t
