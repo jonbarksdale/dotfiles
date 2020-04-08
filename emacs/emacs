@@ -460,6 +460,8 @@ used as title."
             (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
             (define-key yas/keymap [tab] 'yas/next-field)))
   :config
+  (setq yas-snippet-dirs
+        (directory-files (expand-file-name "~/.emacs.d/snippets") t "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)"))
   (yas-global-mode 1)
   )
 
