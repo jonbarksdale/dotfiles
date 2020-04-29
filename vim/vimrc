@@ -1,5 +1,5 @@
 set nocompatible
-let mapleader = ","
+map <Space> <Leader>
 
 " Remove all autocmds for the current group
 autocmd!
@@ -10,6 +10,7 @@ autocmd!
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible' " sensible defaults
+Plug 'tpope/vim-unimpaired' " unimpaired
 Plug 'morhetz/gruvbox' " Color scheme
 Plug 'tpope/vim-fugitive' " git
 Plug 'airblade/vim-gitgutter'
