@@ -1,6 +1,14 @@
-let mapleader = ","
+
+let mapleader = ' '
+"nmap <Space> <Leader>
 
 set surround
+set argtextobj
+set textobj-entire
+set easymotion
+set commentary
+set ReplaceWithRegister
+
 set number
 set ignorecase
 set smartcase
@@ -9,10 +17,15 @@ map <C-w>r :action MoveEditorToOppositeTabGroup<CR>
 map <C-w><C-r> :action MoveEditorToOppositeTabGroup<CR>
 nmap <leader>mr :action MarkNotifcationsAsRead<CR>
 
-map <leader>o :action OptimizeImports<CR>
+map <leader>st :action FileStructurePopup<CR>
+map <leader>oi :action OptimizeImports<CR>
 map <leader>h :action HideAllWindows<CR>
 map <leader>a :action Annotate<CR>
+map <leader>ic :action InspectCode<CR>
 
+map <leader>rn :action RenameElement<CR>
+
+map <leader>R :action Run<CR>
 map <leader>rr :action Rerun<CR>
 map <leader>rc :action RunClass<CR>
 
@@ -27,4 +40,11 @@ nmap ]a :next<CR>
 nmap [A :first<CR>
 nmap ]A :last<CR>
 
+nmap [l :action GotoPreviousError<CR>
+nmap ]l :action GotoNextError<CR>
+nmap [t :action PreviousTab<CR>
+nmap ]t :action NextTab<CR>
+
 map J :action EditorJoinLines<CR>
+
+map <leader>vs :action MoveTabRight<CR>
