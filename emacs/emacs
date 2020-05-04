@@ -151,9 +151,9 @@ Start an unlimited search at `point-min' otherwise."
       '(
         ("i" "inbox" entry (file+headline "~/Dropbox/org-roam/inbox.org" "Inbox")
          "* TODO %?\n %i")
-        ("b" "Book suggestion" entry (file+headline "~/Dropbox/org-roam/20200503151300-watch_list.org" "Media")
+        ("b" "Book suggestion" entry (file+headline "~/Dropbox/org-roam/media.org" "Media")
          "* BACKLOG %^{title} :book:%^g" :immediate-finish t)
-        ("g" "Game suggestion" entry (file+headline "~/Dropbox/org-roam/20200503151300-watch_list.org" "Media")
+        ("g" "Game suggestion" entry (file+headline "~/Dropbox/org-roam/media.org" "Media")
          "* BACKLOG %^{title} :game:%^g" :immediate-finish t)
         ("t" "templates")
         ("tc" "Train COE BRIT" entry (file+headline "~/Dropbox/org/work.org" "Tech lead responsibilities")
