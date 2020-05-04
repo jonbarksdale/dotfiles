@@ -83,8 +83,7 @@ Start an unlimited search at `point-min' otherwise."
   :config
   (setq org-agenda-files '("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org" "~/Dropbox/org-roam")
         org-refile-targets '((nil :maxlevel . 9)
-                             (org-agenda-files :maxlevel . 2)
-                             (org-roam--find-all-files :maxlevel . 2))
+                             (org-agenda-files :maxlevel . 2))
         org-refile-use-outline-path 'file
         org-outline-path-complete-in-steps nil)
   (add-hook 'org-mode-hook #'org+-buffer-name-to-title-config)
@@ -150,19 +149,11 @@ Start an unlimited search at `point-min' otherwise."
 
 (setq org-capture-templates
       '(
-        ("i" "inbox")
-        ("iw" "Work inbox" entry (file+headline "~/Dropbox/org/work.org" "Inbox")
+        ("i" "inbox" entry (file+headline "~/Dropbox/org-roam/inbox.org" "Inbox")
          "* TODO %?\n %i")
-        ("ip" "Personal inbox" entry (file+headline "~/Dropbox/org/personal.org" "Inbox")
-         "* TODO %?\n %i")
-        ("p" "project")
-        ("pw" "Work project" entry (file+headline "~/Dropbox/org/work.org" "Active Projects")
-         "* TODO %?\n %i")
-        ("pp" "Personal project" entry (file+headline "~/Dropbox/org/personal.org" "Projects")
-         "* TODO %?\n %i")
-        ("b" "Book suggestion" entry (file+headline "~/Dropbox/org/personal.org" "Media")
+        ("b" "Book suggestion" entry (file+headline "~/Dropbox/org-roam/20200503151300-watch_list.org" "Media")
          "* BACKLOG %^{title} :book:%^g" :immediate-finish t)
-        ("g" "Game suggestion" entry (file+headline "~/Dropbox/org/personal.org" "Media")
+        ("g" "Game suggestion" entry (file+headline "~/Dropbox/org-roam/20200503151300-watch_list.org" "Media")
          "* BACKLOG %^{title} :game:%^g" :immediate-finish t)
         ("t" "templates")
         ("tc" "Train COE BRIT" entry (file+headline "~/Dropbox/org/work.org" "Tech lead responsibilities")
@@ -334,22 +325,20 @@ used as title."
   )
 
 (use-package org-roam
-  :ensure t
+  :straight t
   :after org
   :hook
-  ((org-mode . org-roam-mode)
-   (after-init . org-roam--build-cache-async)
-   )
-  :straight (:host github :repo "jethrokuan/org-roam" :branch "develop")
+  (after-init . org-roam-mode)
   :custom
   (org-roam-directory "~/Dropbox/org-roam")
   (org-roam-completion-system 'helm)
   :bind
-      ("C-c n l" . org-roam)
-;;      ("C-c n t" . org-roam-today)
-      ("C-c n f" . org-roam-find-file)
-      ("C-c n i" . org-roam-insert)
-      ("C-c n g" . org-roam-show-graph))
+  (:map org-roam-mode-map
+        (("C-c n l" . org-roam)
+         ("C-c n f" . org-roam-find-file)
+         ("C-c n g" . org-roam-show-graph))
+   :map org-mode-map
+        (("C-c n i" . org-roam-insert))))
 
 (use-package markdown-mode
   :straight t
@@ -543,6 +532,11 @@ used as title."
   :after company
   :config
   (company-statistics-mode))
+
+(use-package company-org-roam
+  :straight (:host github :repo "jethrokuan/company-org-roam")
+  :config
+  (push 'company-org-roam company-backends))
 
 (use-package which-key
   :straight t
