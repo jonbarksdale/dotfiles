@@ -508,9 +508,10 @@ used as title."
   (add-hook 'after-init-hook 'global-company-mode)
 
   :custom
-  (company-idle-delay 0.2)
+  (company-idle-delay 0.5)
   (company-minimum-prefix-length 1)
-  (company-require-match 'never)
+  (company-selection-wrap-around t)
+  ;; consider company-tng for using tab to complete.
 
   :bind
   (:map company-active-map
