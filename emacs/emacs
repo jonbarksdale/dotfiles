@@ -512,6 +512,7 @@ used as title."
   (company-minimum-prefix-length 1)
   (company-selection-wrap-around t)
   ;; consider company-tng for using tab to complete.
+  (company-tng-configure-default)
 
   :bind
   (:map company-active-map
