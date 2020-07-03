@@ -331,6 +331,7 @@ used as title."
   (after-init . org-roam-mode)
   :custom
   (org-roam-directory "~/Dropbox/org-roam")
+  (org-roam-db-location "~/.emacs.d/org-roam.db")
   (org-roam-completion-system 'helm)
   :bind
   (:map org-roam-mode-map
