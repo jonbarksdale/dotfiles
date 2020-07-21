@@ -313,11 +313,22 @@ used as title."
   :custom
   (org-journal-file-type 'daily)
   ;; only works ok for daily files
-  (org-journal-date-prefix "#+TITLE: ")
+;;  (org-journal-date-prefix "#+TITLE: ")
+  
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-dir "~/Dropbox/org-roam")
   (org-journal-date-format "%A, %d %B %Y")
   (org-journal-carryover-items "")
+  (defun org-journal-file-header-func (time)
+  "Custom function to create journal header."
+  (concat
+      (pcase org-journal-file-type
+      (`daily "#+TITLE: Journal for %A, %d %B %Y\n#+STARTUP: showeverything")
+      (`weekly "#+TITLE: Journal for week %W, %Y\n#+STARTUP: folded")
+      (`monthly "#+TITLE: Journal for %B, %Y\n#+STARTUP: folded")
+      (`yearly "#+TITLE: Journal for %Y\n#+STARTUP: folded"))))
+
+  (setq org-journal-file-header 'org-journal-file-header-func)
   :bind
   (:map org-journal-mode-map
         ("C-c C-/" . org-journal-search)
@@ -513,7 +524,7 @@ used as title."
   (company-minimum-prefix-length 1)
   (company-selection-wrap-around t)
   ;; consider company-tng for using tab to complete.
-  (company-tng-configure-default)
+;;  (company-tng-configure-default)
 
   :bind
   (:map company-active-map
