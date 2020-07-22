@@ -319,21 +319,22 @@ used as title."
   (org-journal-dir "~/Dropbox/org-roam")
   (org-journal-date-format "%A, %d %B %Y")
   (org-journal-carryover-items "")
-  (defun org-journal-file-header-func (time)
-  "Custom function to create journal header."
-  (concat
-      (pcase org-journal-file-type
-      (`daily "#+TITLE: Journal for %A, %d %B %Y\n#+STARTUP: showeverything")
-      (`weekly "#+TITLE: Journal for week %W, %Y\n#+STARTUP: folded")
-      (`monthly "#+TITLE: Journal for %B, %Y\n#+STARTUP: folded")
-      (`yearly "#+TITLE: Journal for %Y\n#+STARTUP: folded"))))
-
-  (setq org-journal-file-header 'org-journal-file-header-func)
   :bind
   (:map org-journal-mode-map
         ("C-c C-/" . org-journal-search)
         ("C-c C-s" . org-schedule))
   )
+
+(defun org-journal-file-header-func (time)
+"Custom function to create journal header."
+(concat
+    (pcase org-journal-file-type
+    (`daily "#+TITLE: Journal for %A, %d %B %Y\n#+STARTUP: showeverything")
+    (`weekly "#+TITLE: Journal for week %W, %Y\n#+STARTUP: folded")
+    (`monthly "#+TITLE: Journal for %B, %Y\n#+STARTUP: folded")
+    (`yearly "#+TITLE: Journal for %Y\n#+STARTUP: folded"))))
+
+(setq org-journal-file-header 'org-journal-file-header-func)
 
 (use-package org-roam
   :straight t
