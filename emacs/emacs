@@ -329,10 +329,10 @@ used as title."
 "Custom function to create journal header."
 (concat
     (pcase org-journal-file-type
-    (`daily "#+TITLE: Journal for %A, %d %B %Y\n#+STARTUP: showeverything")
-    (`weekly "#+TITLE: Journal for week %W, %Y\n#+STARTUP: folded")
-    (`monthly "#+TITLE: Journal for %B, %Y\n#+STARTUP: folded")
-    (`yearly "#+TITLE: Journal for %Y\n#+STARTUP: folded"))))
+    (`daily (format-time-string "#+TITLE: Journal for %A, %d %B %Y\n#+STARTUP: showeverything" time))
+    (`weekly (format-time-string "#+TITLE: Journal for week %W, %Y\n#+STARTUP: folded" time))
+    (`monthly (format-time-string "#+TITLE: Journal for %B, %Y\n#+STARTUP: folded" time))
+    (`yearly (format-time-string "#+TITLE: Journal for %Y\n#+STARTUP: folded" time)))))
 
 (setq org-journal-file-header 'org-journal-file-header-func)
 
