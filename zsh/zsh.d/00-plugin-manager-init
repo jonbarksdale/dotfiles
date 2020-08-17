@@ -1,10 +1,11 @@
 # vim: set ft=zsh :
-# Install zplug
-# Check if zplug is installed
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
+# Install zinit
+# Check if zinit is installed
+if [[ ! -d ~/.zinit ]]; then
+  mkdir -p ~/.zinit
+  git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+  source ~/.zinit/bin/zinit.zsh & zinit self-update
 fi
 
 # Essential
-source ~/.zplug/init.zsh
+source ~/.zinit/bin/zinit.zsh 
