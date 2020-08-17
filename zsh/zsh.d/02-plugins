@@ -1,10 +1,10 @@
 # vim: set ft=zsh :
 
-# plugins
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-# zplug "jreese/zsh-titles", as:plugin
-zinit light jreese/zsh-titles
-# zplug "starcraftman/zsh-git-prompt", use:zshrc.sh
 zinit light starcraftman/zsh-git-prompt
+
+# turbo mode loading
+zinit light-mode wait lucid for \
+  zdharma/fast-syntax-highlighting \
+  zsh-users/zsh-completions \
+  zsh-users/zsh-autosuggestions \
+  jreese/zsh-titles
