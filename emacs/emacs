@@ -415,7 +415,21 @@ used as title."
 (use-package projectile
   :straight t)
 
+(use-package ace-window
+  :straight t
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  :config
+  (define-key evil-normal-state-map "-" 'ace-window)
+  )
+
+(use-package avy
+  :straight t)
+
 (use-package kotlin-mode
+  :straight t)
+
+(use-package typescript-mode
   :straight t)
 
 (use-package zenburn-theme
