@@ -360,6 +360,10 @@ used as title."
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package ox-gfm
+  :straight t
+  :after (org))
+
 (use-package helm
   :straight t
   :init
