@@ -127,7 +127,7 @@ Start an unlimited search at `point-min' otherwise."
                    (org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")))
                    (org-agenda-span 'week)
                    ))
-          (tags-todo "-someday-inactive-media-hobby-habit-project"
+          (tags-todo "-someday-inactive-media-hobby-habit-project-CATEGORY='MEDIA'"
                      ((org-agenda-overriding-header "Unscheduled/unfiled tasks:")
                       (org-agenda-prefix-format '((tags . " %i %?:e%-2b")))
                       (org-agenda-skip-function '(org-agenda-skip-entry-if
@@ -145,16 +145,33 @@ Start an unlimited search at `point-min' otherwise."
                       (org-agenda-skip-function '(org-agenda-skip-entry-if
                                                   'scheduled))))
           ))
+        ("g" "Games"
+         (
+          (tags-todo "+game-TODO=\"FINISHED\""
+                     ((org-agenda-overriding-header "Games")
+                      (org-agenda-prefix-format '((tags . " %i %?:e")))
+                      (org-agenda-sorting-strategy '(priority-down category-keep todo-state-down effort-up))
+          ))
         ))
+        ("b" "Books"
+         (
+          (tags-todo "+book-TODO=\"FINISHED\""
+                     ((org-agenda-overriding-header "Books")
+                      (org-agenda-prefix-format '((tags . " %i %?:e")))
+                      (org-agenda-sorting-strategy '(priority-down category-keep todo-state-down effort-up))
+
+          ))
+        ))
+     ))
 
 (setq org-capture-templates
       '(
         ("i" "inbox" entry (file+headline "~/Dropbox/org-roam/inbox.org" "Inbox")
          "* TODO %?\n %i")
         ("b" "Book suggestion" entry (file+headline "~/Dropbox/org-roam/media.org" "Media")
-         "* BACKLOG %^{title} :book:%^g" :immediate-finish t)
+         "* BACKLOG %^{title} :book:" :immediate-finish t)
         ("g" "Game suggestion" entry (file+headline "~/Dropbox/org-roam/media.org" "Media")
-         "* BACKLOG %^{title} :game:%^g" :immediate-finish t)
+         "* BACKLOG %^{title} :game:" :immediate-finish t)
         ("t" "templates")
         ("tc" "Train COE BRIT" entry (file+headline "~/Dropbox/org/work.org" "Tech lead responsibilities")
 "* TODO %t - COE BRIT - %^{name} [/]%?                                       :coebr:
