@@ -80,6 +80,7 @@ Start an unlimited search at `point-min' otherwise."
   :hook
   (org-mode . auto-fill-mode)
   (org-mode . visual-line-mode)
+  (org-mode . org-indent-mode)
   :config
   (setq org-agenda-files '("~/Dropbox/org/personal.org" "~/Dropbox/org/work.org" "~/Dropbox/org-roam")
         org-refile-targets '((nil :maxlevel . 9)
@@ -452,6 +453,11 @@ used as title."
 
 (use-package typescript-mode
   :straight t)
+
+(use-package aggressive-indent
+  :straight t
+  :config
+  (global-aggressive-indent-mode))
 
 (use-package zenburn-theme
   :straight t)
