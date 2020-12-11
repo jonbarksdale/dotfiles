@@ -8,6 +8,7 @@ set textobj-entire
 set easymotion
 set commentary
 set ReplaceWithRegister
+set highlightedyank
 
 set number
 set ignorecase
@@ -15,35 +16,49 @@ set smartcase
 
 map <C-w>r :action MoveEditorToOppositeTabGroup<CR>
 map <C-w><C-r> :action MoveEditorToOppositeTabGroup<CR>
-nmap <leader>mr :action MarkNotifcationsAsRead<CR>
+nmap <leader>mr :action MarkNotificationsAsRead<CR>
 
 map <leader>st :action FileStructurePopup<CR>
 map <leader>oi :action OptimizeImports<CR>
 map <leader>h :action HideAllWindows<CR>
 map <leader>a :action Annotate<CR>
 map <leader>ic :action InspectCode<CR>
+map <leader>u :action FindUsages<CR>
 
 map <leader>rn :action RenameElement<CR>
 
 map <leader>R :action Run<CR>
+map <leader>r :action Run<CR>
 map <leader>rr :action Rerun<CR>
 map <leader>rc :action RunClass<CR>
 
 map <leader>rl :action RunConfiguration<CR>
+map <leader>d :action Debug<CR>
 map <leader>dc :action DebugClass<CR>
 map <leader>tb :action ToggleLineBreakpoint<CR>
-
-map <leader>ic :action InspectCode<CR>
 
 nmap [a :previous<CR>
 nmap ]a :next<CR>
 nmap [A :first<CR>
 nmap ]A :last<CR>
 
-nmap [l :action GotoPreviousError<CR>
-nmap ]l :action GotoNextError<CR>
-nmap [t :action PreviousTab<CR>
-nmap ]t :action NextTab<CR>
+nnoremap [q :action PreviousOccurence<CR>
+nnoremap ]q :action NextOccurence<CR>
+nnoremap [l :action GotoPreviousError<CR>
+nnoremap ]l :action GotoNextError<CR>
+nnoremap [t :action PreviousTab<CR>
+nnoremap ]t :action NextTab<CR>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+
+" easy system clipboard copy/paste
+noremap <space>y "*y
+noremap <space>Y "*Y
+noremap <space>p "*p
+noremap <space>P "*P
 
 map J :action EditorJoinLines<CR>
 
