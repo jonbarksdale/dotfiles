@@ -22,17 +22,25 @@
 (eval-when-compile
   (require 'el-patch))
 
+(use-package undo-tree
+  :straight (:host gitlab :repo "tsc25/undo-tree")
+  :diminish
+  :config
+  (global-undo-tree-mode))
+
 (setq evil-want-keybinding nil)
 (use-package evil
   :straight t
   :config
   (setq
-    evil-mode-line-format 'before
-    evil-emacs-state-cursor  '("red" box)
-    evil-normal-state-cursor '("gray" box)
-    evil-visual-state-cursor '("gray" box)
-    evil-insert-state-cursor '("gray" bar)
-    evil-motion-state-cursor '("gray" box))
+   evil-mode-line-format 'before
+   evil-emacs-state-cursor  '("red" box)
+   evil-normal-state-cursor '("gray" box)
+   evil-visual-state-cursor '("gray" box)
+   evil-insert-state-cursor '("gray" bar)
+   evil-motion-state-cursor '("gray" box))
+  (setq evil-undo-system 'undo-tree)
+  (evil-set-undo-system 'undo-tree)
   (evil-ex-define-cmd "ls" 'ibuffer)
   (evil-mode 1)
   )
@@ -671,29 +679,26 @@ used as title."
  ;; If there is more than one, they won't work right.
  '(apropos-do-all t)
  '(face-font-family-alternatives
-   (quote
-    (("Monospace" "Victor Mono" "courier" "fixed")
+   '(("Monospace" "Victor Mono" "courier" "fixed")
      ("Monospace Serif" "Victor Mono" "Courier 10 Pitch" "Consolas" "Courier Std" "FreeMono" "Nimbus Mono L" "courier" "fixed")
      ("courier" "CMU Typewriter Text" "fixed")
      ("Sans Serif" "helv" "helvetica" "arial" "fixed")
-     ("helv" "helvetica" "arial" "fixed"))))
+     ("helv" "helvetica" "arial" "fixed")))
  '(fill-column 100)
  '(helm-command-prefix-key "C-c h")
- '(helm-completion-style (quote emacs))
+ '(helm-completion-style 'emacs)
  '(helm-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(load-prefer-newer t)
- '(org-log-done (quote time))
+ '(org-log-done 'time)
  '(org-log-into-drawer t)
  '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
+   '(org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m))
  '(package-selected-packages
-   (quote
-    (org-ac auto-complete org orgit beacon which-key helm-org evil-magit helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package)))
+   '(org-ac auto-complete org orgit beacon which-key helm-org evil-magit helm-descbinds helm-ag helm-mode helm-config org-brain csv-mode rainbow-delimiters langtool plantuml-mode mmm-mode yasnippet-snippets ya-snippet evil-org-agenda markdown-mode deft evil-collection evil-org auto-package-update projectile org-evil evil-matchit evil-surround magit helm evil use-package))
  '(require-final-newline t)
- '(safe-local-variable-values (quote ((truncate-lines . f))))
+ '(safe-local-variable-values '((truncate-lines . f)))
  '(save-interprogram-paste-before-kill t)
  '(visible-bell t))
 (custom-set-faces
