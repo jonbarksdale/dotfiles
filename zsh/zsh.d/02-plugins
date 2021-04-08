@@ -1,10 +1,27 @@
 # vim: set ft=zsh :
 
-zinit light starcraftman/zsh-git-prompt
+zinit ice depth=1
 
+zinit light romkatv/powerlevel10k
+
+zinit light jeffreytse/zsh-vi-mode
+
+# I should probalby sort/break these apart
 # turbo mode loading
 zinit light-mode wait lucid for \
   zdharma/fast-syntax-highlighting \
   zsh-users/zsh-completions \
-  zsh-users/zsh-autosuggestions \
-  jreese/zsh-titles
+  jreese/zsh-titles \
+  laggardkernel/zsh-thefuck \
+  laggardkernel/zsh-iterm2 \
+  hlissner/zsh-autopair \
+  marlonrichert/zsh-autocomplete \
+  zpm-zsh/ls \
+  marlonrichert/zsh-hist \
+# conflicts with exa & ls plugin
+#  b0o/zfzf \
+
+# in favor of auto complete
+#  zsh-users/zsh-autosuggestions \
+#
+
