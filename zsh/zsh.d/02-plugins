@@ -18,8 +18,7 @@ zinit light-mode wait lucid for \
   marlonrichert/zsh-autocomplete \
   zpm-zsh/ls \
   marlonrichert/zsh-hist \
-# conflicts with exa & ls plugin
-#  b0o/zfzf \
+  b0o/zfzf \
 
 # in favor of auto complete
 #  zsh-users/zsh-autosuggestions \
