@@ -1,11 +1,10 @@
 # vim: set ft=zsh :
 #
-HOMESHICK_HOME="${HOME}/.homesick/repos/homeshick"
+export HOMESHICK_HOME="${HOME}/.homesick/repos/homeshick"
 
 
 if [[ -d "$HOMESHICK_HOME" ]]
 then
-    source "$HOMEHICK_HOME/homeshick.sh"
+    source "$HOMESHICK_HOME/homeshick.sh"
     fpath=($HOMESHICK_HOME/completions $fpath)
 fi
-
