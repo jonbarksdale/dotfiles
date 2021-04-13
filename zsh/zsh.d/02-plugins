@@ -15,7 +15,6 @@ zinit light-mode wait lucid for \
   laggardkernel/zsh-thefuck \
   laggardkernel/zsh-iterm2 \
   hlissner/zsh-autopair \
-  marlonrichert/zsh-autocomplete \
   zpm-zsh/ls \
   marlonrichert/zsh-hist \
   b0o/zfzf \
