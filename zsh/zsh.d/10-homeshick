@@ -1,5 +1,11 @@
 # vim: set ft=zsh :
+#
+HOMESHICK_HOME="${HOME}/.homesick/repos/homeshick"
 
-source "${HOME}/.homesick/repos/homeshick/homeshick.sh"
-fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
+if [[ -d "$HOMESHICK_HOME" ]]
+then
+    source "$HOMEHICK_HOME/homeshick.sh"
+    fpath=($HOMESHICK_HOME/completions $fpath)
+fi
 
