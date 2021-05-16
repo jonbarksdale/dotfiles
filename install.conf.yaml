@@ -1,0 +1,42 @@
+- defaults:
+    link:
+        relink: true
+        create: true
+
+- create:
+    - ~/.config
+    - ~/.vim/undo-history
+
+- clean: ['~', '~/.zsh.d']
+- clean: 
+    ~/.config:
+      recursive: true
+
+
+- link:
+    ~/.asciidoc/asciidoc.conf:
+      path: asciidoc/asciidoc.conf
+      create: true
+    ~/.config/git/includes/alias:
+      path: git/includes/alias
+    ~/.config/git/:
+      glob: true
+      path: git/*
+      exclude: [ git/includes ]
+    ~/.editrc: editline/editrc
+    ~/.emacs: emacs/emacs
+    ~/.emacs.d/org:
+      create: true
+      path: emacs/org
+    ~/.emacs.d/snippets/core:
+      create: true
+      path: emacs/snippets
+    ~/.ideavimrc: idea/ideavimrc
+    ~/.inputrc: readline/inputrc
+    ~/.p10k.zsh: zsh/p10k.zsh
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.vimrc: vim/vimrc
+    ~/.zshrc: zsh/zshrc
+    ~/.zsh.d/:
+      glob: true
+      path: zsh/zsh.d/*

@@ -1,4 +1,0 @@
-[include]
-  path = ~/.config/git/config
-[core]
-	autocrlf = input
