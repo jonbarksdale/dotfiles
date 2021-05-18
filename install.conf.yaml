@@ -8,8 +8,10 @@
     - ~/.vim/undo-history
 
 - clean: ['~', '~/.zsh.d']
-- clean: 
+- clean:
     ~/.config:
+      recursive: true
+    ~/.vim:
       recursive: true
 
 
