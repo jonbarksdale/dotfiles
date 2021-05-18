@@ -14,6 +14,7 @@
 
 
 - link:
+    ~/.dotfiles: ""
     ~/.asciidoc/asciidoc.conf:
       path: asciidoc/asciidoc.conf
       create: true
