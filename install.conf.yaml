@@ -13,6 +13,7 @@
       recursive: true
     ~/.vim:
       recursive: true
+      force: true
 
 
 - link:
