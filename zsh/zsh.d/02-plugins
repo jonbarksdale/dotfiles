@@ -18,6 +18,7 @@ zinit light-mode wait lucid for \
   zpm-zsh/ls \
   marlonrichert/zsh-hist \
   b0o/zfzf \
+  wfxr/forgit \
 
 # in favor of auto complete
 #  zsh-users/zsh-autosuggestions \
