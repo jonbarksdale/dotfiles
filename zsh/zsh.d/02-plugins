@@ -6,6 +6,8 @@ zinit light romkatv/powerlevel10k
 
 zinit light jeffreytse/zsh-vi-mode
 
+zinit light Aloxaf/fzf-tab
+
 # I should probalby sort/break these apart
 # turbo mode loading
 zinit light-mode wait lucid for \
@@ -20,7 +22,6 @@ zinit light-mode wait lucid for \
   b0o/zfzf \
   wfxr/forgit \
 
-# in favor of auto complete
-#  zsh-users/zsh-autosuggestions \
-#
 
+# in favor of auto complete
+#  zsh-users/zsh-autosuggestions
