@@ -44,3 +44,6 @@
     ~/.zsh.d/:
       glob: true
       path: zsh/zsh.d/*
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
