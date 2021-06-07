@@ -28,13 +28,8 @@
       path: git/*
       exclude: [ git/includes ]
     ~/.editrc: editline/editrc
-    ~/.emacs: emacs/emacs
-    ~/.emacs.d/org:
-      create: true
-      path: emacs/org
-    ~/.emacs.d/snippets/core:
-      create: true
-      path: emacs/snippets
+    ~/.emacs.d: doom-emacs
+    ~/.doom.d: emacs
     ~/.ideavimrc: idea/ideavimrc
     ~/.inputrc: readline/inputrc
     ~/.p10k.zsh: zsh/p10k.zsh
@@ -47,3 +42,6 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [~/.emacs.d/bin/doom env, Generating doom envvar]
+  - [~/.emacs.d/bin/doom sync, Syncing doom]
+

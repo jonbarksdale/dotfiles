@@ -23,6 +23,7 @@ set correct
 # jobs
 set notify
 
+# TODO: these should literally all be plugins.  I've basically created my own janky ass plugin system as is.
 # Source all files from .zsh.d, unless they contain ~ (assumes vim temp files)
 for zshrc_config in ~/.zsh.d/*[^~] ; do
 #  echo "Sourcing $zshrc_config"
@@ -30,6 +31,9 @@ for zshrc_config in ~/.zsh.d/*[^~] ; do
 done
 
 fpath=(~/.zsh/completion $fpath)
+
+# Add doom to path
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Source a local zshrc if found (though that is better managed with profiles)
 test -f ~/.zshrc_local && source ~/.zshrc_local
