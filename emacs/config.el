@@ -49,6 +49,8 @@
 ;;
 (setq projectile-project-search-path '("/Volumes/Unix/workplace/"))
 
+;; Set fill colum to something more reasonable than 80
+(setq-default fill-column 120)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
