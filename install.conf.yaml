@@ -29,7 +29,14 @@
       exclude: [ git/includes ]
     ~/.editrc: editline/editrc
     ~/.emacs.d: doom-emacs
-    ~/.doom.d: emacs
+    ~/.doom.d/:
+      create: true
+      glob: true
+      path: emacs/*.el
+    ~/.doom.d/snippets/fundamental-mode/:
+      create: true
+      glob: true
+      path: emacs/snippets/fundamental-mode/*
     ~/.ideavimrc: idea/ideavimrc
     ~/.inputrc: readline/inputrc
     ~/.p10k.zsh: zsh/p10k.zsh
@@ -42,6 +49,13 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [~/.emacs.d/bin/doom env, Generating doom envvar]
-  - [~/.emacs.d/bin/doom sync, Syncing doom]
-
+  -
+    command: ~/.emacs.d/bin/doom env
+    description: Generating doom envvar
+    stdout: true
+    stderr: true
+  -
+    command: ~/.emacs.d/bin/doom sync
+    description: Syncing doom
+    stdout: true
+    stderr: true
