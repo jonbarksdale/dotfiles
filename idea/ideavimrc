@@ -9,6 +9,7 @@ set easymotion
 set commentary
 set ReplaceWithRegister
 set highlightedyank
+set sneak
 
 set number
 set ignorecase
