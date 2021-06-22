@@ -52,6 +52,8 @@
 ;; Set fill colum to something more reasonable than 80
 (setq-default fill-column 120)
 
+(setq ispell-personal-dictionary "~/.aspell.en.pws")
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
