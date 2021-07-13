@@ -54,6 +54,11 @@
 
 (setq ispell-personal-dictionary "~/.aspell.en.pws")
 
+(setq plantuml-indent-level 4)
+
+(after! plantuml-mode
+  (set-company-backend! 'plantuml-mode 'plantuml-complete-symbol ))
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
