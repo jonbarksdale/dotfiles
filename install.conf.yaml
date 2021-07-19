@@ -37,6 +37,9 @@
       create: true
       glob: true
       path: emacs/snippets/fundamental-mode/*
+    ~/.doom.d/snippets/org-mode/options:
+      create: true
+      path: emacs/snippets/org-mode/options
     ~/.ideavimrc: idea/ideavimrc
     ~/.inputrc: readline/inputrc
     ~/.p10k.zsh: zsh/p10k.zsh
