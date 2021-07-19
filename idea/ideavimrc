@@ -17,26 +17,10 @@ set smartcase
 
 map <C-w>r :action MoveEditorToOppositeTabGroup<CR>
 map <C-w><C-r> :action MoveEditorToOppositeTabGroup<CR>
-nmap <leader>mr :action MarkNotificationsAsRead<CR>
+" nmap <leader>mr :action MarkNotificationsAsRead<CR>
 
-map <leader>st :action FileStructurePopup<CR>
-map <leader>oi :action OptimizeImports<CR>
-map <leader>h :action HideAllWindows<CR>
-map <leader>a :action Annotate<CR>
-map <leader>ic :action InspectCode<CR>
-map <leader>u :action FindUsages<CR>
 
-map <leader>rn :action RenameElement<CR>
-
-map <leader>R :action Run<CR>
-map <leader>r :action Run<CR>
-map <leader>rr :action Rerun<CR>
-map <leader>rc :action RunClass<CR>
-
-map <leader>rl :action RunConfiguration<CR>
-map <leader>d :action Debug<CR>
-map <leader>dc :action DebugClass<CR>
-map <leader>tb :action ToggleLineBreakpoint<CR>
+map <leader>fs :action SaveAll<CR>
 
 nmap [a :previous<CR>
 nmap ]a :next<CR>
@@ -63,4 +47,55 @@ noremap <space>P "*P
 
 map J :action EditorJoinLines<CR>
 
-map <leader>vs :action MoveTabRight<CR>
+" Doom compatible
+map <leader>wv :action MoveTabRight<CR>
+map <leader>wq :action CloseActiveTab<CR>
+
+" enlargen - actually toggles, but it'll do
+map <leader>wo :action HideAllWindows<CR>
+" winner-undo - should be the way to undo the enlargen, still toggles
+map <leader>wu :action HideAllWindows<CR>
+
+map <leader>cr :action RenameElement<CR>
+" find definition
+map <leader>cd :action GotoDeclaration<CR>
+map <leader>clgd :action GotoDeclaration<CR>
+map <leader>ct :action GotoTypeDeclaration<CR>
+map <leader>clgt :action GotoTypeDeclaration<CR>
+map <leader>ck :action QuickJavaDoc<CR>
+map <leader>clgk :action QuickJavaDoc<CR>
+map <leader>clGk :action QuickJavaDoc<CR>
+map <leader>clGi :action QuickImplementations<CR>
+" find references
+map <leader>cD :action FindUsages<CR>
+map <leader>clgD :action FindUsages<CR>
+map <leader>ci :action GotoImplementation<CR>
+map <leader>clgi :action GotoImplementation<CR>
+
+map <leader>ca :action ShowIntentionActions<CR>
+map <leader>co :action OptimizeImports<CR>
+map <leader>mio :action OptimizeImports<CR>
+map <leader>cf :action ReformatCode<CR>
+map <leader>mf :action ReformatCode<CR>
+" refactorings
+map <leader>clr :action Refactorings.QuickListPopupAction<CR>
+" List errors
+map <leader>cx :action InspectCode<CR>
+
+" git Blame
+map <leader>gB :action Annotate<CR>
+
+" no real match - looking for code outline.  This was mirrored from counsel in org mode
+map <leader>c/ :action FileStructurePopup<CR>
+
+map <leader>mtt :action Run<CR>
+map <leader>mta :action RunClass<CR>
+map <leader>mtT :action RunClass<CR>
+map <leader>mtd :action Debug<CR>
+map <leader>mtD :action DebugClass<CR>
+
+map <leader>mtr :action Rerun<CR>
+
+map <leader>mdbb :action ToggleLineBreakpoint<CR>
+
+map <leader>mtc :action RunConfiguration<CR>
