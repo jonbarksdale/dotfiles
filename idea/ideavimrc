@@ -2,14 +2,24 @@
 let mapleader = ' '
 "nmap <Space> <Leader>
 
-set surround
+
+" text objects"
 set argtextobj
 set textobj-entire
+set textobj-indent
+
 set easymotion
-set commentary
-set ReplaceWithRegister
-set highlightedyank
 set sneak
+set surround
+set exchange
+
+set commentary
+set NERDTree
+
+"minor fixes
+set highlightedyank
+set vim-paragraph-motion
+set ReplaceWithRegister
 
 set number
 set ignorecase
