@@ -38,6 +38,13 @@
 (setq org-roam-directory "~/Dropbox/org-roam/")
 (setq org-roam-dailies-directory "~/Dropbox/org-roam/dailies/")
 
+(setq org-roam-mode-section-functions
+      (list
+       'org-roam-backlinks-section
+       'org-roam-reflinks-section
+       ;; this is busted right now
+       ;; 'org-roam-unlinked-references-section
+      ))
 ;; org-roam-capture-templates for captures - maybe a separate file/dir?
 ;; (setq org-roam-directory "~/Dropbox/org-roam/")
 
