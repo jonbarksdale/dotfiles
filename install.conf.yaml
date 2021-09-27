@@ -62,3 +62,71 @@
     description: Syncing doom
     stdout: true
     stderr: true
+
+- brew:
+    - zsh
+    - zsh-lovers
+    - zoxide
+    - vim
+    - tree
+    - ripgrep
+    - ag
+    - qmk
+    - neovim
+    - ispell
+    - aspell
+    - hunspell
+    - graphviz
+    - emacs-mac
+    - gcc
+    - fd
+    - fontconfig
+    - coreutils
+    - cloc
+    - bat
+    - exa
+    - ssh-copy-id
+    - git
+    - mas
+
+  cask:
+    - fantastical
+    - mailmate
+    - font-victor-mono
+    - marta
+    - raycast
+    - iterm2
+    - swish
+    - firefox
+    - marvin
+    - spotify
+    - vivaldi
+    - jetbrains-toolbox
+    - devutils
+    - 1password
+    - bartender
+    - karabiner-elements
+    - istat-menus
+    - brave-browser
+    - contexts
+    - daisydisk
+    - signal
+    - visual-studio-code
+    - dropbox
+
+- shell:
+  -
+    command: mas install 937984704
+    description: Install Amphetamine
+    stdout: true
+    stderr: true
+  -
+    command: mas install 441258766
+    description: Install magnet
+    stdout: true
+    stderr: true
+  -
+    command: mas upgrade
+    description: upgrade apps
+    stdout: true
+    stderr: true
