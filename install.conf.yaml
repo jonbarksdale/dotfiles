@@ -94,7 +94,9 @@
     - exa
     - fd
     - bat
+    - git-delta
     - cloc
+    - thefuck
 - brew:
     - fontconfig
 - brew:
