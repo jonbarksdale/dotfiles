@@ -21,7 +21,14 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "Victor Mono" :size 14))
+;;
+(if (x-family-fonts "VictorMono Nerd Font")
+    (setq doom-font (font-spec :family "VictorMono Nerd Font" :size 14))
+  (if (x-family-fonts "Victor Mono ")
+      (setq doom-font (font-spec :family "Victor Mono" :size 14))
+    ))
+
+;; (setq doom-font (font-spec :family "Victor Mono" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -31,12 +38,12 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;; May want to separate org dir?
-(setq org-directory "~/Dropbox/org-roam/")
+(setq org-directory "~/org/")
 
 
 ;; org-roam config
-(setq org-roam-directory "~/Dropbox/org-roam/")
-(setq org-roam-dailies-directory "~/Dropbox/org-roam/dailies/")
+(setq org-roam-directory "~/org/roam/")
+(setq org-roam-dailies-directory "~/org/roam/dailies/")
 
 (setq org-roam-mode-section-functions
       (list
