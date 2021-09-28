@@ -15,6 +15,8 @@
       recursive: true
       force: true
 
+- link:
+    ~/.asdfrc: asdfrc
 
 - link:
     ~/.dotfiles: ""
@@ -53,6 +55,137 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   -
+    description: install homebrew
+    command: |
+      if [ "$(uname -s)" = "Darwin" || "$(uname -s)" = "Linux" ]; then
+        if ! command -v brew &> /dev/null; then
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        fi
+      fi
+    stdout: true
+    stdin: true
+
+- brew:
+    - zsh
+    - zsh-lovers
+    - zsh-completions
+- brew:
+  - bash
+- brew:
+    - fzf
+    - zoxide
+- brew:
+    - vim
+    - neovim
+- brew:
+    - tree
+- brew:
+    - ripgrep
+    - ag
+- brew:
+    - ispell
+    - aspell
+    - hunspell
+- brew:
+    - graphviz
+- brew:
+    - gcc
+- brew:
+    - exa
+    - fd
+    - bat
+    - cloc
+- brew:
+    - fontconfig
+- brew:
+    - coreutils
+- brew:
+    - ssh-copy-id
+- brew:
+    - git
+- brew:
+    - mas
+- brew:
+    - topgrade
+- brew:
+    - jq
+
+- cask:
+    - mailmate
+- cask:
+    - marta
+- cask:
+    - raycast
+- cask:
+    - iterm2
+- cask:
+    - marvin
+- cask:
+    - spotify
+- cask:
+    - vivaldi
+- cask:
+  - firefox
+- cask:
+    - jetbrains-toolbox
+- cask:
+    - devutils
+- cask:
+    - 1password
+- cask:
+    - bartender
+- cask:
+    - karabiner-elements
+- cask:
+    - istat-menus
+- cask:
+    - brave-browser
+- cask:
+    - contexts
+- cask:
+    - daisydisk
+- cask:
+    - signal
+- cask:
+    - visual-studio-code
+- cask:
+    - swish
+
+- tap:
+    - homebrew/cask-fonts
+
+- cask:
+    - font-victor-mono
+    - font-victor-mono-nerd-font
+    - font-meslo-lg-nerd-font
+
+- tap:
+    - railwaycat/emacsmacport
+
+- brew:
+  - gnutls
+  - jansson
+  - libxml2
+  - texinfo
+  - imagemagick
+
+- cask:
+    - emacs-mac
+
+- brew:
+    - asdf
+
+- asdf:
+    - plugin: java
+    - plugin: gradle
+    - plugin: maven
+    - plugin: python
+    - plugin: lua
+    - plugin: rust
+
+
+- shell:
+  -
     command: ~/.emacs.d/bin/doom env
     description: Generating doom envvar
     stdout: true
@@ -62,59 +195,6 @@
     description: Syncing doom
     stdout: true
     stderr: true
-
-- brew:
-    - zsh
-    - zsh-lovers
-    - zoxide
-    - vim
-    - tree
-    - ripgrep
-    - ag
-    - qmk
-    - neovim
-    - ispell
-    - aspell
-    - hunspell
-    - graphviz
-    - emacs-mac
-    - gcc
-    - fd
-    - fontconfig
-    - coreutils
-    - cloc
-    - bat
-    - exa
-    - ssh-copy-id
-    - git
-    - mas
-
-  cask:
-    - fantastical
-    - mailmate
-    - font-victor-mono
-    - marta
-    - raycast
-    - iterm2
-    - swish
-    - firefox
-    - marvin
-    - spotify
-    - vivaldi
-    - jetbrains-toolbox
-    - devutils
-    - 1password
-    - bartender
-    - karabiner-elements
-    - istat-menus
-    - brave-browser
-    - contexts
-    - daisydisk
-    - signal
-    - visual-studio-code
-    - dropbox
-
-- shell:
   -
     command: mas install 937984704
     description: Install Amphetamine
