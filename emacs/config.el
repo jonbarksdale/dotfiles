@@ -38,12 +38,12 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;; May want to separate org dir?
-(setq org-directory "~/org/")
+(setq org-directory (file-truename "~/org/"))
 
 
 ;; org-roam config
-(setq org-roam-directory "~/org/roam/")
-(setq org-roam-dailies-directory "~/org/roam/dailies/")
+(setq org-roam-directory (file-truename "~/org/roam/"))
+(setq org-roam-dailies-directory (file-truename "~/org/roam/dailies/"))
 
 (setq org-roam-mode-section-functions
       (list
