@@ -118,6 +118,7 @@
     - marta
 - cask:
     - raycast
+    - launchbar
 - cask:
     - iterm2
 - cask:
