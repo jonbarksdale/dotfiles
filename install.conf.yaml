@@ -111,6 +111,9 @@
     - topgrade
 - brew:
     - jq
+- brew:
+    - tldr
+    - htop
 
 - cask:
     - mailmate
