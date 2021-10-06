@@ -49,3 +49,5 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 (package! ox-gfm)
+(package! edit-server)
+(package! evil-visual-mark-mode)
