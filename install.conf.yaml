@@ -114,6 +114,8 @@
 - brew:
     - tldr
     - htop
+- brew:
+    - openssl
 
 - cask:
     - mailmate
