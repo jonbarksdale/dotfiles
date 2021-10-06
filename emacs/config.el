@@ -61,7 +61,7 @@
 
 ;; projectile search path
 ;;
-(setq projectile-project-search-path '("/Volumes/Unix/workplace/"))
+(setq projectile-project-search-path '((file-truename "~/workspace")))
 
 ;; Set fill colum to something more reasonable than 80
 (setq-default fill-column 120)
@@ -92,3 +92,9 @@
 
 (use-package! ox-gfm
   :after org)
+
+(edit-server-start)
+
+(map! :leader
+      :desc "Visual marks"
+      "t `" #'evil-visual-mark-mode)
