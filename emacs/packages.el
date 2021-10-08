@@ -61,3 +61,5 @@
 
 ;; for quickly seeing targets for f/t (unique characters)
 (package! evil-quickscope)
+
+(package! evil-cleverparens)
