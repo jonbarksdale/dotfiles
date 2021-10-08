@@ -116,6 +116,8 @@
     - htop
 - brew:
     - openssl
+- brew:
+    - gh
 
 - cask:
     - mailmate
