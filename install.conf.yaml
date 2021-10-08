@@ -64,6 +64,7 @@
     stdout: true
     stdin: true
 
+# installs ASDF as part
 - brewfile: [ Brewfile ]
 
 - asdf:
@@ -73,7 +74,7 @@
     - plugin: python
     - plugin: lua
     - plugin: rust
-
+    - plugin: nodejs
 
 - shell:
   -
