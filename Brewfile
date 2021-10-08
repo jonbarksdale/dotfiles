@@ -72,3 +72,5 @@ brew "imagemagick"
 cask "emacs-mac"
 
 brew "asdf"
+brew "gpg"
+brew "gawk"
