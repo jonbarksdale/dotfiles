@@ -48,6 +48,13 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+;; github flavored markdown export from org
 (package! ox-gfm)
+;; edit fields from a browser in emacs
 (package! edit-server)
+;; visually see marks, toggleable
 (package! evil-visual-mark-mode)
+
+;; See contents of registers
+(package! evil-owl)

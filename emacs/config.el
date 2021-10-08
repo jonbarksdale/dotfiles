@@ -93,8 +93,18 @@
 (use-package! ox-gfm
   :after org)
 
+;; start edit server, so it can be used with the browser plugins "edit with emacs"
 (edit-server-start)
 
+;; allow visual mark mode to be toggled
 (map! :leader
       :desc "Visual marks"
       "t `" #'evil-visual-mark-mode)
+
+(use-package! evil-owl
+  :after evil
+  :custom
+  (evil-owl-idle-delay 0.5)
+  (evil-owl-max-string-length 100)
+  :config
+  (evil-owl-mode))
