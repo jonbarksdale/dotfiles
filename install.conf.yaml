@@ -44,7 +44,6 @@
       path: emacs/snippets/org-mode/options
     ~/.ideavimrc: idea/ideavimrc
     ~/.inputrc: readline/inputrc
-    ~/.p10k.zsh: zsh/p10k.zsh
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vimrc: vim/vimrc
     ~/.zshrc: zsh/zshrc
