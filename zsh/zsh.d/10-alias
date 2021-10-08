@@ -1,3 +1,4 @@
+#!/bin/zsh
 # vim: set ft=zsh :
 
 # Not needed with zsh ls plugin
@@ -8,6 +9,7 @@
 #   alias ls='ls -hFG'
 # fi
 # alias ll='ls -lh'
+
 alias df='df -h'
 alias du='du -h'
 alias fixtmux='killall -s SIGUSR1 tmux'
@@ -21,13 +23,3 @@ function gr {
   fi
 }
 
-function updateall {
-    echo "Homeshick:"
-    homeshick pull
-    echo "Brew:"
-    brew upgrade
-    echo "zinit"
-    zinit update --all
-    echo "vim"
-    vim -c "PlugUpgrade|PlugUpdate|qa"
-}
