@@ -58,3 +58,6 @@
 
 ;; See contents of registers
 (package! evil-owl)
+
+;; for quickly seeing targets for f/t (unique characters)
+(package! evil-quickscope)

@@ -108,3 +108,8 @@
   (evil-owl-max-string-length 100)
   :config
   (evil-owl-mode))
+
+;; enable quickscope
+(use-package! evil-quickscope
+  :config
+  (global-evil-quickscope-mode 1))
