@@ -99,8 +99,10 @@
 
 ;;
 (use-package! evil-cleverparens
-  :hook ((emacs-lisp-mode clojure-mode clojurescript-mode cider-repl-mode))
-  )
+  :hook ((emacs-lisp-mode . evil-cleverparens-mode)
+         (clojure-mode . evil-cleverparens-mode)
+         (clojurescript-mode . evil-cleverparens-mode)
+         (cider-repl-mode . evil-cleverparens-mode)))
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
