@@ -49,6 +49,7 @@
     ~/.config/bat/config:
       create: true
       path: bat/config
+    ~/.config/starship.toml: zsh/starship.toml
     ~/.zshrc: zsh/zshrc
     ~/.zsh.d/:
       glob: true
