@@ -15,6 +15,8 @@ export EDITOR=$EDITOR
 export VISUAL=$EDITOR
 if [[ -e "$(which bat)" ]]; then;
   export PAGER=bat
+elif [[ -e "$(which most)" ]]; then;
+  export PAGER=most
 else
   export PAGER=less
 fi

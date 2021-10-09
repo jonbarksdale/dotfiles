@@ -46,6 +46,9 @@
     ~/.inputrc: readline/inputrc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.vimrc: vim/vimrc
+    ~/.config/bat/config:
+      create: true
+      path: bat/config
     ~/.zshrc: zsh/zshrc
     ~/.zsh.d/:
       glob: true
