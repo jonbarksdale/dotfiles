@@ -74,3 +74,7 @@ cask "emacs-mac"
 brew "asdf"
 brew "gpg"
 brew "gawk"
+
+brew "ranger"
+brew "w3m"
+brew "most"
