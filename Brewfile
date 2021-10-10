@@ -69,8 +69,7 @@ brew "jansson"
 brew "libxml2"
 brew "texinfo"
 brew "imagemagick"
-
-cask "emacs-mac"
+brew "emacs-mac"
 
 brew "asdf"
 brew "gpg"
