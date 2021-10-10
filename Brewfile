@@ -1,3 +1,4 @@
+cask_args no_quarantine: true
 
 brew "zsh"
 brew "zsh-lovers"
