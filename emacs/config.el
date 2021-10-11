@@ -77,7 +77,8 @@
   :after org)
 
 ;; start edit server, so it can be used with the browser plugins "edit with emacs"
-(edit-server-start)
+;; Don't do this automatically - if there is no plugin waiting (in firefox, for example) - it eats all keystrokes
+;;(edit-server-start)
 
 ;; allow visual mark mode to be toggled
 (map! :leader
