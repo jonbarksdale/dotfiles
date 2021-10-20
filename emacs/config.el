@@ -60,8 +60,8 @@
 (setq display-line-numbers-type t)
 
 ;; projectile search path
-;;
-(setq projectile-project-search-path '((file-truename "~/workspace")))
+;; magic - ` for invoking a template system, then , preceding expressions to evaluate
+(setq projectile-project-search-path `( ,(file-truename "~/workspace/")))
 
 ;; Set fill colum to something more reasonable than 80
 (setq-default fill-column 120)
