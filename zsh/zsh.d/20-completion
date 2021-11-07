@@ -38,7 +38,7 @@ zinit light Aloxaf/fzf-tab
 
 # Required to be after highlighting plugin
 zinit light-mode wait'1' lucid for \
-  zdharma/fast-syntax-highlighting \
+  zdharma-continuum/fast-syntax-highlighting \
 
 # if this comes back, needs to be here.
 # in favor of auto complete
