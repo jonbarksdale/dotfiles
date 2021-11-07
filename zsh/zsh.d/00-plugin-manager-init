@@ -3,9 +3,9 @@
 # Check if zinit is installed
 if [[ ! -d ~/.zinit ]]; then
   mkdir -p ~/.zinit
-  git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
+  git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit/bin
   source ~/.zinit/bin/zinit.zsh & zinit self-update
 fi
 
 # Essential
-source ~/.zinit/bin/zinit.zsh 
+source ~/.zinit/bin/zinit.zsh
