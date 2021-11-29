@@ -83,3 +83,5 @@ tap "homebrew/cask-versions"
 
 cask "firefox-developer-edition"
 cask "beyond-compare"
+
+brew "languagetool"
