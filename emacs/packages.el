@@ -64,4 +64,15 @@
 
 (package! evil-cleverparens)
 
+;; log syntax highlighting
 (package! logview)
+
+;; highlight the sentence being edited
+(package! hl-sentence)
+
+;;
+(package! org-transclusion
+  :recipe (:host github
+           :repo "nobiot/org-transclusion"
+           :branch "main"
+           :files ("*.el")))
