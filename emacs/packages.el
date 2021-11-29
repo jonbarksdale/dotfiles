@@ -63,3 +63,5 @@
 (package! evil-quickscope)
 
 (package! evil-cleverparens)
+
+(package! logview)
