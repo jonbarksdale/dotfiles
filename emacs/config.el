@@ -142,3 +142,6 @@
    :desc "Add excerpt - Org Transclusion " "e" #'org-transclusion-add
    :desc "Make excerpt from link - org-transclusion" "E" #'org-transclusion-make-from-link
    )))
+
+;; add org roam files for id scanning
+(setq org-id-extra-files (directory-files-recursively org-roam-directory "org$"))
