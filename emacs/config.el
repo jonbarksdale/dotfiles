@@ -125,3 +125,20 @@
 
 ;; enable confluence exporter for org
 (use-package! ox-confluence)
+
+(use-package! org-transclusion
+  :defer
+  :after org
+  :init
+  (map!
+   :map global-map "<f12>" #'org-transclusion-add
+   :leader
+   :prefix "n"
+   :desc "Org Transclusion Mode" "t" #'org-transclusion-mode)
+  (map!
+   :map org-mode-map
+   :localleader
+   (:prefix "l"
+   :desc "Add excerpt - Org Transclusion " "e" #'org-transclusion-add
+   :desc "Make excerpt from link - org-transclusion" "E" #'org-transclusion-make-from-link
+   )))
