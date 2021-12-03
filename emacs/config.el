@@ -148,3 +148,9 @@
 
 (use-package! org-ql
   :after org)
+
+(after! org
+  (defun my/hook (hook)
+    "Create an org-link target string using `hook://` url scheme."
+    (shell-command (concat "open hook:\"" hook "\"")))
+  (org-add-link-type "hook" 'my/hook))
