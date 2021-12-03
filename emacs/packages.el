@@ -76,3 +76,5 @@
            :repo "nobiot/org-transclusion"
            :branch "main"
            :files ("*.el")))
+
+(package! org-ql)

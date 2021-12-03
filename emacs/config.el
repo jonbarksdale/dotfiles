@@ -145,3 +145,6 @@
 
 ;; add org roam files for id scanning
 (setq org-id-extra-files (directory-files-recursively org-roam-directory "org$"))
+
+(use-package! org-ql
+  :after org)
