@@ -88,4 +88,5 @@ brew "languagetool"
 
 brew "duf"
 brew "dust"
-berw "httpie"
+brew "httpie"
+brew "ncdu"
