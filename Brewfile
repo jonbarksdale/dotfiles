@@ -85,3 +85,7 @@ cask "firefox-developer-edition"
 cask "beyond-compare"
 
 brew "languagetool"
+
+brew "duf"
+brew "dust"
+berw "httpie"
