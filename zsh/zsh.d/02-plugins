@@ -5,11 +5,6 @@ zinit ice depth=1
 
 zinit light jeffreytse/zsh-vi-mode
 
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh" # pull behavior same as clone, source init.zsh
-zinit light starship/starship
-
 # I should probalby sort/break these apart
 # turbo mode loading
 zinit light-mode wait lucid for \
