@@ -30,3 +30,5 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Source a local zshrc if found (though that is better managed with profiles)
 test -f ~/.zshrc_local && source ~/.zshrc_local
+
+eval "$(starship init zsh)"

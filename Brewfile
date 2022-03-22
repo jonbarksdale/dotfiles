@@ -34,6 +34,8 @@ brew "htop"
 brew "openssl"
 brew "gh"
 
+brew "starship"
+
 cask "mailmate"
 cask "marta"
 cask "raycast"
