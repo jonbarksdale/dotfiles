@@ -96,3 +96,6 @@ brew "fx"
 brew "lazydocker"
 brew "glow"
 brew "ki"
+
+brew "sqlite"
+brew "wordnet"
