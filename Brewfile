@@ -99,3 +99,4 @@ brew "ki"
 
 brew "sqlite"
 brew "wordnet"
+brew "proselint"
