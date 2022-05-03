@@ -103,3 +103,4 @@ brew "proselint"
 
 brew "aws-vault"
 brew "awscli"
+brew "localstack"
