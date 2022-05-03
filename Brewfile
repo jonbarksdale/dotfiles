@@ -100,3 +100,6 @@ brew "ki"
 brew "sqlite"
 brew "wordnet"
 brew "proselint"
+
+brew "aws-vault"
+brew "awscli"
