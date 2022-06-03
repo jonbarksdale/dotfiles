@@ -183,3 +183,5 @@
     "Create an org-link target string using `hook://` url scheme."
     (shell-command (concat "open hook:\"" hook "\"")))
   (org-add-link-type "hook" 'my/hook))
+
+(let ((local-config "~/.emacs.local.el")) (when (file-exists-p local-config) (load local-config)))
