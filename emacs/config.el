@@ -127,12 +127,12 @@
   :config
   (global-evil-quickscope-mode 1))
 
-;;
-(use-package! evil-cleverparens
-  :hook ((emacs-lisp-mode . evil-cleverparens-mode)
-         (clojure-mode . evil-cleverparens-mode)
-         (clojurescript-mode . evil-cleverparens-mode)
-         (cider-repl-mode . evil-cleverparens-mode)))
+;; Attempt to fix cleverparens mode
+(add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
+(add-hook 'clojure-mode-hook #'evil-cleverparens-mode)
+(add-hook 'clojurescript-mode-hook #'evil-cleverparens-mode)
+(add-hook 'cider-repl-mode-hook #'evil-cleverparens-mode)
+
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
