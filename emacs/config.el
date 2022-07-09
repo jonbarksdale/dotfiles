@@ -83,6 +83,10 @@
       ))
 ;; org-roam-capture-templates for captures - maybe a separate file/dir?
 ;; (setq org-roam-directory "~/Dropbox/org-roam/")
+;;
+
+;;(setq! citar-bibliography `(,(file-truename "~/org/roam/zotero.bib")))
+(setq! citar-bibliography (file-truename "~/org/roam/zotero.bib"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
