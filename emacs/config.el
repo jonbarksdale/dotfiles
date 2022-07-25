@@ -43,14 +43,14 @@
 (after! org
   (setq org-todo-keywords
         '((sequence
-           "PROJ(p)"  ; A project, which usually contains other tasks
-           "LOOP(r)"  ; A recurring task
-           "NEXT(n)"  ; Next action for a project
            "TODO(t)"  ; A task that needs doing & is ready to do
+           "NEXT(n)"  ; Next action for a project
            "STRT(s)"  ; A task that is in progress
            "WAIT(w)"  ; Something external is holding up this task
            "HOLD(h)"  ; This task is paused/on hold because of me
            "IDEA(i)"  ; An unconfirmed and unapproved task or notion
+           "PROJ(p)"  ; A project, which usually contains other tasks
+           "LOOP(r)"  ; A recurring task
            "|"
            "DONE(d)"  ; Task successfully completed
            "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
