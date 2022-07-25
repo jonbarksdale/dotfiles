@@ -43,9 +43,10 @@
 (after! org
   (setq org-todo-keywords
         '((sequence
-           "TODO(t)"  ; A task that needs doing & is ready to do
            "PROJ(p)"  ; A project, which usually contains other tasks
            "LOOP(r)"  ; A recurring task
+           "NEXT(n)"  ; Next action for a project
+           "TODO(t)"  ; A task that needs doing & is ready to do
            "STRT(s)"  ; A task that is in progress
            "WAIT(w)"  ; Something external is holding up this task
            "HOLD(h)"  ; This task is paused/on hold because of me
