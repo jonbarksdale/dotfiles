@@ -24,11 +24,12 @@
 ;;
 (if (x-family-fonts "VictorMono Nerd Font")
     (setq doom-font (font-spec :family "VictorMono Nerd Font" :size 14))
-  (if (x-family-fonts "Victor Mono ")
+  (if (x-family-fonts "Victor Mono")
       (setq doom-font (font-spec :family "Victor Mono" :size 14))
     ))
 
-;; (setq doom-font (font-spec :family "Victor Mono" :size 14))
+(if (x-family-fonts "Symbola")
+    (setq doom-unicode-font (font-spec :family "Symbola" :size 14)))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -80,8 +81,8 @@
        'org-roam-backlinks-section
        'org-roam-reflinks-section
        ;; this is busted right now
-        'org-roam-unlinked-references-section
-      ))
+       'org-roam-unlinked-references-section
+       ))
 ;; org-roam-capture-templates for captures - maybe a separate file/dir?
 ;; (setq org-roam-directory "~/Dropbox/org-roam/")
 ;;
@@ -179,9 +180,9 @@
    :map org-mode-map
    :localleader
    (:prefix "l"
-   :desc "Add excerpt - Org Transclusion " "e" #'org-transclusion-add
-   :desc "Make excerpt from link - org-transclusion" "E" #'org-transclusion-make-from-link
-   )))
+    :desc "Add excerpt - Org Transclusion " "e" #'org-transclusion-add
+    :desc "Make excerpt from link - org-transclusion" "E" #'org-transclusion-make-from-link
+    )))
 
 ;; add org roam files for id scanning
 (setq org-id-extra-files (directory-files-recursively org-roam-directory "org$"))
