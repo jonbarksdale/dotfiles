@@ -6,6 +6,6 @@ target
 *.ipr
 *.swp
 .*.swp
-build
+build/
 .vscode
 out/
