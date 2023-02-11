@@ -78,3 +78,4 @@
            :files ("*.el")))
 
 (package! org-ql)
+(package! bazel)

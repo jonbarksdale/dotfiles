@@ -167,6 +167,15 @@
 ;; enable confluence exporter for org
 (use-package! ox-confluence)
 
+(use-package! bazel)
+
+(custom-set-variables
+ '(conda-anaconda-home "/usr/local/Caskroom/miniconda/base/"))
+
+(add-to-list 'auto-mode-alist '("/BUILD\\(\\..*\\)?\\'" . bazel-mode))
+(add-to-list 'auto-mode-alist '("/WORKSPACE\\'" . bazel-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(BUILD\\|WORKSPACE\\|bzl\\)\\'" . bazel-mode))
+
 (use-package! org-transclusion
   :defer
   :after org
