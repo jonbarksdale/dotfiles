@@ -79,3 +79,9 @@
 
 (package! org-ql)
 (package! bazel)
+;; Appears as though org-roam requires this, but doesn't declare it properly
+;; Found the commit - there's fall back logic to pick a sqlite version, but it
+;; seems like not all of the code was updated or something, cause some wacky
+;; shit happens when you don't have this one
+;; https://github.com/org-roam/org-roam/commit/cdad2ee7f6851209fd392cddd0e55b9cc584ea88
+(package! sqlite)
