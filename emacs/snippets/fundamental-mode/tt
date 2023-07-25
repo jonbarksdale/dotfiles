@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: time-note
+# key: tt
+# --
+`(format-time-string "%H:%M")`$0
