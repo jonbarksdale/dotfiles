@@ -167,6 +167,9 @@
 ;; enable confluence exporter for org
 (use-package! ox-confluence)
 
+;; Allow bind keywords in org export, so I can set per file org-md-toplevel-hlevel to control the heading level
+(setq org-export-allow-bind-keywords t)
+
 (use-package! bazel)
 
 (custom-set-variables
