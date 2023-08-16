@@ -111,6 +111,11 @@
 (use-package! ox-gfm
   :after org)
 
+;; Enable graphviz/DOT file suport
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t)))
+
 ;; start edit server, so it can be used with the browser plugins "edit with emacs"
 ;; Don't do this automatically - if there is no plugin waiting (in firefox, for example) - it eats all keystrokes
 ;;(edit-server-start)
