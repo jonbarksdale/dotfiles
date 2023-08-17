@@ -80,7 +80,7 @@ brew "texinfo"
 brew "imagemagick"
 brew "emacs-mac"
 
-brew "asdf"
+
 brew "gpg"
 brew "gawk"
 
