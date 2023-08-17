@@ -32,3 +32,6 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 test -f ~/.zshrc_local && source ~/.zshrc_local
 
 eval "$(starship init zsh)"
+
+# start sdkman if present
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
