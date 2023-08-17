@@ -16,9 +16,6 @@
       force: true
 
 - link:
-    ~/.asdfrc: asdfrc
-
-- link:
     ~/.dotfiles: ""
     ~/.asciidoc/asciidoc.conf:
       path: asciidoc/asciidoc.conf
@@ -70,15 +67,6 @@
 
 # installs ASDF as part
 - brewfile: [ Brewfile ]
-
-- asdf:
-    - plugin: java
-    - plugin: gradle
-    - plugin: maven
-    - plugin: python
-    - plugin: lua
-    - plugin: rust
-    - plugin: nodejs
 
 - shell:
   -
