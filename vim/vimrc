@@ -70,9 +70,9 @@ let g:vimwiki_list = [{'path': '~/mdwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:csv_nl = 1
 
 " better whitespace plugin
-nmap <leader>fs :StripWhitespace<cr>
+" nmap <leader>fs :StripWhitespace<cr>
 " automatically do this on save
-autocmd BufEnter * EnableStripWhitespaceOnSave
+" autocmd BufEnter * EnableStripWhitespaceOnSave
 " Remove the confirmation
 let g:strip_whitespace_confirm=0
 let g:strip_only_modified_lines=1
