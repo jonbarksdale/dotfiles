@@ -87,3 +87,6 @@
 ;; shit happens when you don't have this one
 ;; https://github.com/org-roam/org-roam/commit/cdad2ee7f6851209fd392cddd0e55b9cc584ea88
 (package! sqlite)
+
+(package! ob-mermaid)
+(package! mermaid-mode)
