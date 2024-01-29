@@ -67,6 +67,14 @@
 
 - brewfile: [ Brewfile ]
 
+# Rust install before cargo stuff
+- shell:
+  -
+    command: which rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    description: Install Rustup
+    stdout: true
+    stderr: true
+
 - cargo:
   - broot:
     - features: clipboard
@@ -112,11 +120,6 @@
   -
     command: which volta || curl https://get.volta.sh | bash -s -- --skip-setup
     description: Install Volta
-    stdout: true
-    stderr: true
-  -
-    command: which rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    description: Install Rustup
     stdout: true
     stderr: true
   -
