@@ -35,3 +35,6 @@ eval "$(starship init zsh)"
 
 # start sdkman if present
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Set up br alias for broot if available
+[[ s "$HOME/.config/broot/launcher/bash/br" ]] && source "$HOME/.config/broot/launcher/bash/br"
