@@ -87,7 +87,8 @@
   - ouch
   - procs
   - rm-improved
-  - ripgrep
+  - ripgrep:
+    - features: pcre2
   - rnr
   - sd
   - tealdeer
