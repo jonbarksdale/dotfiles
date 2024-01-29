@@ -67,6 +67,32 @@
 
 - brewfile: [ Brewfile ]
 
+- cargo:
+  - broot:
+    - features: clipboard
+  - choose
+  - git-delta
+  - du-dust
+  - eza
+  - fd-find
+  - jql
+  - ouch
+  - procs
+  - rm-improved
+  - ripgrep
+  - rnr
+  - sd
+  - tealdear
+  - tokei:
+    - features: all
+  - topgrade
+  - xcp
+  - xh
+  - qsv:
+      - features: all_features
+  # - zoxide
+  #  - bat
+
 - shell:
   -
     command: ~/.emacs.d/bin/doom env
