@@ -65,7 +65,6 @@
     stdout: true
     stdin: true
 
-# installs ASDF as part
 - brewfile: [ Brewfile ]
 
 - shell:
