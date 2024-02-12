@@ -179,6 +179,12 @@
 ;; Allow bind keywords in org export, so I can set per file org-md-toplevel-hlevel to control the heading level
 (setq org-export-allow-bind-keywords t)
 
+;; Set default org export settings because i keep forgetting them
+(setq org-export-headline-levels 3)
+(setq org-export-with-smart-quotes nil)
+(setq org-export-with-toc nil)
+(setq org-export-with-section-numbers nil)
+
 (use-package! bazel)
 
 (custom-set-variables
