@@ -32,8 +32,9 @@
     (setq doom-unicode-font (font-spec :family "Symbola" :size 14)))
 
 ;; trigger install of all the fonts if they are not already there.
-(unless (member "all-the-icons" (font-family-list))
-    (all-the-icons-install-fonts t))
+(unless (member "Symbols Nerd Font Mono" (font-family-list))
+    (nerd-icons-install-fonts t))
+
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
