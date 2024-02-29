@@ -26,6 +26,7 @@ brew "jq"
 brew "htop"
 brew "openssl"
 brew "gh"
+brew "bat"
 
 brew "starship"
 
