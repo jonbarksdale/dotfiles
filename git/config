@@ -28,4 +28,4 @@
 [interactive]
     diffFilter = delta --color-only --features=interactive
 [delta]
-    features = zenburn
+    features = colibri
