@@ -22,6 +22,8 @@
       create: true
     ~/.config/git/includes/alias:
       path: git/includes/alias
+    ~/.config/git/includes/themes.gitconfig:
+      path: git/includes/themes.gitconfig
     ~/.config/git/:
       glob: true
       path: git/*
