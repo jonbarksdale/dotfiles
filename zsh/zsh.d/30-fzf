@@ -5,7 +5,7 @@
 #
 function init_fzf() {
 
-PREFIX="${HOMEBREW_PREFIX:-/usr/local}"
+local PREFIX="${HOMEBREW_DIR:-/usr/local}"
 
 if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
     if [[ ! "$PATH" == *$PREFIX/opt/fzf/bin* ]]; then
