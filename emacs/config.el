@@ -92,15 +92,6 @@
 
 
 (setq org-roam-dailies-directory (file-truename "~/org/roam/dailies/"))
-(setq org-roam-dailies-capture-templates
-      '(("d" "default template" entry
-         "* Overview
-** Meetings
-%?
-** Projects [/]
-* Journal\n"
-         :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n"))))
 
 ;;(setq! citar-bibliography `(,(file-truename "~/org/roam/zotero.bib")))
 (setq! citar-bibliography (file-truename "~/org/roam/zotero.bib"))
