@@ -49,7 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 ;
-(package! org :pin "ca873f7")
 
 ;; github flavored markdown export from org
 (package! ox-gfm)
