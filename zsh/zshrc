@@ -28,9 +28,6 @@ fpath=(~/.zsh/completion $fpath)
 # Add doom to path
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
-# Source a local zshrc if found (though that is better managed with profiles)
-test -f ~/.zshrc_local && source ~/.zshrc_local
-
 eval "$(starship init zsh)"
 
 # start sdkman if present
@@ -38,3 +35,6 @@ eval "$(starship init zsh)"
 
 # Set up br alias for broot if available
 [[ -s "$HOME/.config/broot/launcher/bash/br" ]] && source "$HOME/.config/broot/launcher/bash/br"
+
+# Source a local zshrc if found (though that is better managed with profiles)
+test -f ~/.zshrc_local && source ~/.zshrc_local
