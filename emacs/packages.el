@@ -89,3 +89,6 @@
 
 (package! ob-mermaid)
 (package! mermaid-mode)
+
+;; jq mode for processing jq and yq queries
+(package! jq-mode)

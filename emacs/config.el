@@ -229,3 +229,21 @@
 (global-set-key (kbd "s-k") #'scroll-other-window)
 
 (let ((local-config "~/.emacs.local.el")) (when (file-exists-p local-config) (load local-config)))
+
+;; jq configuration, set up for yaml
+(use-package! jq-mode
+  :defer t
+  :mode ("\\.yq\\'" "\\.jq\\'")
+  :config
+  (setq jq-interactive-command "yq")
+  (setq jq-interactive-font-lock-mode t)
+  )
+
+(map! :after (yaml-mode json-mode)
+      :map (yaml-mode-map json-mode-map)
+      :localleader
+      :desc "Start jq-mode" "j" #'jq-interactively)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((jq. t)))
