@@ -186,6 +186,7 @@
 (setq org-export-with-smart-quotes nil)
 (setq org-export-with-toc nil)
 (setq org-export-with-section-numbers nil)
+(setq org-export-with-todo-keywords nil)
 
 (use-package! bazel)
 
