@@ -89,6 +89,7 @@
 
 (package! ob-mermaid)
 (package! mermaid-mode)
+(package! lsp-ui)
 
 ;; jq mode for processing jq and yq queries
 (package! jq-mode)
