@@ -101,6 +101,7 @@
   - xh
   - qsv:
       - features: all_features
+  - whyq
   # - zoxide
   #  - bat
 
