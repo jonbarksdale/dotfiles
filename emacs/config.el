@@ -188,6 +188,10 @@
 (setq org-export-with-section-numbers nil)
 (setq org-export-with-todo-keywords nil)
 
+;; disabling auto completion, suspecting crashes related to autocompleting.
+(after! corfu
+  (setq corfu-auto nil))
+
 (use-package! bazel)
 
 (custom-set-variables
