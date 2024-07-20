@@ -1,3 +1,4 @@
+#!/bin/zsh
 # vim: set ft=zsh :
 # Install zinit
 # Check if zinit is installed

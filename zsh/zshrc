@@ -1,3 +1,4 @@
+# !/bin/zsh
 test -f ~/.zshrc_before && source ~/.zshrc_before
 
 # shell and globbing options
