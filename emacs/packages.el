@@ -71,13 +71,6 @@
 ;; highlight the sentence being edited
 (package! hl-sentence)
 
-;;
-(package! org-transclusion
-  :recipe (:host github
-           :repo "nobiot/org-transclusion"
-           :branch "main"
-           :files ("*.el")))
-
 (package! org-ql)
 (package! bazel)
 ;; Appears as though org-roam requires this, but doesn't declare it properly
