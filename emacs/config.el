@@ -201,23 +201,6 @@
 (add-to-list 'auto-mode-alist '("/WORKSPACE\\'" . bazel-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(BUILD\\|WORKSPACE\\|bzl\\)\\'" . bazel-mode))
 
-(use-package! org-transclusion
-  :defer
-  :after org
-  :init
-  (map!
-   :map global-map "<f12>" #'org-transclusion-add
-   :leader
-   :prefix "n"
-   :desc "Org Transclusion Mode" "t" #'org-transclusion-mode)
-  (map!
-   :map org-mode-map
-   :localleader
-   (:prefix "l"
-    :desc "Add excerpt - Org Transclusion " "e" #'org-transclusion-add
-    :desc "Make excerpt from link - org-transclusion" "E" #'org-transclusion-make-from-link
-    )))
-
 ;; add org roam files for id scanning
 (setq org-id-extra-files (directory-files-recursively org-roam-directory "org$"))
 
