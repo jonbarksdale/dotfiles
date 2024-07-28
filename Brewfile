@@ -27,6 +27,8 @@ brew "htop"
 brew "openssl"
 brew "gh"
 brew "bat"
+brew "grep"
+brew "gnu-sed"
 
 brew "starship"
 
