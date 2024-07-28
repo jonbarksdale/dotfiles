@@ -48,8 +48,6 @@ cask "daisydisk"
 cask "signal"
 cask "visual-studio-code"
 
-tap "homebrew/cask-fonts"
-
 cask "font-victor-mono"
 cask "font-victor-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
@@ -67,14 +65,14 @@ cask "font-noto-sans-math"
 cask "font-noto-sans-symbols"
 cask "font-noto-sans-symbols-2"
 
-tap "railwaycat/emacsmacport"
-
 brew "gnutls"
 brew "jansson"
 brew "libxml2"
 brew "texinfo"
 brew "imagemagick"
-brew "emacs-mac", args: ["with-native-compilation", "with-dbus", "with-glib", "with-imagemagick",  "with-librsvg"]
+
+tap "d12frosted/emacs-plus"
+brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-dbus", "with-debug", "with-imagemagick", "with-native-comp"]
 
 
 brew "gpg"
@@ -83,8 +81,6 @@ brew "gawk"
 brew "ranger"
 brew "w3m"
 brew "most"
-
-tap "homebrew/cask-versions"
 
 cask "beyond-compare"
 
