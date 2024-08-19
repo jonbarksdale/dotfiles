@@ -36,6 +36,10 @@
     (nerd-icons-install-fonts t))
 
 
+;; remove the binding for scroll line up, because I never use it and want to try getting used to emacs yank binding
+(define-key evil-motion-state-map (kbd "C-y") nil)
+
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function.
