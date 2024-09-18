@@ -241,5 +241,8 @@
 ;; enable the ts.el library for time functions, used in snippets
 (use-package! ts)
 
-(global-set-key (kbd "s-k") #'scroll-other-window-down)
-(global-set-key (kbd "s-j") #'scroll-other-window)
+(map! :after evil
+      :map (evil-normal-state-map evil-visual-state-map evil-insert-state-map)
+      "s-k" #'scroll-other-window-down
+      "s-j" #'scroll-other-window
+      )
