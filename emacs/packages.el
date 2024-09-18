@@ -86,3 +86,6 @@
 
 ;; jq mode for processing jq and yq queries
 (package! jq-mode)
+
+;; provides time format functions I use in snippets
+(package! ts)
