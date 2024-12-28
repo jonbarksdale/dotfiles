@@ -69,7 +69,10 @@
     - fzf
     - zoxide
     - ripgrep
+    - ripgrep-all
     - eza
+    - lsd
+    - pls-rs/pls/pls
     - fd
     - broot
     - git-delta
@@ -79,6 +82,7 @@
     - rnr
     - sd
     - tealdeer
+    - cheat
     - topgrade
     - qsv
     - xh
@@ -93,12 +97,15 @@
     - cloc
     - thefuck
     - fontconfig
-    - coreutils
+    - uutils-coreutils
     - ssh-copy-id
     - git
     - mas
     - jq
+    - jless
+    - gron
     - htop
+    - bottom
     - openssl
     - gh
     - bat
@@ -124,6 +131,10 @@
     - aws-vault
     - awscli
     - localstack
+    - curlie
+    - doggo
+    - go-task
+    - mtr
 
 # TODO: fork dotbot-brew and add a way to check if the app is otherwise installed
 - cask:

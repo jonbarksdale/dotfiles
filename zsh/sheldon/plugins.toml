@@ -39,6 +39,8 @@ github = "hlissner/zsh-autopair"
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
 
+[plugins.yazi-zoxide]
+github = 'fdw/yazi-zoxide-zsh'
 
 # sets up aliases and uses eza when available
 [plugins.ls]
