@@ -1,3 +1,4 @@
+#!/bin/zsh
 # vim: set ft=zsh :
 # Setup fzf
 # Must occur after completion has started
@@ -5,7 +6,7 @@
 #
 function init_fzf() {
 
-local PREFIX="${HOMEBREW_DIR:-/usr/local}"
+local PREFIX="${HOMEBREW_PREFIX:-/usr/local}"
 
 if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
     if [[ ! "$PATH" == *$PREFIX/opt/fzf/bin* ]]; then
@@ -33,6 +34,9 @@ if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
     else
         export FZF_CTRL_T_OPTS="--preview"
     fi
+
+    # "fix" the alt+c shortcut even when option is in full mac os mode
+    bindkey "ç" fzf-cd-widget
 fi
 }
 
