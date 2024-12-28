@@ -56,6 +56,10 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+
+- ghe:
+    - github/gh-copilot
+
 - install-brew: true
 - brew:
     - zsh-completions
