@@ -102,6 +102,7 @@ alias gitlog='git log --graph --decorate --oneline $(git rev-list -g --all)'
 
 alias vi=vim
 
+eval "$(gh copilot alias -- zsh)"
 
 # always use the right gradle
 function gr {
