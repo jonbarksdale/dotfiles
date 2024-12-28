@@ -56,16 +56,7 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - description: install homebrew
-      command: |
-        if [ "$(uname -s)" = "Darwin" || "$(uname -s)" = "Linux" ]; then
-          if ! command -v brew &> /dev/null; then
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          fi
-        fi
-      stdout: true
-      stdin: true
-
+- install-brew: true
 - brew:
     - zsh-completions
     - bash
@@ -164,8 +155,7 @@
     - font-noto-sans-symbols
     - font-noto-sans-symbols-2
 
-- tap:
-    - d12frosted/emacs-plus
+- tap: [d12frosted/emacs-plus]
 
 - brew:
     - gnutls
