@@ -28,6 +28,9 @@
       glob: true
       path: git/*
       exclude: [ git/includes ]
+    ~/.config/sheldon/zsh:
+      path: zsh/sheldon
+      create: true
     ~/.editrc: editline/editrc
     ~/.emacs.d: doom-emacs
     ~/.doom.d/:
