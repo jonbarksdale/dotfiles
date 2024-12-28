@@ -7,7 +7,7 @@
 	url = https://github.com/hlissner/doom-emacs.git
 [submodule "dotbot-brew"]
 	path = dotbot-brew
-	url = https://github.com/klaustopher/dotbot-brew.git
+	url = git@github.com:jonbarksdale/dotbot-brew.git
 [submodule "dotbot-rust"]
 	path = dotbot-rust
 	url = https://github.com/ShoMinamimoto/dotbot-rust.git
