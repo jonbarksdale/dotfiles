@@ -1,4 +1,4 @@
-# !/bin/zsh
+#!/bin/zsh
 test -f ~/.zshrc_before && source ~/.zshrc_before
 
 # shell and globbing options
@@ -17,12 +17,217 @@ set correct
 # jobs
 set notify
 
-# TODO: these should literally all be plugins.  I've basically created my own janky ass plugin system as is.
-# Source all files from .zsh.d, unless they contain ~ (assumes vim temp files)
-for zshrc_config in ~/.zsh.d/*[^~] ; do
-#  echo "Sourcing $zshrc_config"
-  source $zshrc_config
-done
+# History configuration
+
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=9000
+
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+
+
+# Set up completion system
+zstyle ':completion:*' add-space true
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _ignored _match _approximate _correct _prefix
+zstyle ':completion:*' completions 1
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' ignore-parents parent pwd .. directory
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' match-original both
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' max-errors 3
+zstyle ':completion:*:default' menu yes select
+zstyle ':completion:*' original true
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' prompt 'Got %e, did you mean:'
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:-command-:*:(commands|builtins|reserved-words|aliases)' group-name commands
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:messages' format %d
+zstyle ':completion:*:corrections' format '%B%d (err: %e)%b'
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
+zstyle ':completion:*:*:*:(cd|ls):*' ignored-patterns '\.svn'
+
+autoload -Uz compinit
+compinit
+
+# Set up vi keybinds
+# probably good to do this before the plugins load so any keybinds are in the right keymap
+
+bindkey -v
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+
+# Plugin manager - Sheldon
+# Install sheldon
+# Check if sheldon is installed
+if (( ! $+commands[sheldon] )); then
+
+  mkdir -p ~/.local/bin
+  curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
+    | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+
+fi
+
+# I have delusions of having multiple shells configured, so clearly I need to namespace this
+export SHELDON_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/sheldon/zsh"
+export SHELDON_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/sheldon/zsh"
+# Start sheldon, init plugins
+eval "$(sheldon source)"
+
+# Aliases/functions
+
+alias df='df -h'
+alias du='du -h'
+# sometimes tmux servers get stuck, this can either recreate the socket or otherwise become interactive again
+alias fixtmux='killall -s SIGUSR1 tmux'
+alias gitlog='git log --graph --decorate --oneline $(git rev-list -g --all)'
+
+alias vi=vim
+
+
+# always use the right gradle
+function gr {
+  if [ -x "gradlew" ]; then
+    ./gradlew $@
+  else
+    gradle $@
+  fi
+}
+
+if (( $+commands[eza] )); then
+  alias tree='eza -T'
+fi
+
+# setup the better cd, z
+if (($+commands[zoxide] )) then;
+    eval "$(zoxide init zsh)"
+else
+    # Initialize fasd if it's present
+    if (( $+commands[fasd] )) then;
+      eval "$(fasd --init auto)"
+    fi
+fi
+
+# Setup fzf
+# Must occur after completion has started
+# ---------
+#
+function init_fzf() {
+
+local PREFIX="${HOMEBREW_PREFIX:-/usr/local}"
+
+if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
+    if [[ ! "$PATH" == *$PREFIX/opt/fzf/bin* ]]; then
+      export PATH="$PATH:$PREFIX/opt/fzf/bin"
+    fi
+
+    # Auto-completion
+    # ---------------
+    [[ $- == *i* ]] && source "$PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+    # Key bindings
+    # ------------
+    source "$PREFIX/opt/fzf/shell/key-bindings.zsh"
+
+    if [[ -f "$(which fd)" ]]; then
+        export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    elif [[ -f "$(which rg)" ]]; then
+        export FZF_DEFAULT_COMMAND="rg -g '' --files"
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
+
+    if [[ -f "$(which highlight)" ]]; then
+        export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+    else
+        export FZF_CTRL_T_OPTS="--preview"
+    fi
+
+    # "fix" the alt+c shortcut even when option is in full mac os mode
+    bindkey "ç" fzf-cd-widget
+fi
+}
+
+# zvm => zsh-vi-mode, in which case this should run in some hooks at the end
+if [[ -v zvm_after_init_commands ]]; then
+    zvm_after_init_commands+=(init_fzf)
+else
+    init_fzf
+fi
+
+# TODO: how to add a github api token in a reasonable way? is it available via
+# api? might be an extension from one of the env setup dealies.  Other thoughts
+# - store it in the keychain, retrieve it from there?  I could also store them
+# in 1password and use that to add it to the keychain
+
+LS_COLORS='no=00:fi=00:di=01;33:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.flac=01;35:*.mp3=01;35:*.mpc=01;35:*.ogg=01;35:*.wav=01;35:';
+export LS_COLORS=$LS_COLORS
+
+# this is a little wacky since I swapped to emacs as my vim of choice
+if (( $+commands[emacsclient] )); then
+  EDITOR=emacsclient
+  # connect to daemon in gui,  or start daemon if not running - new frame, no wait
+  alias ec="emacsclient -c -n -a ''"
+
+  # connect to daemon in gui,  or start daemon if not running - existing frame, no wait
+  alias en="emacsclient -n -a ''"
+else
+  EDITOR=vim
+fi
+
+export EDITOR=$EDITOR
+export VISUAL=$EDITOR
+
+if [[ -e "$(which bat)" ]]; then;
+  export PAGER=bat
+else
+  export PAGER=less
+fi
+
+# connect to daemon in terminal, or start daemon if not running
+# alias eb="emacsbare"
+# alias emacsbare="emacs -nw -Q --eval \"(load-theme 'misterioso)\""
+if [[ ${INSIDE_EMACS:-no_emacs_here} != 'no_emacs_here' ]]; then
+  export EDITOR=emacsclient
+  export VISUAL=emacsclient
+
+  alias magit="emacsclient -ne '(magit-status)'"
+
+  function man() { emacsclient -ne "(man \"$1\")"; }
+  alias e="emacsclient"
+else
+  alias e="emacsclient -t -a ''"
+fi
+
+# MAC
+# set java home if we're on a mac
+if [[ -x "/usr/libexec/java_home" ]]; then
+  export JAVA_HOME="$(/usr/libexec/java_home)"
+fi
+
+# source profile if we have one for local path modifications
+if [[ -x "$HOME/.profile" ]]; then
+  source "$HOME/.profile"
+fi
+
 
 fpath=(~/.zsh/completion $fpath)
 
