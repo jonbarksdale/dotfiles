@@ -1,13 +1,13 @@
 - defaults:
     link:
-        relink: true
-        create: true
+      relink: true
+      create: true
 
 - create:
     - ~/.config
     - ~/.vim/undo-history
 
-- clean: ['~', '~/.zsh.d']
+- clean: ["~", "~/.zsh.d"]
 - clean:
     ~/.config:
       recursive: true
@@ -27,7 +27,7 @@
     ~/.config/git/:
       glob: true
       path: git/*
-      exclude: [ git/includes ]
+      exclude: [git/includes]
     ~/.config/sheldon/zsh:
       path: zsh/sheldon
       create: true
@@ -53,94 +53,155 @@
       path: bat/config
     ~/.config/starship.toml: zsh/starship.toml
     ~/.zshrc: zsh/zshrc
-    ~/.zsh.d/:
-      glob: true
-      path: zsh/zsh.d/*
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  -
-    description: install homebrew
-    command: |
-      if [ "$(uname -s)" = "Darwin" || "$(uname -s)" = "Linux" ]; then
-        if ! command -v brew &> /dev/null; then
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    - [git submodule update --init --recursive, Installing submodules]
+    - description: install homebrew
+      command: |
+        if [ "$(uname -s)" = "Darwin" || "$(uname -s)" = "Linux" ]; then
+          if ! command -v brew &> /dev/null; then
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          fi
         fi
-      fi
-    stdout: true
-    stdin: true
+      stdout: true
+      stdin: true
 
-- brewfile: [ Brewfile ]
+- brew:
+    - zsh-completions
+    - bash
+    - zsh
+    - sheldon
+    - fzf
+    - zoxide
+    - ripgrep
+    - eza
+    - fd
+    - broot
+    - git-delta
+    - dust
+    - ouch
+    - procs
+    - rnr
+    - sd
+    - tealdeer
+    - topgrade
+    - qsv
+    - xh
+    - vim
+    - neovim
+    - ispell
+    - aspell
+    - hunspell
+    - graphviz
+    - gcc
+    - cloc
+    - thefuck
+    - fontconfig
+    - coreutils
+    - ssh-copy-id
+    - git
+    - mas
+    - jq
+    - htop
+    - openssl
+    - gh
+    - bat
+    - grep
+    - gnu-sed
+    - starship
+    - gpg
+    - gawk
+    - ranger
+    - w3m
+    - most
+    - languagetool
+    - duf
+    - httpie
+    - ncdu
+    - fx
+    - lazydocker
+    - glow
+    - ki
+    - sqlite
+    - wordnet
+    - proselint
+    - aws-vault
+    - awscli
+    - localstack
 
-# Rust install before cargo stuff
-- shell:
-  -
-    command: which rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    description: Install Rustup
-    stdout: true
-    stderr: true
+# TODO: fork dotbot-brew and add a way to check if the app is otherwise installed
+- cask:
+    - raycast
+    - launchbar
+    - iterm2
+    - spotify
+    - jetbrains-toolbox
+    - 1password
+    - contexts
+    - daisydisk
+    - signal
+    - visual-studio-code
+    - beyond-compare
 
+# if one fails, nothing afterwards is tried
+# TODO: fork dotbot-brew and add a font command for checking the existence of fonts
+- cask:
+    - font-victor-mono
+    - font-victor-mono-nerd-font
+    - font-meslo-lg-nerd-font
+    - font-dejavu
+    - font-dejavu-sans-mono-nerd-font
+    - font-fira-code-nerd-font
+    - font-fira-mono-nerd-font
+    - font-jetbrains-mono-nerd-font
+    - font-latin-modern-math
+    - font-stix-two-math
+    - font-noto-color-emoji
+    - font-noto-emoji
+    - font-noto-sans
+    - font-noto-sans-math
+    - font-noto-sans-symbols
+    - font-noto-sans-symbols-2
+
+- tap:
+    - d12frosted/emacs-plus
+
+- brew:
+    - gnutls
+    - jansson
+    - libxml2
+    - texinfo
+    - imagemagick
+    - d12frosted/emacs-plus/emacs-plus@30 --with-dbus --with-debug --with-imagemagick --with-native-comp
+
+- install-rustup: true
+
+# these are all things without completion installs in brew
 - cargo:
-  - broot:
-    - features: clipboard
-  - choose
-  - git-delta
-  - du-dust
-  - eza
-  - fd-find
-  - jql
-  - ouch
-  - procs
-  - rm-improved
-  - ripgrep:
-    - features: pcre2
-  - rnr
-  - sd
-  - tealdeer
-  - tokei:
-    - features: all
-  - topgrade
-  - xcp
-  - xh
-  - qsv:
-      - features: all_features
-  - whyq
-  # - zoxide
-  #  - bat
+    - choose
+    - rm-improved
+    - tokei --all-features
+    - xcp
+    - whyq
 
 - shell:
-  -
-    command: ~/.emacs.d/bin/doom env
-    description: Generating doom envvar
-    stdout: true
-    stderr: true
-  -
-    command: ~/.emacs.d/bin/doom sync
-    description: Syncing doom
-    stdout: true
-    stderr: true
-  -
-    command: which sdk || curl -s "https://get.sdkman.io?rcupdate=false" | bash
-    description: Install SDKMAN!
-    stdout: true
-    stderr: true
-  -
-    command: which volta || curl https://get.volta.sh | bash -s -- --skip-setup
-    description: Install Volta
-    stdout: true
-    stderr: true
-  -
-    command: mas install 937984704
-    description: Install Amphetamine
-    stdout: true
-    stderr: true
-  -
-    command: mas install 441258766
-    description: Install magnet
-    stdout: true
-    stderr: true
-  -
-    command: mas upgrade
-    description: upgrade apps
-    stdout: true
-    stderr: true
+    - command: ~/.emacs.d/bin/doom env
+      description: Generating doom envvar
+      stdout: true
+      stderr: true
+    - command: ~/.emacs.d/bin/doom sync
+      description: Syncing doom
+      stdout: true
+      stderr: true
+    - command: which sdk || curl -s "https://get.sdkman.io?rcupdate=false" | bash
+      description: Install SDKMAN!
+      stdout: true
+      stderr: true
+    - command: which volta || curl https://get.volta.sh | bash -s -- --skip-setup
+      description: Install Volta
+      stdout: true
+      stderr: true
+    - command: mas upgrade
+      description: upgrade apps
+      stdout: true
+      stderr: true
