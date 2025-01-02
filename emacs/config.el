@@ -248,6 +248,9 @@
 (use-package! org-ql
   :after org)
 
+;; set it so occur style search results show local context
+(add-to-list 'org-show-context-detail '(occur-tree . local))
+
 (after! org
   (defun my/hook (hook)
     "Create an org-link target string using `hook://` url scheme."
