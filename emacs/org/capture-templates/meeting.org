@@ -1,0 +1,11 @@
+* TODO %U Meeting - %^{topic} :meeting:
+:PROPERTIES:
+:CREATED: %U
+:MODIFIED: %U
+:END:
+** Attendees
+%^{attendees}
+** Agenda
+%^{agenda}
+** Notes
+%?

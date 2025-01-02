@@ -1,0 +1,4 @@
+#+title: %<%Y-%m-%d>
+* What will make today a good day?
+* Meetings
+* Actions [/]

@@ -94,6 +94,43 @@
 ;; org-roam-capture-templates for captures - maybe a separate file/dir?
 ;; (setq org-roam-directory "~/Dropbox/org-roam/")
 
+;; close property drawer after capturing
+(add-hook 'org-capture-after-finalize-hook
+          (lambda ()
+            (org-cycle-hide-drawers 'children)))
+
+
+(setq capture-head
+      (with-temp-buffer
+        (insert-file-contents "~/.dotfiles/emacs/org/capture-templates/daily.org")
+        (buffer-string)))
+(defvar daily-file-template "%<%Y-%m-%d>.org" )
+
+;; Set the head of the daily note to be my actual template
+(setq org-roam-dailies-capture-templates
+      `(("d" "default" entry
+          "* %?"
+         ;;(file "~/.dotfiles/emacs/org/capture-templates/daily.org")
+         :target (file+head ,daily-file-template ,capture-head))
+        ))
+
+(defun my/org-roam-dailies-today-file ()
+  "Get today's daily notes file path without visiting it"
+  (let* ((today (string-trim-right (org-capture-fill-template daily-file-template)))
+         (file-path (expand-file-name org-roam-dailies-directory org-roam-directory)))
+    (expand-file-name today file-path)))
+
+(setq org-capture-templates
+      '(("t" "Daily todo" entry
+         (file+headline my/org-roam-dailies-today-file "Actions")
+         "* [ ] %?\n%i\n%a" :prepend t :unnarrowed t)
+
+        ("m" "Meeting Notes" entry
+         (file+olp my/org-roam-dailies-today-file "Meetings")
+         (file "~/.dotfiles/emacs/org/capture-templates/meeting.org")
+         :unnarrowed t
+         :jump-to-captured t
+         )))
 
 (setq org-roam-dailies-directory (file-truename "~/org/roam/dailies/"))
 
