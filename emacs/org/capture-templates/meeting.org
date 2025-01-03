@@ -3,6 +3,17 @@
 :CREATED: %U
 :MODIFIED: %U
 :END:
+** Review Checklist [0/5]
+Delete when done
+*** [ ] Summary
+*** [ ] Action items
+*** [ ] Decisions
+*** [ ] Key Details
+*** [ ] Refile/tag
+In what contexts would I want to see this again?
+** Summary
+*** Actions
+*** Tags
 ** Attendees
 %^{attendees}
 ** Agenda
