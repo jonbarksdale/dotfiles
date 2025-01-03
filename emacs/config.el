@@ -33,7 +33,7 @@
 
 ;; trigger install of all the fonts if they are not already there.
 (unless (member "Symbols Nerd Font Mono" (font-family-list))
-    (nerd-icons-install-fonts t))
+  (nerd-icons-install-fonts t))
 
 
 ;; remove the binding for scroll line up, because I never use it and want to try getting used to emacs yank binding
@@ -50,6 +50,44 @@
 ;; May want to separate org dir?
 (setq org-directory (file-truename "~/org/"))
 
+;; org-roam config
+(setq org-roam-directory (file-truename "~/org/roam/"))
+
+;; org-roam-capture-templates for captures - maybe a separate file/dir?
+;; (setq org-roam-directory "~/Dropbox/org-roam/")
+
+(setq capture-head
+      (with-temp-buffer
+        (insert-file-contents "~/.dotfiles/emacs/org/capture-templates/daily.org")
+        (buffer-string)))
+(defvar daily-file-template "%<%Y-%m-%d>.org" )
+
+(defun my/org-roam-dailies-today-file ()
+  "Get today's daily notes file path without visiting it"
+  (let* ((today (string-trim-right (org-capture-fill-template daily-file-template)))
+         (file-path (expand-file-name org-roam-dailies-directory org-roam-directory)))
+    (expand-file-name today file-path)))
+
+(after! org-roam
+  ;; Set the head of the daily note to be my actual template
+  (setq org-roam-dailies-capture-templates
+        `(("d" "default" entry
+           "* %?"
+           ;;(file "~/.dotfiles/emacs/org/capture-templates/daily.org")
+           :target (file+head+olp ,daily-file-template ,capture-head ("Journal")))
+          )
+
+        org-roam-mode-section-functions
+        (list
+         'org-roam-backlinks-section
+         'org-roam-reflinks-section
+         ;; this is busted right now
+         'org-roam-unlinked-references-section
+         )))
+
+
+(setq org-roam-dailies-directory (file-truename "~/org/roam/dailies/"))
+
 (after! org
   (setq org-todo-keywords
         '((sequence
@@ -63,6 +101,7 @@
            "LOOP(r)"  ; A recurring task
            "|"
            "DONE(d)"  ; Task successfully completed
+           "MARV(m)"  ; Task moved to Marvin
            "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
           (sequence
            "[ ](T)"   ; A task that needs doing
@@ -78,61 +117,27 @@
           ("WAIT" . +org-todo-onhold)
           ("HOLD" . +org-todo-onhold)
           ("PROJ" . +org-todo-project)
-          ("KILL" . +org-todo-cancel)))
+          ("KILL" . +org-todo-cancel))
+
+        org-capture-templates
+        '(("t" "Daily todo" entry
+           (file+headline my/org-roam-dailies-today-file "Actions")
+           "* [ ] %?\n%i\n%a" :prepend t :unnarrowed t)
+
+          ("m" "Meeting Notes" entry
+           (file+olp my/org-roam-dailies-today-file "Meetings")
+           (file "~/.dotfiles/emacs/org/capture-templates/meeting.org")
+           :unnarrowed t
+           :jump-to-captured t
+           ))
+        )
+
+  ;; close property drawer after capturing
+  (add-hook 'org-capture-after-finalize-hook
+            (lambda ()
+              (org-cycle-hide-drawers 'children)))
+
   )
-
-;; org-roam config
-(setq org-roam-directory (file-truename "~/org/roam/"))
-
-(setq org-roam-mode-section-functions
-      (list
-       'org-roam-backlinks-section
-       'org-roam-reflinks-section
-       ;; this is busted right now
-       'org-roam-unlinked-references-section
-       ))
-;; org-roam-capture-templates for captures - maybe a separate file/dir?
-;; (setq org-roam-directory "~/Dropbox/org-roam/")
-
-;; close property drawer after capturing
-(add-hook 'org-capture-after-finalize-hook
-          (lambda ()
-            (org-cycle-hide-drawers 'children)))
-
-
-(setq capture-head
-      (with-temp-buffer
-        (insert-file-contents "~/.dotfiles/emacs/org/capture-templates/daily.org")
-        (buffer-string)))
-(defvar daily-file-template "%<%Y-%m-%d>.org" )
-
-;; Set the head of the daily note to be my actual template
-(setq org-roam-dailies-capture-templates
-      `(("d" "default" entry
-          "* %?"
-         ;;(file "~/.dotfiles/emacs/org/capture-templates/daily.org")
-         :target (file+head ,daily-file-template ,capture-head))
-        ))
-
-(defun my/org-roam-dailies-today-file ()
-  "Get today's daily notes file path without visiting it"
-  (let* ((today (string-trim-right (org-capture-fill-template daily-file-template)))
-         (file-path (expand-file-name org-roam-dailies-directory org-roam-directory)))
-    (expand-file-name today file-path)))
-
-(setq org-capture-templates
-      '(("t" "Daily todo" entry
-         (file+headline my/org-roam-dailies-today-file "Actions")
-         "* [ ] %?\n%i\n%a" :prepend t :unnarrowed t)
-
-        ("m" "Meeting Notes" entry
-         (file+olp my/org-roam-dailies-today-file "Meetings")
-         (file "~/.dotfiles/emacs/org/capture-templates/meeting.org")
-         :unnarrowed t
-         :jump-to-captured t
-         )))
-
-(setq org-roam-dailies-directory (file-truename "~/org/roam/dailies/"))
 
 ;;(setq! citar-bibliography `(,(file-truename "~/org/roam/zotero.bib")))
 (setq! citar-bibliography (file-truename "~/org/roam/zotero.bib"))
