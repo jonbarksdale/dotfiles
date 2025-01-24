@@ -88,6 +88,28 @@
 
 (setq org-roam-dailies-directory (file-truename "~/org/roam/dailies/"))
 
+;; Create a custom agenda command
+(setq org-agenda-custom-commands
+      '(("m" "Meeting TODOs"
+         ((tags-todo "meeting"
+                    ((org-agenda-files `( ,org-roam-dailies-directory))
+                     (org-agenda-keep-with-parent t)
+                     (org-agenda-show-inherited-tags t)
+                     (org-agenda-show-outline-path t)
+                     (org-agenda-show-all-dates t)
+                     (org-agenda-prefix-format "  %?-12t% s")
+                     (org-agenda-sorting-strategy '(priority-down timestamp-up category-keep))))))
+        ))
+
+;; (setq org-agenda-custom-commands
+;;       '(("m" "Meeting TODOs"
+;;          ((org-ql-block '(and (todo)
+;;                               (tags "meeting")
+;;                               (not (done))
+;;                               )))
+;;          )
+;;         ))
+
 (after! org
   (setq org-todo-keywords
         '((sequence
