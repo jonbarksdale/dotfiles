@@ -1,0 +1,18 @@
+* Summary
+** Points/decisions
+%?
+** Actions
+** Tags
+** Generated
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+%^{Generated Summary}
+** Review Checklist [0/5]
+Delete when done
+*** [ ] Summary
+*** [ ] Action items
+*** [ ] Decisions
+*** [ ] Key Details
+*** [ ] Refile/tag
+In what contexts would I want to see this again?

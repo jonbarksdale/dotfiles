@@ -121,15 +121,19 @@
 
         org-capture-templates
         '(("t" "Daily todo" entry
-           (file+headline my/org-roam-dailies-today-file "Actions")
-           "* [ ] %?\n%i\n%a" :prepend t :unnarrowed t)
+           (file+olp my/org-roam-dailies-today-file "Actions")
+           "* [ ] %?\n" :prepend t :unnarrowed t)
 
           ("m" "Meeting Notes" entry
            (file+olp my/org-roam-dailies-today-file "Meetings")
            (file "~/.dotfiles/emacs/org/capture-templates/meeting.org")
-           :unnarrowed t
            :jump-to-captured t
-           ))
+           )
+          ("r" "Review block" entry
+           (here) ;; may be able to use (here)
+           (file "~/.dotfiles/emacs/org/capture-templates/review-block.org")
+           :prepend t :unnarrowed t)
+          )
         )
 
   ;; close property drawer after capturing

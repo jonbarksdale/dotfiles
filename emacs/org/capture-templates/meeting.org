@@ -2,8 +2,12 @@
 :PROPERTIES:
 :CREATED: %U
 :MODIFIED: %U
+:VISIBILITY: children
 :END:
 ** Review Checklist [0/5]
+:PROPERTIES:
+:VISIBILITY: all
+:END:
 Delete when done
 *** [ ] Summary
 *** [ ] Action items
@@ -12,7 +16,10 @@ Delete when done
 *** [ ] Refile/tag
 In what contexts would I want to see this again?
 ** Summary
-*** Actions
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+*** Actions [/]
 *** Tags
 ** Attendees
 %^{attendees}
