@@ -4,7 +4,7 @@
     email = jon.barksdale@gmail.com
 [core]
     pager = less -FMRiX
-    editor = emacsclient -t -a=\\\"\\\"
+    editor = vim
 [color]
     ui = auto
 [push]
