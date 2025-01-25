@@ -136,6 +136,9 @@
     - doggo
     - go-task
     - mtr
+    - jesseduffield/lazygit/lazygit
+    - jstkdng/programs/ueberzugpp
+    - luarocks
 
 # TODO: fork dotbot-brew and add a way to check if the app is otherwise installed
 - cask:
