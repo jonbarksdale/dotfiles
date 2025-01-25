@@ -14,3 +14,6 @@
 [submodule "dotbot-gh-extension"]
 	path = dotbot-gh-extension
 	url = https://github.com/fundor333/dotbot-gh-extension.git
+[submodule "yazi/flavors"]
+	path = yazi/flavors
+	url = git@github.com:yazi-rs/flavors.git
