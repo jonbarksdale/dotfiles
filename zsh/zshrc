@@ -100,6 +100,9 @@ alias du='du -h'
 alias fixtmux='killall -s SIGUSR1 tmux'
 alias gitlog='git log --graph --decorate --oneline $(git rev-list -g --all)'
 
+if (( $+commands[nvim] )) then;
+  alias vim=nvim
+fi
 alias vi=vim
 
 eval "$(gh copilot alias -- zsh)"
@@ -185,22 +188,12 @@ export LS_COLORS=$LS_COLORS
 # attempt to fix emacsclient having wonky colors when launched in terminal
 export COLORTERM=truecolor
 
-# this is a little wacky since I swapped to emacs as my vim of choice
-if (( $+commands[emacsclient] )); then
-  EDITOR=emacsclient
-  # connect to daemon in gui,  or start daemon if not running - new frame, no wait
-  alias ec="emacsclient -c -n -a ''"
-
-  # connect to daemon in gui,  or start daemon if not running - existing frame, no wait
-  alias en="emacsclient -n -a ''"
-else
-  EDITOR=vim
-fi
+EDITOR=vim
 
 export EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
-if [[ -e "$(which bat)" ]]; then;
+if [[ -e "$(which bat)" ]]; then
   export PAGER=bat
 else
   export PAGER=less

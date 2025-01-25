@@ -52,6 +52,7 @@
       create: true
       path: bat/config
     ~/.config/starship.toml: zsh/starship.toml
+    ~/.config/nvim: nvim
     ~/.zshrc: zsh/zshrc
 
 - shell:
