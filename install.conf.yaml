@@ -204,7 +204,7 @@
       description: Syncing doom
       stdout: true
       stderr: true
-    - command: which sdk || curl -s "https://get.sdkman.io?rcupdate=false" | bash
+    - command: (( $+functions[sdk] ))|| curl -s "https://get.sdkman.io?rcupdate=false" | bash
       description: Install SDKMAN!
       stdout: true
       stderr: true
