@@ -53,6 +53,7 @@
       path: bat/config
     ~/.config/starship.toml: zsh/starship.toml
     ~/.config/nvim: nvim
+    ~/.config/yazi: yazi
     ~/.zshrc: zsh/zshrc
 
 - shell:
