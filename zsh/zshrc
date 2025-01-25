@@ -100,11 +100,6 @@ alias du='du -h'
 alias fixtmux='killall -s SIGUSR1 tmux'
 alias gitlog='git log --graph --decorate --oneline $(git rev-list -g --all)'
 
-if (( $+commands[nvim] )) then;
-  alias vim=nvim
-fi
-alias vi=vim
-
 eval "$(gh copilot alias -- zsh)"
 
 # always use the right gradle
@@ -188,7 +183,15 @@ export LS_COLORS=$LS_COLORS
 # attempt to fix emacsclient having wonky colors when launched in terminal
 export COLORTERM=truecolor
 
-EDITOR=vim
+if (( $+commands[nvim] )) then;
+  alias vim=nvim
+  alias vi=nvim
+  EDITOR=nvim
+else
+  alias vi=vim
+  EDITOR=vim
+fi
+
 
 export EDITOR=$EDITOR
 export VISUAL=$EDITOR
