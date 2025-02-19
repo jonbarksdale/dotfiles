@@ -131,7 +131,7 @@ fi
 #
 function init_fzf() {
 
-local PREFIX="${HOMEBREW_PREFIX:-/usr/local}"
+local PREFIX="${HOMEBREW_DIR:-/opt/hombrew}"
 
 if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
     if [[ ! "$PATH" == *$PREFIX/opt/fzf/bin* ]]; then
@@ -149,7 +149,7 @@ if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
     if [[ -f "$(which fd)" ]]; then
         export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
         export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    elif [[ -f "$(which rg)" ]]; then
+    elif [[ -f "$(which rg)" ]]; then 
         export FZF_DEFAULT_COMMAND="rg -g '' --files"
         export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     fi
