@@ -11,9 +11,9 @@ return {
   },
   keys = {
     {
-      "<leader>gm",
+      "<leader>gg",
       "<cmd>Neogit<cr>",
-      { desc = "Open Neogit" },
+      desc = "Open Neogit",
     },
   },
   config = true,
