@@ -9,3 +9,4 @@ target
 build/
 .vscode
 out/
+.aider*
