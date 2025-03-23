@@ -20,6 +20,8 @@
     verbose = true
 [diff]
     colorMoved = true
+[difftool "bc"]
+  trustExitCode = true
 [pager]
     diff = delta
     log = bat --style="header,grid,rule,snip"
@@ -29,3 +31,14 @@
     diffFilter = delta --color-only --features=interactive
 [delta]
     features = colibri
+[merge]
+    tool = idea
+[mergetool "idea"]
+  cmd = '~/bin/idea' merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+  trustExitCode = true
+[mergetool "bc"]
+  trustExitCode = true
+[mergetool]
+  keepBackup = false
+[init]
+	defaultBranch = main
