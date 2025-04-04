@@ -178,6 +178,7 @@
     - font-0xproto-nerd-font
     - font-cascadia-mono-nf
     - font-monaspace-nerd-font
+    - font-maple-mono-nf
 
 - tap: [d12frosted/emacs-plus]
 
