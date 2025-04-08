@@ -7,7 +7,9 @@
 :PROPERTIES:
 :VISIBILITY: children
 :END:
+#+begin_src markdown
 %^{Generated Summary}
+#+end_src
 ** Review Checklist [0/5]
 Delete when done
 *** [ ] Summary
