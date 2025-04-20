@@ -231,6 +231,20 @@ if [[ -x "$HOME/.profile" ]]; then
   source "$HOME/.profile"
 fi
 
+# Define aliases for copilot if it's installed
+# Check if GitHub CLI is installed
+if command -v gh &> /dev/null; then
+    # Check if Copilot extension is installed
+    if gh extension list | grep -q "copilot"; then
+        # Everything is available, set up the aliases
+        eval "$(gh copilot alias -- zsh)"
+    else
+        echo "GitHub Copilot extension is not installed. Install it with: gh extension install github/copilot-cli"
+    fi
+else
+    echo "GitHub CLI is not installed. Please install it first: https://cli.github.com/"
+fi
+
 
 fpath=(~/.zsh/completion $fpath)
 
