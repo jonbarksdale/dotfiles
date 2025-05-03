@@ -34,7 +34,17 @@ setopt HIST_FIND_NO_DUPS
 # Add custom completion directory
 fpath=(~/.zsh/completion $fpath)
 
-# Set up completion system
+# Set up completion system with optimized initialization
+autoload -Uz compinit
+
+# Only regenerate the completion dump once a day
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+# Set up completion system styles
 zstyle ':completion:*' add-space true
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _ignored _match _approximate _correct _prefix
@@ -64,9 +74,6 @@ zstyle ':completion:*:corrections' format '%B%d (err: %e)%b'
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:*:*:(cd|ls):*' ignored-patterns '\.svn'
-
-autoload -Uz compinit
-compinit
 
 # Set up vi keybinds
 # probably good to do this before the plugins load so any keybinds are in the right keymap
@@ -103,7 +110,27 @@ alias du='du -h'
 alias fixtmux='killall -s SIGUSR1 tmux'
 alias gitlog='git log --graph --decorate --oneline $(git rev-list -g --all)'
 
-eval "$(gh copilot alias -- zsh)"
+# Lazy-load GitHub Copilot
+function copilot_init() {
+  # Remove placeholder functions
+  unfunction ghcs
+  unfunction ghce
+  unfunction copilot_init
+  
+  # Load the real GitHub Copilot aliases
+  eval "$(gh copilot alias -- zsh)"
+}
+
+# Placeholder functions that will trigger copilot initialization
+function ghcs() {
+  copilot_init
+  ghcs "$@"  # Call the real function now that it's loaded
+}
+
+function ghce() {
+  copilot_init
+  ghce "$@"  # Call the real function now that it's loaded
+}
 
 # always use the right gradle
 function gr {
@@ -234,19 +261,7 @@ if [[ -x "$HOME/.profile" ]]; then
   source "$HOME/.profile"
 fi
 
-# Define aliases for copilot if it's installed
-# Check if GitHub CLI is installed
-if command -v gh &> /dev/null; then
-    # Check if Copilot extension is installed
-    if gh extension list | grep -q "copilot"; then
-        # Everything is available, set up the aliases
-        eval "$(gh copilot alias -- zsh)"
-    else
-        echo "GitHub Copilot extension is not installed. Install it with: gh extension install github/copilot-cli"
-    fi
-else
-    echo "GitHub CLI is not installed. Please install it first: https://cli.github.com/"
-fi
+# Copilot aliases are now lazy-loaded above
 
 
 # Add doom to path
