@@ -31,6 +31,9 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 
 
+# Add custom completion directory
+fpath=(~/.zsh/completion $fpath)
+
 # Set up completion system
 zstyle ':completion:*' add-space true
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -245,8 +248,6 @@ else
     echo "GitHub CLI is not installed. Please install it first: https://cli.github.com/"
 fi
 
-
-fpath=(~/.zsh/completion $fpath)
 
 # Add doom to path
 export PATH="$HOME/.emacs.d/bin:$PATH"
