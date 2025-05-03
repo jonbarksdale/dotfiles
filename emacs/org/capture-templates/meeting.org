@@ -4,26 +4,6 @@
 :MODIFIED: %U
 :VISIBILITY: children
 :END:
-** Review Checklist [0/5]
-:PROPERTIES:
-:VISIBILITY: all
-:END:
-Delete when done
-*** [ ] Summary
-*** [ ] Action items
-*** [ ] Decisions
-*** [ ] Key Details
-*** [ ] Refile/tag
-In what contexts would I want to see this again?
-** Summary
-:PROPERTIES:
-:VISIBILITY: all
-:END:
-*** Actions [/]
-*** Tags
 ** Attendees
-%^{attendees}
-** Agenda
-%^{agenda}
-** Notes
 %?
+** Notes
