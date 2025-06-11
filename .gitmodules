@@ -5,6 +5,7 @@
 [submodule "doom-emacs"]
 	path = doom-emacs
 	url = https://github.com/hlissner/doom-emacs.git
+	branch = master
 [submodule "dotbot-brew"]
 	path = dotbot-brew
 	url = git@github.com:jonbarksdale/dotbot-brew.git
