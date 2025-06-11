@@ -24,8 +24,8 @@
   trustExitCode = true
 [pager]
     diff = delta
-    log = bat --style="header,grid,rule,snip"
-    reflog = bat --style="header,grid,rule,snip"
+    log = bat --style="header,grid,snip"
+    reflog = bat --style="header,grid,snip"
     show = delta
 [interactive]
     diffFilter = delta --color-only --features=interactive
