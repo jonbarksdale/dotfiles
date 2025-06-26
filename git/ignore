@@ -10,3 +10,5 @@ build/
 .vscode
 out/
 .aider*
+
+**/.claude/settings.local.json
