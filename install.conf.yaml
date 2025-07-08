@@ -55,6 +55,14 @@
     ~/.config/nvim: nvim
     ~/.config/yazi: yazi
     ~/.zshrc: zsh/zshrc
+    ~/.claude/CLAUDE.md: claude/CLAUDE.md
+    ~/.claude/settings.json: claude/settings.json
+    ~/.claude/commands:
+      path: claude/commands
+      create: true
+    ~/.claude/contexts:
+      path: claude/contexts
+      create: true
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
