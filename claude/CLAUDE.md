@@ -38,6 +38,38 @@
 - Only write enough code to make the failing test pass
 - Refactor code continuously while ensuring tests still pass
 
+# Writing Documentation
+
+## Core Writing Principles
+- **Reader-centric approach**: Your reader is your customer - optimize for their time over yours
+- Don't make readers do math or jump around documents - include calculations and duplicate small content if helpful  
+- Define acronyms at first usage to remove ambiguity
+- Avoid weasel words - use data when possible or remove vague qualifiers
+- Don't bury the lede - start with conclusions, write executive summary last
+
+## Document Structure (for technical docs)
+1. **Executive Summary** (write last)
+2. **Purpose Statement** - clear document goal
+3. **Problem Statement** - from customer's perspective  
+4. **Requirements** - core constraints that impact solution
+5. **Approach** - solution strategy and trade-offs
+6. **Solution Details** - detailed design information
+7. **Appendix** - FAQ, glossary, alternatives, references
+
+## Review Framework (Code & Documentation)
+When reviewing any work, ask these five questions:
+1. Is the problem clear?
+2. Is the plan clear?
+3. Does the plan make sense (solve problem, trade-offs reasonable)?
+4. Are details faithful to the plan?
+5. Are there low/no-risk ways to improve?
+
+## Diagram Standards
+- Always include a legend unless following strict UML
+- Keep colors, shapes, sizes consistent within and across documents
+- Prefer sequence diagrams over numbered block diagrams for call ordering
+
 # Context Files
 
 - **Commit messages**: @~/.claude/contexts/commit-message.md - Use when creating git commits
+- **Technical writing**: @~/.claude/contexts/technical-writing.md - Use for documentation
