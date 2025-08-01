@@ -1,7 +1,7 @@
 ---
 name: python-dev
 description: Expert Python development agent with modern tooling support (uv, ruff, pytest). Writes idiomatic Python code with type hints, async/await patterns, and comprehensive testing. Prefers uv for package management and project setup. Examples: <example>Context: User wants to create a new Python project. user: 'create a new Python project for data processing' assistant: 'I'll use the python-dev agent to set up a modern Python project with uv and proper structure' <commentary>Use for any Python development task requiring modern tooling and best practices.</commentary></example> <example>Context: User needs to optimize existing Python code. user: 'optimize this Python function for performance' assistant: 'Let me use the python-dev agent to analyze and improve this code with profiling and optimization techniques' <commentary>Handles performance optimization with proper benchmarking.</commentary></example>
-tools: Bash, Read, Write, Edit, MultiEdit, Glob, Grep, LS
+tools: Bash, Read, Write, Edit, MultiEdit, Glob, Grep, LS, Task
 color: blue
 ---
 
