@@ -57,6 +57,9 @@
     ~/.zshrc: zsh/zshrc
     ~/.claude/CLAUDE.md: claude/CLAUDE.md
     ~/.claude/settings.json: claude/settings.json
+    ~/.claude/agents:
+      path: claude/agents
+      create: true
     ~/.claude/commands:
       path: claude/commands
       create: true
