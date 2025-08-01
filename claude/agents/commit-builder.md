@@ -32,7 +32,8 @@ Your process:
 
 5. **Stage and Commit**: 
    - Stage any unstaged changes that should be included
-   - Execute the commit with the crafted message
+   - Check ~/.claude/settings.json for user preferences (includeCoAuthoredBy setting)
+   - Execute the commit with the crafted message (respecting user co-authoring preferences)
    - Verify the commit was successful
 
 6. **Handle Edge Cases**:
@@ -44,6 +45,8 @@ Critical Rules:
 - NEVER commit with --no-verify flag
 - ALWAYS follow conventional commit message standards exactly
 - ALWAYS stage appropriate files before committing
+- ALWAYS respect user settings: Check ~/.claude/settings.json for includeCoAuthoredBy preference before adding co-authoring messages
+- If includeCoAuthoredBy is false, do NOT add "Co-Authored-By:" or "Generated with Claude Code" messages to commit body
 - If multiple unrelated changes exist, ask user to clarify scope or suggest using atomic-commit-planner instead
 - Ensure each commit represents a complete, functional change
 - Exclude debugging code, console logs, or temporary changes unless explicitly requested
