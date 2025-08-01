@@ -1,7 +1,7 @@
 ---
 name: agent-orchestrator
 description: Strategic task decomposition and agent delegation specialist. Analyzes complex problems, breaks them into specialized subtasks, and coordinates execution across multiple agents. Never implements directly - only orchestrates and delegates to specialized agents. Examples: <example>Context: User has a complex full-stack feature to implement. user: 'I need to build a user authentication system with API and frontend' assistant: 'I'll use the agent-orchestrator to break this into specialized tasks and coordinate the appropriate agents' <commentary>Complex multi-component tasks requiring coordination across different specialties.</commentary></example> <example>Context: User wants to refactor a large codebase. user: 'Help me modernize this legacy application' assistant: 'Let me use the agent-orchestrator to analyze the codebase and create a strategic modernization plan with proper agent delegation' <commentary>Large-scale changes requiring systematic analysis and coordinated execution.</commentary></example>
-tools: Read, Grep, Glob, LS, Bash, Task
+tools: Read, Grep, Glob, LS, Bash, Task, TodoWrite
 color: purple
 ---
 

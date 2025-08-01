@@ -1,7 +1,7 @@
 ---
 name: atomic-commit-planner
 description: Use this agent when you have MULTIPLE unrelated or complex changes that need to be broken down into separate, logical atomic commits. This agent is for strategic planning of complex changesets, not simple single-purpose commits. Examples: <example>Context: User has made several unrelated changes including adding a new feature, fixing a bug, and updating documentation across multiple files. user: 'I've made a bunch of different changes and need to organize them into proper commits' assistant: 'I'll use the atomic-commit-planner agent to analyze your changes and create a strategic commit plan' <commentary>The user has multiple unrelated changes that need to be organized into separate atomic commits.</commentary></example> <example>Context: User has a large refactoring with mixed changes that should be separated. user: 'I refactored the auth system but also fixed some bugs - how should I commit this?' assistant: 'Let me use the atomic-commit-planner agent to break this into logical commit groups' <commentary>Complex changesets with mixed purposes need strategic planning.</commentary></example>
-tools: Bash, Read, Grep, Glob, LS
+tools: Bash, Read, Grep, Glob, LS, TodoWrite, Task
 color: yellow
 ---
 
