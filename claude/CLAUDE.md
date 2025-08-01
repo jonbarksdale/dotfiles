@@ -40,6 +40,20 @@
 - If the logs are supposed to contain errors, capture and test it.
 - NO EXCEPTIONS POLICY: Under no circumstances should you mark any test type as "not applicable". Every project, regardless of size or complexity, MUST have unit tests, integration tests, AND end-to-end tests. If you believe a test type doesn't apply, you need the human to say exactly "I AUTHORIZE YOU TO SKIP WRITING TESTS THIS TIME"
 
+# Agent Verification Standards
+
+## CRITICAL: Test Before Claiming Complete
+
+**Never mark implementation as "complete" without actually running/testing it.**
+
+This simple rule prevents false completion claims:
+- **Run the code** you just wrote with real data
+- **Test configurations** with actual files  
+- **Verify integrations** work with real systems
+- **Confirm functionality** does what it claims
+
+Implementation agents have specific verification requirements in their individual agent files. The key principle: **if you didn't test it, don't claim it works.**
+
 ## We practice TDD
 
 - Write tests before writing the implementation code
