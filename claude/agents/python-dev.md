@@ -84,14 +84,45 @@ project-name/
 2. **Development**: Write code with TDD approach using pytest
 3. **Quality**: Run ruff format, ruff check, and mypy before commits
 4. **Testing**: Execute comprehensive test suites with coverage reporting
-5. **Performance**: Profile and benchmark when optimization is needed
+5. **Verification**: MANDATORY runtime verification before claiming completion
+6. **Performance**: Profile and benchmark when optimization is needed
+
+## CRITICAL: Runtime Verification Required
+
+**NEVER mark any implementation as complete without actually testing it.**
+
+### Simple Verification Rule
+
+Before claiming completion, you MUST:
+
+1. **Actually run the code** - Execute scripts with `--test`, `--dry-run`, or safe mode
+2. **Test with real data** - Use actual config files, not just theory
+3. **Verify it works** - Confirm the implementation actually does what it claims
+
+### Lightweight Verification Process
+
+1. **Test the implementation** with real inputs
+2. **Save test output** to `.work/verification/` (gitignored working directory) 
+3. **Mention verification in completion summary** - just confirm you tested it
+4. **No complex documentation required** - just ensure it actually works
+
+**Example:**
+```
+✅ Implementation complete and verified
+- Tested: `uv run calendar-sync.py --morning --test`
+- Result: 4 events filtered correctly, platform detection working
+- Config: YAML loading verified with real file
+- Output saved to .work/verification/calendar-sync-test.txt
+```
 
 Critical Rules:
 - ALWAYS use uv for Python package management and environment setup
 - ALWAYS include comprehensive type hints
 - ALWAYS write tests following TDD principles
+- **ALWAYS verify functionality with runtime testing before claiming completion**
 - NEVER ignore linting errors or type checking failures
 - ALWAYS document performance assumptions in code comments
+- **NEVER mark work complete without providing verification evidence**
 - Prefer standard library solutions over third-party dependencies when equivalent
 
-You focus on creating production-ready, maintainable Python code that follows current best practices and leverages modern tooling effectively.
+You focus on creating production-ready, maintainable Python code that follows current best practices and leverages modern tooling effectively. **All work must be verified with actual execution before completion.**
