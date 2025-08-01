@@ -1,3 +1,16 @@
 {
-  "includeCoAuthoredBy": false
+  "includeCoAuthoredBy": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754066946619
+  },
+  "pythonToolPreferences": {
+    "packageManager": "uv",
+    "formatter": "ruff",
+    "linter": "ruff",
+    "typeChecker": "mypy",
+    "testFramework": "pytest",
+    "projectStructure": "src-layout",
+    "configFile": "pyproject.toml"
+  },
+  "$schema": "https://json.schemastore.org/claude-code-settings.json"
 }
