@@ -47,6 +47,7 @@
 **Never mark implementation as "complete" without actually running/testing it.**
 
 This simple rule prevents false completion claims:
+
 - **Run the code** you just wrote with real data
 - **Test configurations** with actual files  
 - **Verify integrations** work with real systems
@@ -100,3 +101,4 @@ When reviewing any work, ask these five questions:
 
 - **Commit messages**: @~/.claude/contexts/commit-message.md - Use when creating git commits
 - **Technical writing**: @~/.claude/contexts/technical-writing.md - Use for documentation
+- **Universal prompt template**: @~/.claude/contexts/universal-prompt-template.md - Use for creating/editing new prompts or commands
