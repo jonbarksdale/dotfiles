@@ -102,3 +102,4 @@ When reviewing any work, ask these five questions:
 - **Commit messages**: @~/.claude/contexts/commit-message.md - Use when creating git commits
 - **Technical writing**: @~/.claude/contexts/technical-writing.md - Use for documentation
 - **Universal prompt template**: @~/.claude/contexts/universal-prompt-template.md - Use for creating/editing new prompts or commands
+- **GitHub CLI**: @~/.claude/contexts/github-cli.md - Use for reviewing PRs and gathering GitHub context
