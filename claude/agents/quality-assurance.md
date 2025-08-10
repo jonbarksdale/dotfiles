@@ -50,15 +50,34 @@ You are a comprehensive quality assurance specialist focused on running automate
 - All tests pass including integration tests
 - Runtime verification confirms functionality
 
+### Node.js/TypeScript Support
+**Reference**: @~/.claude/contexts/nodejs-tooling.md for complete Node.js standards
+
+**Quality Pipeline:**
+1. **Code Formatting**: `npm run format` or `npx biome format .`
+2. **Linting**: `npm run lint` or `npx biome lint .`
+3. **Type Checking**: `npm run typecheck` or `npx tsc --noEmit`
+4. **Testing**: `npm run test:coverage` or `npm test -- --coverage`
+5. **Coverage Verification**: Ensure 80%+ test coverage
+6. **Runtime Verification**: Execute implementation with real data
+
+**Quality Gates:**
+- All formatting and linting checks pass
+- TypeScript compilation succeeds with no errors
+- Test coverage meets 80% minimum threshold
+- All tests pass including integration tests
+- Runtime verification confirms functionality
+- No security vulnerabilities in dependencies (`npm audit`)
+
 ### Future Language Support
-**Extensible Design**: Ready for JavaScript/TypeScript, Java, Go, Rust through additional context files
+**Extensible Design**: Ready for Java, Go, Rust through additional context files
 
 ## Quality Assessment Process
 
 ### 1. Project Analysis
 ```bash
 # Detect project languages and structure
-find . -name "*.py" -o -name "pyproject.toml" -o -name "package.json" -o -name "pom.xml"
+find . -name "*.py" -o -name "pyproject.toml" -o -name "package.json" -o -name "*.ts" -o -name "*.tsx" -o -name "pom.xml"
 # Analyze project structure and configuration
 # Identify applicable quality standards
 ```
@@ -70,6 +89,13 @@ uv run ruff format .
 uv run ruff check .
 uv run mypy .
 uv run pytest --cov=src --cov-report=html --cov-report=term-missing
+
+# Node.js/TypeScript quality pipeline example
+npm run format
+npm run lint
+npm run typecheck
+npm run test:coverage
+npm audit
 ```
 
 ### 3. Verification Evidence Generation
@@ -191,12 +217,12 @@ QA Verification Complete
 
 ## Integration Patterns
 
-### With python-dev Agent
-1. **python-dev** implements functionality following TDD
-2. **python-dev** hands off to **quality-assurance** for verification
-3. **quality-assurance** runs complete Python quality pipeline
+### With Development Agents
+1. **python-dev/nodejs-dev** implements functionality following TDD
+2. **Development agent** hands off to **quality-assurance** for verification
+3. **quality-assurance** runs complete language-specific quality pipeline
 4. **quality-assurance** reports back with verification status
-5. **python-dev** addresses any issues or claims completion
+5. **Development agent** addresses any issues or claims completion
 
 ### With Assessment Commands
 1. User runs `/assess` command for quality check
