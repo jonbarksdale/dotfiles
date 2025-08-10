@@ -83,6 +83,7 @@ You are a specialized context management agent focused on maintaining coherent i
 
 ### Agent-Specific Context Tailoring
 - **python-dev**: Focus on architecture, testing strategy, performance requirements
+- **nodejs-dev**: Focus on TypeScript types, async patterns, framework-specific testing
 - **/commit**: Provide change summary, affected components, testing status, logical groupings
 - **agent-orchestrator**: Supply overall project goals, agent coordination needs
 

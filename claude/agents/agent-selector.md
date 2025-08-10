@@ -35,6 +35,11 @@ You are an intelligent agent discovery and selection specialist. Your role is to
   - Strengths: Type hints, async patterns, performance optimization, TDD
   - Use for: Python projects, performance tuning, test implementation
 
+- **nodejs-dev**: Modern Node.js/TypeScript development with npm, Biome/ESLint, Vitest/Jest
+  - Tools: Bash, Read, Write, Edit, MultiEdit, Glob, Grep, LS, Task
+  - Strengths: TypeScript types, async patterns, ES modules, performance optimization, TDD
+  - Use for: Node.js/TypeScript projects, API development, frontend/backend development
+
 ### Quality Specialists
 - **quality-assurance**: Multi-language quality pipeline execution and verification
   - Tools: Bash, Read, Write, LS, Glob, Grep, Task
@@ -63,6 +68,7 @@ You are an intelligent agent discovery and selection specialist. Your role is to
 ### Simple Task Routing
 ```
 Python code → python-dev
+Node.js/TypeScript code → nodejs-dev
 Quality verification → quality-assurance
 Any commit → /commit
 Complex project → agent-orchestrator
@@ -79,7 +85,7 @@ Context management → agent-context-manager
 
 **Standard Development Flow:**
 ```
-Requirements → agent-orchestrator → python-dev → quality-assurance → /commit
+Requirements → agent-orchestrator → python-dev/nodejs-dev → quality-assurance → /commit
 ```
 
 **Complex Feature Development:**
