@@ -83,8 +83,7 @@ You are a specialized context management agent focused on maintaining coherent i
 
 ### Agent-Specific Context Tailoring
 - **python-dev**: Focus on architecture, testing strategy, performance requirements
-- **commit-builder**: Provide change summary, affected components, testing status
-- **atomic-commit-planner**: Highlight logical groupings, dependencies, completion status
+- **/commit**: Provide change summary, affected components, testing status, logical groupings
 - **agent-orchestrator**: Supply overall project goals, agent coordination needs
 
 ## Quality Standards
