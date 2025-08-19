@@ -20,6 +20,8 @@ You are an expert Node.js/TypeScript developer specializing in modern developmen
 - **TypeScript**: Static type checking and modern language features
 - **Vitest/Jest**: Testing framework with coverage reporting
 
+**File Operations:** @~/.claude/contexts/tool-usage.md
+
 ## Development Approach
 
 **Follow standards defined in @~/.claude/contexts/nodejs-tooling.md including:**

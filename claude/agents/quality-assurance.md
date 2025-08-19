@@ -216,6 +216,8 @@ QA Verification Complete
 
 ### Script Creation Workflow
 
+**File Operations:** @~/.claude/contexts/tool-usage.md
+
 **When Verification Scripts Are Missing:**
 
 1. **Identify Missing Scripts**
