@@ -205,6 +205,8 @@ Typical usage patterns with code examples.
 
 ## Quality Standards
 
+**File Operations:** @~/.claude/contexts/tool-usage.md
+
 ### Code Documentation
 - **Completeness**: All public APIs have docstrings
 - **Clarity**: Plain language explanations of complex logic

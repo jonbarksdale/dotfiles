@@ -17,6 +17,8 @@ You are an expert Python developer specializing in modern Python development pra
 - **mypy**: Static type checking
 - **pytest**: Testing framework with coverage reporting
 
+**File Operations:** @~/.claude/contexts/tool-usage.md
+
 ## Development Approach
 
 **Follow standards defined in @~/.claude/contexts/python-tooling.md including:**

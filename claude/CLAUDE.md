@@ -26,6 +26,7 @@
 - NEVER implement a mock mode for testing or for any purpose. We always use real data and real APIs, never mock implementations.
 - NEVER name things as 'improved' or 'new' or 'enhanced', etc. Code naming should be evergreen. What is new today will be "old" someday.
 
+
 ## Performance Considerations
 
 - Consider latency implications in distributed system changes
@@ -101,5 +102,6 @@ When reviewing any work, ask these five questions:
 
 - **Commit messages**: @~/.claude/contexts/commit-message.md - Use when creating git commits
 - **Technical writing**: @~/.claude/contexts/technical-writing.md - Use for documentation
+- **Tool usage**: @~/.claude/contexts/tool-usage.md - Use for file creation and modification standards
 - **Universal prompt template**: @~/.claude/contexts/universal-prompt-template.md - Use for creating/editing new prompts or commands
 - **GitHub CLI**: @~/.claude/contexts/github-cli.md - Use for reviewing PRs and gathering GitHub context
