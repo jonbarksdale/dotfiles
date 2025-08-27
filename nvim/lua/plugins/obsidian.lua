@@ -3,6 +3,13 @@ return {
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
+  cmd = {
+    "ObsidianOpen",
+    "ObsidianNew",
+    "ObsidianToday",
+    "ObsidianSearch",
+    "ObsidianQuickSwitch",
+  },
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
   --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
@@ -21,15 +28,20 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   opts = {
+    ui = {
+      enable = false,
+    },
     workspaces = {
       {
-        name = "personal",
-        path = "~/vaults/personal",
-      },
-      {
-        name = "work",
-        path = "~/vaults/work",
+        name = "pkm",
+        path = "~/vaults/pkm",
       },
     },
+  },
+  keys = {
+    { "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quickly Switch to another note" },
+    { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "Create a new note" },
+    { "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Open today's note" },
+    { "<leader>of", "<cmd>ObsidianSearch<cr>", desc = "Search in your vault" },
   },
 }
