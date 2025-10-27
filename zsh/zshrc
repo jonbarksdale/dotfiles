@@ -277,3 +277,5 @@ eval "$(starship init zsh)"
 
 # Source a local zshrc if found (though that is better managed with profiles)
 test -f ~/.zshrc_local && source ~/.zshrc_local
+
+. "$HOME/.local/bin/env"
