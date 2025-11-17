@@ -6,6 +6,7 @@
 - create:
     - ~/.config
     - ~/.vim/undo-history
+    - ~/Applications
 
 - clean: ["~"]
 - clean:
@@ -74,6 +75,7 @@
     - github/gh-copilot
 
 - install-brew: true
+
 - brew:
     - zsh-completions
     - bash
@@ -151,6 +153,13 @@
     - jesseduffield/lazygit/lazygit
     - jstkdng/programs/ueberzugpp
     - luarocks
+    - uv
+    - postgresql@16
+    - mysql-client
+    - kubectl
+    - markdownlint-cli2
+    - direnv
+    - pre-commit
 
 # TODO: fork dotbot-brew and add a way to check if the app is otherwise installed
 - cask:
