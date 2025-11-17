@@ -27,12 +27,19 @@ chezmoi init --apply https://github.com/jonbarksdale/dotfiles.git
 # Install personal dotfiles first
 chezmoi init --apply https://github.com/jonbarksdale/dotfiles.git
 
-# Add work-specific configurations
-chezmoi init --source ~/.local/share/chezmoi-work git@github.paypal.com/jobarksdale/dotfiles-work.git
+# Clone work-specific configurations to a separate location
+git clone git@github.paypal.com/jobarksdale/dotfiles-work.git ~/.local/share/chezmoi-work
 
-# Apply both sources
-chezmoi apply
+# Create symlinks for work-specific files (these override personal configs)
+ln -sf ~/.local/share/chezmoi-work/dot_zshrc_before ~/.zshrc_before
+ln -sf ~/.local/share/chezmoi-work/dot_zshrc_local ~/.zshrc_local
+ln -sf ~/.local/share/chezmoi-work/dot_gitconfig-local ~/.gitconfig-local
+ln -sf ~/.local/share/chezmoi-work/dot_profile ~/.profile
+mkdir -p ~/.local/bin
+ln -sf ~/.local/share/chezmoi-work/dot_local/bin/executable_env ~/.local/bin/env
 ```
+
+**Note**: Your personal `.zshrc` and `.gitconfig` are already configured to source these files if they exist, so the symlinks integrate seamlessly.
 
 ## What Gets Installed
 
@@ -126,7 +133,7 @@ Work-specific files (PayPal):
 - `~/.profile` - PATH modifications
 - `~/.local/bin/env` - PATH management
 
-These files are provided by the work dotfiles repo and automatically merged with your personal configs.
+These files are provided by the work dotfiles repo (`~/.local/share/chezmoi-work`) and symlinked into your home directory. Your personal configs are already set up to source these files when they exist.
 
 ## Directory Structure
 

@@ -121,19 +121,18 @@ Work-specific files manually created and maintained on each machine:
 
 ### Chezmoi Approach
 
-Work-specific files managed in a separate git repository:
+Work-specific files managed in a separate git repository and symlinked:
 
 **Personal repo** (`~/.local/share/chezmoi/`):
 - Contains `dot_zshrc` which sources `~/.zshrc_before` and `~/.zshrc_local`
 - Contains `dot_config/git/config` which includes `~/.gitconfig-local`
 
 **Work repo** (`~/.local/share/chezmoi-work/`):
-- Provides `dot_zshrc_before`
-- Provides `dot_zshrc_local`
-- Provides `dot_gitconfig-local`
+- Provides `dot_zshrc_before`, `dot_zshrc_local`, `dot_gitconfig-local`, etc.
+- These are **symlinked** into `~/` (e.g., `~/.zshrc_local` → `~/.local/share/chezmoi-work/dot_zshrc_local`)
 
-On personal machines: Only the personal repo is cloned.
-On work machines: Both repos are cloned and merged automatically.
+On personal machines: Only the personal repo is cloned; the sourced files don't exist (which is fine).
+On work machines: Both repos are cloned, work files are symlinked, and personal configs source them.
 
 ## Migration Steps Performed
 
@@ -268,10 +267,18 @@ chezmoi apply --dry-run --verbose
 
 ### Q: How do I add work-specific config on a work machine?
 
-**A:** After initial setup, run:
+**A:** After initial setup, clone the work repo and create symlinks:
 ```bash
-chezmoi init --source ~/.local/share/chezmoi-work git@github.paypal.com/jobarksdale/dotfiles-work.git
-chezmoi apply
+# Clone work configs
+git clone git@github.paypal.com/jobarksdale/dotfiles-work.git ~/.local/share/chezmoi-work
+
+# Create symlinks
+ln -sf ~/.local/share/chezmoi-work/dot_zshrc_before ~/.zshrc_before
+ln -sf ~/.local/share/chezmoi-work/dot_zshrc_local ~/.zshrc_local
+ln -sf ~/.local/share/chezmoi-work/dot_gitconfig-local ~/.gitconfig-local
+ln -sf ~/.local/share/chezmoi-work/dot_profile ~/.profile
+mkdir -p ~/.local/bin
+ln -sf ~/.local/share/chezmoi-work/dot_local/bin/executable_env ~/.local/bin/env
 ```
 
 ### Q: Can I use symlink mode instead of copy mode?
