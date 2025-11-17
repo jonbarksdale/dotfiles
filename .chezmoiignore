@@ -33,3 +33,4 @@ Brewfile.lock.json
 .chezmoi.yaml.tmpl
 .chezmoiignore
 .chezmoiscripts/
+.chezmoidata.yaml

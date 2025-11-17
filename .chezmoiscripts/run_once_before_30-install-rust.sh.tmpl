@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ABOUTME: Installs Rust toolchain via rustup and cargo packages
-# ABOUTME: Installs: choose, rm-improved, tokei, xcp, whyq
+# ABOUTME: Installs: choose, rm-improved, tokei (xcp and whyq installed via Homebrew)
 
 set -euo pipefail
 
@@ -22,12 +22,11 @@ if [[ -f "$HOME/.cargo/env" ]]; then
 fi
 
 # Install cargo packages if not already installed
+# Note: xcp and whyq are installed via Homebrew for faster installation
 declare -A cargo_packages=(
     ["choose"]="choose"
     ["rip"]="rm-improved"
     ["tokei"]="tokei --features all"
-    ["xcp"]="xcp"
-    ["whyq"]="whyq"
 )
 
 echo "Installing cargo packages..."
