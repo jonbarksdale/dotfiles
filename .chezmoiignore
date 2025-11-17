@@ -1,0 +1,35 @@
+# ABOUTME: Files and directories to ignore when applying chezmoi dotfiles
+# ABOUTME: Prevents documentation, scripts, and repo metadata from being copied to home directory
+
+README.md
+LICENSE
+.gitignore
+.gitmodules
+.git/
+
+# Documentation
+docs/
+*.md
+
+# Installation and migration scripts
+install
+install.conf.yaml
+scripts/
+
+# Legacy files (will be removed)
+bin/install-homeshick.sh
+bin/make-zsh-links.sh
+
+# Dotbot (being removed)
+dotbot/
+dotbot-brew/
+dotbot-rust/
+dotbot-gh-extension/
+
+# Homebrew
+Brewfile.lock.json
+
+# Chezmoi metadata
+.chezmoi.yaml.tmpl
+.chezmoiignore
+.chezmoiscripts/

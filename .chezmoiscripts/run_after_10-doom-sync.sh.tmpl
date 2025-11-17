@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# ABOUTME: Syncs Doom Emacs environment and packages after dotfiles are applied
+# ABOUTME: Runs 'doom env' to generate environment variables and 'doom sync' to sync packages
+
+set -euo pipefail
+
+# Check if Doom Emacs is installed
+if [[ ! -d "$HOME/.emacs.d/bin" ]]; then
+    echo "⚠ Doom Emacs is not installed at ~/.emacs.d"
+    echo "  Skipping Doom sync"
+    exit 0
+fi
+
+# Ensure doom is in PATH for this script
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
+echo "Syncing Doom Emacs..."
+
+# Generate Doom environment variables
+echo "Generating Doom environment..."
+doom env
+
+# Sync Doom packages
+echo "Syncing Doom packages..."
+doom sync
+
+echo "✓ Doom Emacs synced successfully"

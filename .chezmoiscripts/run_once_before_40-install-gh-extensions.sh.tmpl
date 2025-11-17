@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# ABOUTME: Installs GitHub CLI extensions
+# ABOUTME: Currently installs: github/gh-copilot
+
+set -euo pipefail
+
+# Check if gh is installed
+if ! command -v gh &> /dev/null; then
+    echo "⚠ GitHub CLI (gh) is not installed yet"
+    echo "  It should be installed by Homebrew - this script may be running too early"
+    echo "  You can manually install extensions later with: gh extension install <extension>"
+    exit 0
+fi
+
+echo "Installing GitHub CLI extensions..."
+
+# List of extensions to install
+extensions=(
+    "github/gh-copilot"
+)
+
+for ext in "${extensions[@]}"; do
+    # Check if extension is already installed
+    if gh extension list | grep -q "$ext"; then
+        echo "✓ $ext is already installed"
+    else
+        echo "Installing $ext..."
+        gh extension install "$ext"
+    fi
+done
+
+# Upgrade all extensions
+echo "Upgrading all GitHub CLI extensions..."
+gh extension upgrade --all
+
+echo "✓ GitHub CLI extensions installed successfully"

@@ -1,0 +1,142 @@
+# ABOUTME: Homebrew bundle file for installing packages, casks, and fonts
+# ABOUTME: Managed by chezmoi and applied to ~/.Brewfile for use with 'brew bundle --global'
+
+# Taps
+tap "d12frosted/emacs-plus"
+
+# Core packages and modern Unix tools
+brew "gcc"
+brew "zsh"
+brew "bash"
+brew "zsh-completions"
+
+# Modern Unix tool replacements
+brew "eza"          # Modern ls replacement
+brew "lsd"          # Another ls replacement
+brew "pls"          # Yet another ls
+brew "fd"           # Modern find replacement
+brew "broot"        # Directory navigation
+brew "ripgrep"      # Modern grep replacement
+brew "ripgrep-all"  # ripgrep with more file types
+brew "dust"         # Modern du replacement
+brew "procs"        # Modern ps replacement
+brew "sd"           # Modern sed replacement
+brew "bat"          # Modern cat replacement with syntax highlighting
+brew "bottom"       # Modern top replacement
+brew "duf"          # Modern df replacement
+
+# File and directory tools
+brew "fzf"
+brew "yazi"
+brew "ranger"
+brew "ouch"         # Compression/decompression tool
+brew "xcp"          # Extended cp
+
+# Version control
+brew "git"
+brew "gh"           # GitHub CLI
+brew "git-delta"    # Better git diff
+
+# Editors
+brew "neovim"
+brew "vim"
+brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-native-comp"]
+
+# Development tools
+brew "direnv"
+brew "pre-commit"
+brew "luarocks"
+brew "uv"           # Python package installer
+
+# Databases
+brew "sqlite"
+brew "postgresql@16"
+brew "mysql-client"
+
+# Data processing and JSON tools
+brew "jq"
+brew "jless"
+brew "gron"
+brew "fx"
+brew "whyq"         # YAML query tool
+
+# Infrastructure and cloud tools
+brew "kubectl"
+brew "awscli"
+brew "localstack"
+brew "lazydocker"
+brew "aws-vault"
+
+# Network tools
+brew "httpie"
+brew "curlie"
+brew "xh"
+brew "doggo"        # DNS client
+brew "mtr"          # Network diagnostic tool
+
+# Task runners and productivity
+brew "go-task"
+brew "starship"     # Shell prompt
+
+# Documentation and help
+brew "cheat"
+brew "tealdeer"     # tldr client
+brew "glow"         # Markdown renderer
+brew "proselint"    # Prose linter
+
+# Quality and linting tools
+brew "markdownlint-cli2"
+brew "languagetool"
+
+# Spell checking
+brew "ispell"
+brew "aspell"
+brew "hunspell"
+
+# Text processing
+brew "grep"
+brew "gnu-sed"
+brew "gawk"
+brew "wordnet"
+
+# System monitoring and utilities
+brew "htop"
+brew "ncdu"
+brew "most"         # Pager
+brew "thefuck"      # Command correction
+brew "mas"          # Mac App Store CLI
+
+# Security
+brew "gpg"
+brew "openssl"
+
+# Casks (macOS applications)
+cask "raycast"
+cask "launchbar"
+cask "jetbrains-toolbox"
+cask "visual-studio-code"
+cask "beyond-compare"
+cask "1password"
+cask "daisydisk"
+cask "spotify"
+
+# Fonts
+cask "font-victor-mono-nerd-font"
+cask "font-meslo-lg-nerd-font"
+cask "font-dejavu-nerd-font"
+cask "font-dejavu-sans-mono-nerd-font"
+cask "font-fira-code-nerd-font"
+cask "font-fira-mono-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-latin-modern-math"
+cask "font-stix-two-math"
+cask "font-noto-color-emoji"
+cask "font-noto-emoji"
+cask "font-noto-sans"
+cask "font-noto-sans-math"
+cask "font-noto-sans-symbols"
+cask "font-noto-sans-symbols-2"
+cask "font-maple-mono-nf"
+cask "font-0xproto-nerd-font"
+cask "font-cascadia-mono-nerd-font"
+cask "font-monaspace-nerd-font"

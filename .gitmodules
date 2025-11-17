@@ -1,20 +1,7 @@
-[submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
-	ignore = dirty
 [submodule "doom-emacs"]
 	path = doom-emacs
 	url = https://github.com/hlissner/doom-emacs.git
 	branch = master
-[submodule "dotbot-brew"]
-	path = dotbot-brew
-	url = git@github.com:jonbarksdale/dotbot-brew.git
-[submodule "dotbot-rust"]
-	path = dotbot-rust
-	url = https://github.com/ShoMinamimoto/dotbot-rust.git
-[submodule "dotbot-gh-extension"]
-	path = dotbot-gh-extension
-	url = https://github.com/fundor333/dotbot-gh-extension.git
 [submodule "yazi/flavors"]
-	path = yazi/flavors
+	path = dot_config/yazi/flavors
 	url = git@github.com:yazi-rs/flavors.git
