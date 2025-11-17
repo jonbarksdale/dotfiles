@@ -1,6 +1,9 @@
 #!/bin/zsh
 test -f ~/.zshrc_before && source ~/.zshrc_before
 
+# Configure Homebrew Cask to install to ~/Applications (no sudo for updates)
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
+
 # shell and globbing options
 set extended_glob
 set numeric_glob_sort

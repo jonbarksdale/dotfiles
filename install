@@ -12,6 +12,9 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
+# Configure Homebrew Cask to install to ~/Applications (no sudo for updates)
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
+
 # Plugins are added as args - don't do this twice, modify the command
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" \
     --plugin-dir dotbot-brew \
