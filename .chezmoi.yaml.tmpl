@@ -1,17 +1,11 @@
 # ABOUTME: Chezmoi configuration file for managing dotfiles across multiple machines
-# ABOUTME: Supports multiple source directories for personal and work-specific configs
+# ABOUTME: Supports per-machine customization and work-specific configurations
 
-{{- $work := false -}}
-{{- if hasKey . "work" -}}
-{{-   $work = .work -}}
-{{- else -}}
-{{-   $work = promptBoolOnce . "work" "Is this a work machine (PayPal)?" false -}}
-{{- end -}}
-
-sourceDir:
-  - {{ .chezmoi.sourceDir | quote }}
-{{- if $work }}
-  - {{ joinPath .chezmoi.homeDir ".local/share/chezmoi-work" | quote }}
+{{- $work := false }}
+{{- if hasKey . "work" }}
+{{-   $work = .work }}
+{{- else if stdinIsATTY }}
+{{-   $work = promptBoolOnce . "work" "Is this a work machine (PayPal)?" false }}
 {{- end }}
 
 data:
