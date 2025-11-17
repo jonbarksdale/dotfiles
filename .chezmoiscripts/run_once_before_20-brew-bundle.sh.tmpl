@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# ABOUTME: Installs all Homebrew packages, casks, and fonts from ~/.Brewfile
+# ABOUTME: Uses Homebrew Bundle to install formulae, casks, and configure taps
+
+set -euo pipefail
+
+# Ensure Homebrew is in PATH
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f "/usr/local/bin/brew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# Set cask installation directory to user Applications folder
+export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
+
+echo "Installing packages from Brewfile..."
+
+# Install from global Brewfile (~/.Brewfile)
+if [[ -f "${HOME}/.Brewfile" ]]; then
+    brew bundle --global --verbose
+    echo "✓ Homebrew packages installed successfully"
+else
+    echo "⚠ Brewfile not found at ${HOME}/.Brewfile"
+    echo "  Chezmoi should have copied it there - something may have gone wrong"
+    exit 1
+fi
