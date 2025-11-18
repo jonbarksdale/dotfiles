@@ -112,7 +112,9 @@ brew "gpg"
 brew "openssl"
 
 # Casks (macOS applications)
-cask "1password"
+# Note: Most casks install to ~/Applications, but 1Password requires /Applications
+# for proper browser integration and security features.
+cask "1password", args: { appdir: "/Applications" }
 cask "setapp"
 cask "jetbrains-toolbox"
 cask "raycast"
