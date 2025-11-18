@@ -4,4 +4,4 @@
 	branch = master
 [submodule "yazi/flavors"]
 	path = dot_config/yazi/flavors
-	url = git@github.com:yazi-rs/flavors.git
+	url = https://github.com/yazi-rs/flavors.git
