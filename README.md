@@ -14,11 +14,28 @@ Personal dotfiles managed with [chezmoi](https://chezmoi.io). Supports both pers
 
 ## Quick Start
 
+### Prerequisites
+
+On a fresh macOS machine:
+
+```bash
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install chezmoi
+brew install chezmoi
+```
+
 ### Personal Machine
 
 ```bash
-# Install chezmoi and apply dotfiles in one command
+# Initialize and apply dotfiles
 chezmoi init --apply https://github.com/jonbarksdale/dotfiles.git
+```
+
+Alternatively, use chezmoi's one-liner (installs chezmoi temporarily):
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jonbarksdale/dotfiles
 ```
 
 ### Work Machine
