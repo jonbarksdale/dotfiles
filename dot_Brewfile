@@ -111,6 +111,10 @@ brew "mas"          # Mac App Store CLI
 brew "gpg"
 brew "openssl"
 
+# Agent stuff
+brew "block-goose-cli"
+brew "claude-squad"
+
 # Casks (macOS applications)
 # Note: Most casks install to ~/Applications, but 1Password requires /Applications
 # for proper browser integration and security features.
@@ -130,6 +134,7 @@ cask "vivaldi"
 cask "orion"
 cask "claude-code"
 cask "claude"
+cask "block-goose"
 cask "marvin"
 cask "omnigraffle"
 cask "zed"
