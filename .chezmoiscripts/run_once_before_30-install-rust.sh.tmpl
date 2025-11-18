@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # ABOUTME: Installs Rust toolchain via rustup and cargo packages
-# ABOUTME: Installs: choose, rm-improved, tokei (xcp and whyq installed via Homebrew)
+# ABOUTME: Installs: choose, rm-improved, tokei, whyq
 
 set -euo pipefail
 
@@ -23,21 +23,27 @@ fi
 
 # Install cargo packages if not already installed
 # Note: xcp is installed via Homebrew for faster installation
-declare -A cargo_packages=(
-    ["choose"]="choose"
-    ["rip"]="rm-improved"
-    ["tokei"]="tokei --features all"
-    ["whyq"]="whyq"
-)
+# Using simple arrays instead of associative arrays for bash 3.x compatibility
 
 echo "Installing cargo packages..."
 
-for cmd in "${!cargo_packages[@]}"; do
+# Array of command:package pairs
+cargo_packages=(
+    "choose:choose"
+    "rip:rm-improved"
+    "tokei:tokei --features all"
+    "whyq:whyq"
+)
+
+for entry in "${cargo_packages[@]}"; do
+    cmd="${entry%%:*}"
+    pkg="${entry#*:}"
+
     if command -v "$cmd" &> /dev/null; then
         echo "✓ $cmd is already installed"
     else
-        echo "Installing ${cargo_packages[$cmd]}..."
-        cargo install ${cargo_packages[$cmd]}
+        echo "Installing $pkg..."
+        cargo install $pkg
     fi
 done
 
