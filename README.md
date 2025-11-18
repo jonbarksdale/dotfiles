@@ -21,25 +21,22 @@ Personal dotfiles managed with [chezmoi](https://chezmoi.io). Supports both pers
 chezmoi init --apply https://github.com/jonbarksdale/dotfiles.git
 ```
 
-### Work Machine (PayPal)
+### Work Machine
 
 ```bash
 # Install personal dotfiles first
 chezmoi init --apply https://github.com/jonbarksdale/dotfiles.git
 
 # Clone work-specific configurations to a separate location
-git clone git@github.paypal.com/jobarksdale/dotfiles-work.git ~/.local/share/chezmoi-work
+# (Replace with your work dotfiles repository)
+git clone <work-dotfiles-repo> ~/.local/share/dotfiles-work
 
-# Create symlinks for work-specific files (these override personal configs)
-ln -sf ~/.local/share/chezmoi-work/dot_zshrc_before ~/.zshrc_before
-ln -sf ~/.local/share/chezmoi-work/dot_zshrc_local ~/.zshrc_local
-ln -sf ~/.local/share/chezmoi-work/dot_gitconfig-local ~/.gitconfig-local
-ln -sf ~/.local/share/chezmoi-work/dot_profile ~/.profile
-mkdir -p ~/.local/bin
-ln -sf ~/.local/share/chezmoi-work/dot_local/bin/executable_env ~/.local/bin/env
+# Run work dotfiles setup script
+cd ~/.local/share/dotfiles-work
+./setup.sh
 ```
 
-**Note**: Your personal `.zshrc` and `.gitconfig` are already configured to source these files if they exist, so the symlinks integrate seamlessly.
+**Note**: Your personal `.zshrc` and `.gitconfig` are already configured to source work-specific override files (`~/.zshrc_local`, `~/.gitconfig-local`) if they exist, so the work configuration integrates seamlessly.
 
 ## What Gets Installed
 
@@ -55,7 +52,7 @@ ln -sf ~/.local/share/chezmoi-work/dot_local/bin/executable_env ~/.local/bin/env
 - **Editors**: Neovim, Vim, Doom Emacs, IntelliJ
 - **Version Control**: Git with delta, GitHub CLI
 - **Shells**: Zsh with starship prompt
-- **Containers**: Docker (via Colima on work machines)
+- **Containers**: Docker, Colima
 
 ### Modern Unix Replacements
 
@@ -126,14 +123,13 @@ chezmoi update
 
 ## Work-Specific Configuration
 
-Work-specific files (PayPal):
-- `~/.zshrc_before` - Proxy, certificates, environment
-- `~/.zshrc_local` - Shell overrides, work functions
-- `~/.gitconfig-local` - Work email, GitHub Enterprise
-- `~/.profile` - PATH modifications
-- `~/.local/bin/env` - PATH management
+The personal dotfiles support composition with work-specific configurations via hook files:
+- `~/.zshrc_before` - Sourced at the start of shell initialization
+- `~/.zshrc_local` - Sourced at the end of shell initialization
+- `~/.gitconfig-local` - Included by git config (last wins)
+- `~/.profile` - Shell-agnostic environment setup
 
-These files are provided by the work dotfiles repo (`~/.local/share/chezmoi-work`) and symlinked into your home directory. Your personal configs are already set up to source these files when they exist.
+These files are optional and sourced only if they exist. If you need work-specific overrides, maintain them in a separate work dotfiles repository and use its setup script to create symlinks.
 
 ## Directory Structure
 
@@ -151,10 +147,11 @@ These files are provided by the work dotfiles repo (`~/.local/share/chezmoi-work
 ├── dot_Brewfile                 # Homebrew packages
 └── ...
 
-~/.local/share/chezmoi-work/     # Work dotfiles (optional)
-├── dot_zshrc_before
-├── dot_zshrc_local
-├── dot_gitconfig-local
+~/.local/share/dotfiles-work/    # Work dotfiles (optional, separate repo)
+├── dot_zshrc_before             # Work environment setup
+├── dot_zshrc_local              # Work shell overrides
+├── dot_gitconfig-local          # Work git configuration
+├── setup.sh                     # Creates symlinks to home directory
 └── ...
 ```
 
@@ -198,14 +195,14 @@ chezmoi apply
 chezmoi doctor
 ```
 
-### Work configs not applying
+### Work configs not loading
 
 ```bash
-# Verify both sources are configured
-chezmoi source-path
+# Check if work override files exist and are symlinked
+ls -la ~/.zshrc_local ~/.gitconfig-local
 
-# Check if work repo is initialized
-ls -la ~/.local/share/chezmoi-work
+# Verify work repo is present
+ls -la ~/.local/share/dotfiles-work
 ```
 
 ## Migration from dotbot
