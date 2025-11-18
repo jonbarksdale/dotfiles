@@ -3,6 +3,7 @@
 
 # Taps
 tap "d12frosted/emacs-plus"
+tap "pls-rs/pls"
 
 # Core packages and modern Unix tools
 brew "gcc"
@@ -41,7 +42,7 @@ brew "git-delta"    # Better git diff
 # Editors
 brew "neovim"
 brew "vim"
-brew "d12frosted/emacs-plus/emacs-plus@30", args: ["with-native-comp"]
+brew "d12frosted/emacs-plus/emacs-plus@30"  # Native-comp is built-in by default
 
 # Development tools
 brew "direnv"
@@ -59,7 +60,6 @@ brew "jq"
 brew "jless"
 brew "gron"
 brew "fx"
-brew "whyq"         # YAML query tool
 
 # Infrastructure and cloud tools
 brew "kubectl"

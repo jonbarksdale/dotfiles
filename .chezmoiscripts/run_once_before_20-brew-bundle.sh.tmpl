@@ -33,6 +33,12 @@ if [[ ! -f "${BREWFILE}" ]]; then
     fi
 fi
 
-# Install from Brewfile
-brew bundle --file="${BREWFILE}" --verbose
-echo "✓ Homebrew packages installed successfully"
+# Install from Brewfile (continue on errors to install what we can)
+if brew bundle --file="${BREWFILE}" --verbose; then
+    echo "✓ Homebrew packages installed successfully"
+else
+    echo "⚠ Some Homebrew packages failed to install"
+    echo "  This is often due to network issues or package availability"
+    echo "  You can retry later with: brew bundle --file=${BREWFILE}"
+    # Don't exit with error - allow chezmoi to continue
+fi

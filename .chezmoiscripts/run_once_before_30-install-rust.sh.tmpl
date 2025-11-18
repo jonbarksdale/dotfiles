@@ -22,11 +22,12 @@ if [[ -f "$HOME/.cargo/env" ]]; then
 fi
 
 # Install cargo packages if not already installed
-# Note: xcp and whyq are installed via Homebrew for faster installation
+# Note: xcp is installed via Homebrew for faster installation
 declare -A cargo_packages=(
     ["choose"]="choose"
     ["rip"]="rm-improved"
     ["tokei"]="tokei --features all"
+    ["whyq"]="whyq"
 )
 
 echo "Installing cargo packages..."
