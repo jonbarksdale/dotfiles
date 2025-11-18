@@ -9,6 +9,7 @@ brew "gcc"
 brew "zsh"
 brew "bash"
 brew "zsh-completions"
+brew "chezmoi"      # Dotfiles management
 
 # Modern Unix tool replacements
 brew "eza"          # Modern ls replacement
@@ -111,14 +112,17 @@ brew "gpg"
 brew "openssl"
 
 # Casks (macOS applications)
+cask "1password"
+cask "setapp"
+cask "jetbrains-toolbox"
 cask "raycast"
 cask "launchbar"
-cask "jetbrains-toolbox"
 cask "visual-studio-code"
 cask "beyond-compare"
-cask "1password"
 cask "daisydisk"
 cask "spotify"
+cask "warp"
+cask "iterm2"
 
 # Fonts
 cask "font-victor-mono-nerd-font"
