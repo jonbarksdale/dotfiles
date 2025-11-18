@@ -45,7 +45,7 @@ Breaking changes should be indicated in one of two ways:
 ```
 feat(checkout): add payment method selection
 
-Implement PayPal and Stripe integrations for payment processing.
+Implement Stripe and Braintree integrations for payment processing.
 This allows users to save their preferred payment methods.
 
 Refs: #123

@@ -127,12 +127,12 @@ Work-specific files managed in a separate git repository and symlinked:
 - Contains `dot_zshrc` which sources `~/.zshrc_before` and `~/.zshrc_local`
 - Contains `dot_config/git/config` which includes `~/.gitconfig-local`
 
-**Work repo** (`~/.local/share/chezmoi-work/`):
+**Work repo** (`~/.local/share/dotfiles-work/`, optional):
 - Provides `dot_zshrc_before`, `dot_zshrc_local`, `dot_gitconfig-local`, etc.
-- These are **symlinked** into `~/` (e.g., `~/.zshrc_local` → `~/.local/share/chezmoi-work/dot_zshrc_local`)
+- These are **symlinked** into `~/` (e.g., `~/.zshrc_local` → `~/.local/share/dotfiles-work/dot_zshrc_local`)
 
 On personal machines: Only the personal repo is cloned; the sourced files don't exist (which is fine).
-On work machines: Both repos are cloned, work files are symlinked, and personal configs source them.
+On work machines: Both repos are cloned, work files are symlinked via setup script, and personal configs source them.
 
 ## Migration Steps Performed
 
@@ -267,18 +267,14 @@ chezmoi apply --dry-run --verbose
 
 ### Q: How do I add work-specific config on a work machine?
 
-**A:** After initial setup, clone the work repo and create symlinks:
+**A:** After initial setup, clone your work dotfiles repo and run its setup script:
 ```bash
-# Clone work configs
-git clone git@github.paypal.com/jobarksdale/dotfiles-work.git ~/.local/share/chezmoi-work
+# Clone work configs (replace with your work repo URL)
+git clone <work-dotfiles-repo> ~/.local/share/dotfiles-work
 
-# Create symlinks
-ln -sf ~/.local/share/chezmoi-work/dot_zshrc_before ~/.zshrc_before
-ln -sf ~/.local/share/chezmoi-work/dot_zshrc_local ~/.zshrc_local
-ln -sf ~/.local/share/chezmoi-work/dot_gitconfig-local ~/.gitconfig-local
-ln -sf ~/.local/share/chezmoi-work/dot_profile ~/.profile
-mkdir -p ~/.local/bin
-ln -sf ~/.local/share/chezmoi-work/dot_local/bin/executable_env ~/.local/bin/env
+# Run the setup script to create symlinks
+cd ~/.local/share/dotfiles-work
+./setup.sh
 ```
 
 ### Q: Can I use symlink mode instead of copy mode?
@@ -294,4 +290,4 @@ ln -sf ~/.local/share/chezmoi-work/dot_local/bin/executable_env ~/.local/bin/env
 - [Chezmoi documentation](https://www.chezmoi.io/)
 - [Chezmoi quick start](https://www.chezmoi.io/quick-start/)
 - [Chezmoi user guide](https://www.chezmoi.io/user-guide/)
-- [Work dotfiles README](../workspace/dotfiles-work/README.md)
+- Maintain work-specific dotfiles in a separate repository
