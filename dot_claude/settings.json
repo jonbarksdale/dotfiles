@@ -3,19 +3,5 @@
   "includeCoAuthoredBy": null,
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": null,
-  "pythonToolPreferences": null,
-  "env": {
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
-    "OTEL_METRICS_EXPORTER": "otlp",
-    "OTEL_LOGS_EXPORTER": "otlp",
-    "OTEL_EXPORTER_OTLP_PROTOCOL": "grpc",
-    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://otel-traces-pp-observability.us-central1.gcp.dev.paypalinc.com:4317",
-    "OTEL_EXPORTER_OTLP_METRICS_PROTOCOL": "http/json",
-    "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT": "https://otelmetrics-pp-observability.us-central1.gcp.dev.paypalinc.com:30706/v1/metrics",
-    "OTEL_METRIC_EXPORT_INTERVAL": "10000",
-    "OTEL_METRICS_INCLUDE_SESSION_ID": "false",
-    "OTEL_METRICS_INCLUDE_VERSION": "true",
-    "OTEL_METRICS_INCLUDE_ACCOUNT_UUID": "false",
-    "OTEL_RESOURCE_ATTRIBUTES": "vp.email=unknown-vp,organization=unknown-org,user.email=jobarksdale@paypal.com"
-  }
+  "pythonToolPreferences": null
 }
