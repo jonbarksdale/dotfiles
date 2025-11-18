@@ -16,12 +16,23 @@ export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
 
 echo "Installing packages from Brewfile..."
 
-# Install from global Brewfile (~/.Brewfile)
-if [[ -f "${HOME}/.Brewfile" ]]; then
-    brew bundle --global --verbose
-    echo "✓ Homebrew packages installed successfully"
-else
-    echo "⚠ Brewfile not found at ${HOME}/.Brewfile"
-    echo "  Chezmoi should have copied it there - something may have gone wrong"
-    exit 1
+# First check if Brewfile exists in home directory (already applied)
+BREWFILE="${HOME}/.Brewfile"
+
+# If not, check in chezmoi source directory
+if [[ ! -f "${BREWFILE}" ]]; then
+    CHEZMOI_SOURCE="{{ .chezmoi.sourceDir }}"
+    if [[ -f "${CHEZMOI_SOURCE}/dot_Brewfile" ]]; then
+        echo "Using Brewfile from chezmoi source directory"
+        BREWFILE="${CHEZMOI_SOURCE}/dot_Brewfile"
+    else
+        echo "⚠ Brewfile not found in either location:"
+        echo "  - ${HOME}/.Brewfile"
+        echo "  - ${CHEZMOI_SOURCE}/dot_Brewfile"
+        exit 1
+    fi
 fi
+
+# Install from Brewfile
+brew bundle --file="${BREWFILE}" --verbose
+echo "✓ Homebrew packages installed successfully"
