@@ -10,7 +10,7 @@ brew "gcc"
 brew "zsh"
 brew "bash"
 brew "zsh-completions"
-brew "chezmoi"      # Dotfiles management
+brew "sheldon"
 
 # Modern Unix tool replacements
 brew "eza"          # Modern ls replacement
@@ -38,6 +38,7 @@ brew "xcp"          # Extended cp
 brew "git"
 brew "gh"           # GitHub CLI
 brew "git-delta"    # Better git diff
+brew "lazygit"
 
 # Editors
 brew "neovim"
