@@ -152,7 +152,10 @@ else
     # Initialize fasd if it's present
     if (( $+commands[fasd] )) then;
       eval "$(fasd --init auto)"
+    else
+      echo "zoxide and fasd not found"
     fi
+       
 fi
 
 function loadOpenRouterKey {
@@ -164,7 +167,7 @@ function loadOpenRouterKey {
 #
 function init_fzf() {
 
-local PREFIX="${HOMEBREW_DIR:-/opt/hombrew}"
+local PREFIX="${HOMEBREW_DIR:-/opt/homebrew}"
 
 if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
     if [[ ! "$PATH" == *$PREFIX/opt/fzf/bin* ]]; then
@@ -195,6 +198,8 @@ if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
 
     # "fix" the alt+c shortcut even when option is in full mac os mode
     bindkey "ç" fzf-cd-widget
+else
+    echo "fzf not found"
 fi
 }
 
