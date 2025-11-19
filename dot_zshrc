@@ -99,9 +99,6 @@ if (( ! $+commands[sheldon] )); then
 
 fi
 
-# I have delusions of having multiple shells configured, so clearly I need to namespace this
-export SHELDON_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/sheldon/zsh"
-export SHELDON_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/sheldon/zsh"
 # Start sheldon, init plugins
 eval "$(sheldon source)"
 
