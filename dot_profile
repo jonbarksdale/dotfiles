@@ -1,0 +1,36 @@
+#!/bin/sh
+# ABOUTME: Shell-agnostic environment and PATH configuration
+# ABOUTME: Sourced by login shells (bash, zsh) for common environment setup
+
+# Homebrew environment setup
+if [ -f "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -f "/usr/local/bin/brew" ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# Rust/Cargo environment
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
+
+# Volta (Node.js version manager)
+if [ -d "$HOME/.volta" ]; then
+    export VOLTA_HOME="$HOME/.volta"
+    export PATH="$VOLTA_HOME/bin:$PATH"
+fi
+
+# User's local binaries
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Go binaries
+if [ -d "$HOME/go/bin" ]; then
+    export PATH="$HOME/go/bin:$PATH"
+fi
+
+# Source local profile overrides (e.g., from work dotfiles repo)
+if [ -f "$HOME/.profile.local" ]; then
+    . "$HOME/.profile.local"
+fi
