@@ -18,21 +18,14 @@ export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
 
 echo "Installing packages from Brewfile..."
 
-# First check if Brewfile exists in home directory (already applied)
-BREWFILE="${HOME}/.Brewfile"
+# Use the source Brewfile directly since this is a run_onchange_before script
+# that executes when dot_Brewfile changes (before it's applied to ~/.Brewfile)
+CHEZMOI_SOURCE="{{ .chezmoi.sourceDir }}"
+BREWFILE="${CHEZMOI_SOURCE}/dot_Brewfile"
 
-# If not, check in chezmoi source directory
 if [[ ! -f "${BREWFILE}" ]]; then
-    CHEZMOI_SOURCE="{{ .chezmoi.sourceDir }}"
-    if [[ -f "${CHEZMOI_SOURCE}/dot_Brewfile" ]]; then
-        echo "Using Brewfile from chezmoi source directory"
-        BREWFILE="${CHEZMOI_SOURCE}/dot_Brewfile"
-    else
-        echo "⚠ Brewfile not found in either location:"
-        echo "  - ${HOME}/.Brewfile"
-        echo "  - ${CHEZMOI_SOURCE}/dot_Brewfile"
-        exit 1
-    fi
+    echo "⚠ Brewfile not found at: ${BREWFILE}"
+    exit 1
 fi
 
 # Install from Brewfile
