@@ -78,6 +78,7 @@ brew "mtr"          # Network diagnostic tool
 # Task runners and productivity
 brew "go-task"
 brew "starship"     # Shell prompt
+brew "zoxide"
 
 # Documentation and help
 brew "cheat"
