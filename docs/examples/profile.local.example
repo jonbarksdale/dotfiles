@@ -1,0 +1,25 @@
+#!/bin/sh
+# Example ~/.profile.local for work-specific configuration
+# This file should be created by your work dotfiles repository setup script
+
+# Homebrew directory (if using a non-standard location)
+export HOMEBREW_DIR="/opt/homebrew"
+
+# Work-specific certificates
+export AWS_CA_BUNDLE="$HOME/certs/work-ca-bundle.crt"
+
+# Perl configuration (if needed for work tools)
+# PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB
+# PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT
+# PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT
+# PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT
+
+# Work-specific PATH additions
+# export PATH="$HOME/perl5/bin:$PATH"
+# export PATH="/usr/local/anaconda3/bin:$PATH"
+# export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+# Conda initialization (if using conda at work)
+# if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+#     . "$HOME/miniconda3/etc/profile.d/conda.sh"
+# fi

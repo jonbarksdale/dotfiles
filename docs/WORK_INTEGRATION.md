@@ -73,9 +73,16 @@ echo "Work dotfiles linked successfully from $WORK_DIR"
 
 ### ~/.profile.local (Work PATH)
 
+See `docs/examples/profile.local.example` for a template with common work configurations.
+
+Example work-specific items:
+
 ```bash
 #!/bin/sh
 # Work-specific PATH and environment variables
+
+# Work certificates
+export AWS_CA_BUNDLE="$HOME/certs/work-ca-bundle.crt"
 
 # Corp VPN tools
 export PATH="/opt/corpo/bin:$PATH"
@@ -85,6 +92,11 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home"
 
 # Work-specific environment
 export CORPO_ENV="development"
+
+# Conda/Anaconda for work projects
+if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "$HOME/miniconda3/etc/profile.d/conda.sh"
+fi
 ```
 
 ### ~/.gitconfig-local (Work Git Config)
