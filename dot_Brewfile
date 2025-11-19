@@ -121,6 +121,7 @@ brew "claude-squad"
 # Note: Most casks install to ~/Applications, but 1Password requires /Applications
 # for proper browser integration and security features.
 cask "1password", args: { appdir: "/Applications" }
+cask "1password-cli"
 cask "setapp"
 cask "jetbrains-toolbox"
 cask "raycast"
@@ -142,6 +143,15 @@ cask "omnigraffle"
 cask "zed"
 cask "obsidian"
 cask "logseq"
+cask "cursor"
+cask "cursor-cli"
+cask "little-snitch"
+cask "google-cloud-sdk"
+cask "gcloud-cli"
+
+# 
+tap "withgraphite/tap"
+brew "graphite"
 
 # Fonts
 cask "font-victor-mono-nerd-font"
