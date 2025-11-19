@@ -163,8 +163,8 @@ cask "font-cascadia-mono-nf"
 cask "font-monaspace-nerd-font"
 
 # Kindle
-mas "302584613"
+mas "Amazon Kindle", id: 302584613
 # Perplexity
-mas "6714467650"
+mas "Perplexity: Ask Anything", id: 6714467650
 # Goodnotes
-mas "1444383602"
+mas "Goodnotes: AI Notes, Docs, PDF", id: 1444383602
