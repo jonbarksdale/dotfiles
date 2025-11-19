@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # ABOUTME: Installs all Homebrew packages, casks, and fonts from ~/.Brewfile
 # ABOUTME: Uses Homebrew Bundle to install formulae, casks, and configure taps
+#
+# chezmoi:onchange-hash:{{ includeTemplate "dot_Brewfile" | sha256sum }}
 
 set -euo pipefail
 
