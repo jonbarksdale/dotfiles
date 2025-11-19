@@ -1,6 +1,15 @@
 #!/bin/zsh
 test -f ~/.zshrc_before && source ~/.zshrc_before
 
+# Helper function for configuration warnings
+function zsh_config_warn() {
+  print -P "%F{yellow}⚠ Warning:%f $1"
+}
+
+function zsh_config_error() {
+  print -P "%F{red}✗ Error:%f $1"
+}
+
 # Configure Homebrew Cask to install to ~/Applications (no sudo for updates)
 export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
 
@@ -100,7 +109,11 @@ if (( ! $+commands[sheldon] )); then
 fi
 
 # Start sheldon, init plugins
-eval "$(sheldon source)"
+if (( $+commands[sheldon] )); then
+  eval "$(sheldon source)"
+else
+  zsh_config_error "sheldon not found - plugins will not be loaded"
+fi
 
 # Aliases/functions
 
@@ -153,9 +166,9 @@ else
     if (( $+commands[fasd] )) then;
       eval "$(fasd --init auto)"
     else
-      echo "zoxide and fasd not found"
+      zsh_config_warn "zoxide and fasd not found - enhanced directory navigation not available"
     fi
-       
+
 fi
 
 function loadOpenRouterKey {
@@ -199,7 +212,7 @@ if [[ -d "$PREFIX/opt/fzf/bin" ]]; then
     # "fix" the alt+c shortcut even when option is in full mac os mode
     bindkey "ç" fzf-cd-widget
 else
-    echo "fzf not found"
+    zsh_config_warn "fzf not found - fuzzy finder features not available"
 fi
 }
 
@@ -226,18 +239,28 @@ if (( $+commands[nvim] )) then;
   alias vi=nvim
   EDITOR=nvim
 else
-  alias vi=vim
-  EDITOR=vim
+  if (( $+commands[vim] )) then;
+    alias vi=vim
+    EDITOR=vim
+  else
+    zsh_config_error "neither nvim nor vim found - EDITOR not set"
+    EDITOR=vi  # fallback to system vi
+  fi
 fi
 
 
 export EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
-if [[ -e "$(which bat)" ]]; then
+if (( $+commands[bat] )); then
   export PAGER=bat
 else
-  export PAGER=less
+  if (( $+commands[less] )); then
+    export PAGER=less
+  else
+    zsh_config_error "neither bat nor less found - PAGER not set"
+    export PAGER=more  # fallback to system more
+  fi
 fi
 
 # connect to daemon in terminal, or start daemon if not running
@@ -272,7 +295,12 @@ fi
 # Add doom to path
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
-eval "$(starship init zsh)"
+# Initialize starship prompt
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+else
+  zsh_config_error "starship not found - using default prompt"
+fi
 
 # start sdkman if present
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -283,4 +311,9 @@ eval "$(starship init zsh)"
 # Source a local zshrc if found (though that is better managed with profiles)
 test -f ~/.zshrc_local && source ~/.zshrc_local
 
-. "$HOME/.local/bin/env"
+# Source user environment file
+if [[ -f "$HOME/.local/bin/env" ]]; then
+  . "$HOME/.local/bin/env"
+else
+  zsh_config_warn "~/.local/bin/env not found - environment may not be fully configured"
+fi
