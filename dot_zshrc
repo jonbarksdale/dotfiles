@@ -284,9 +284,11 @@ if [[ -x "/usr/libexec/java_home" ]]; then
   export JAVA_HOME="$(/usr/libexec/java_home)"
 fi
 
-# source profile if we have one for local path modifications
-if [[ -x "$HOME/.profile" ]]; then
+# Source profile for shell-agnostic PATH and environment setup
+if [[ -f "$HOME/.profile" ]]; then
   source "$HOME/.profile"
+else
+  zsh_config_warn "~/.profile not found - PATH may not be fully configured"
 fi
 
 # Copilot aliases are now lazy-loaded above
@@ -310,10 +312,3 @@ fi
 
 # Source a local zshrc if found (though that is better managed with profiles)
 test -f ~/.zshrc_local && source ~/.zshrc_local
-
-# Source user environment file
-if [[ -f "$HOME/.local/bin/env" ]]; then
-  . "$HOME/.local/bin/env"
-else
-  zsh_config_warn "~/.local/bin/env not found - environment may not be fully configured"
-fi

@@ -5,7 +5,7 @@
 {{- if hasKey . "work" }}
 {{-   $work = .work }}
 {{- else if stdinIsATTY }}
-{{-   $work = promptBoolOnce . "work" "Is this a work machine (PayPal)?" false }}
+{{-   $work = promptBoolOnce . "work" "Is this a work machine?" false }}
 {{- end }}
 
 data:
