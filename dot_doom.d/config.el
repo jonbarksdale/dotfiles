@@ -58,7 +58,7 @@
 
 (setq capture-head
       (with-temp-buffer
-        (insert-file-contents "~/.dotfiles/emacs/org/capture-templates/daily.org")
+        (insert-file-contents "~/.doom.d/org/capture-templates/daily.org")
         (buffer-string)))
 (defvar daily-file-template "%<%Y-%m-%d>.org" )
 
@@ -148,12 +148,12 @@
 
           ("m" "Meeting Notes" entry
            (file+olp my/org-roam-dailies-today-file "Meetings")
-           (file "~/.dotfiles/emacs/org/capture-templates/meeting.org")
+           (file "~/.doom.d/org/capture-templates/meeting.org")
            :jump-to-captured t
            )
           ("r" "Review block" entry
            (here) ;; may be able to use (here)
-           (file "~/.dotfiles/emacs/org/capture-templates/review-block.org")
+           (file "~/.doom.d/org/capture-templates/review-block.org")
            :prepend t :unnarrowed t)
           )
         )
