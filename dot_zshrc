@@ -13,6 +13,14 @@ function zsh_config_error() {
 # Configure Homebrew Cask to install to ~/Applications (no sudo for updates)
 export HOMEBREW_CASK_OPTS="--appdir=${HOME}/Applications"
 
+# Source profile for shell-agnostic PATH and environment setup
+# This must come early so brew shellenv sets FPATH before compinit runs
+if [[ -f "$HOME/.profile" ]]; then
+  source "$HOME/.profile"
+else
+  zsh_config_warn "~/.profile not found - PATH may not be fully configured"
+fi
+
 # shell and globbing options
 set extended_glob
 set numeric_glob_sort
@@ -282,13 +290,6 @@ fi
 # set java home if we're on a mac
 if [[ -x "/usr/libexec/java_home" ]]; then
   export JAVA_HOME="$(/usr/libexec/java_home)"
-fi
-
-# Source profile for shell-agnostic PATH and environment setup
-if [[ -f "$HOME/.profile" ]]; then
-  source "$HOME/.profile"
-else
-  zsh_config_warn "~/.profile not found - PATH may not be fully configured"
 fi
 
 # Copilot aliases are now lazy-loaded above
