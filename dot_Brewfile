@@ -4,6 +4,7 @@
 # Taps
 tap "d12frosted/emacs-plus"
 tap "pls-rs/pls"
+tap "withgraphite/tap"
 
 # Core packages and modern Unix tools
 brew "gcc"
@@ -39,6 +40,7 @@ brew "git"
 brew "gh"           # GitHub CLI
 brew "git-delta"    # Better git diff
 brew "lazygit"
+brew "graphite"
 
 # Editors
 brew "neovim"
@@ -85,6 +87,7 @@ brew "zoxide"
 brew "cheat"
 brew "tealdeer"     # tldr client
 brew "glow"         # Markdown renderer
+brew "mdless"       # Markdown pager
 brew "proselint"    # Prose linter
 
 # Quality and linting tools
@@ -148,10 +151,6 @@ cask "cursor-cli"
 cask "little-snitch"
 cask "google-cloud-sdk"
 cask "gcloud-cli"
-
-# 
-tap "withgraphite/tap"
-brew "graphite"
 
 # Fonts
 cask "font-victor-mono-nerd-font"
