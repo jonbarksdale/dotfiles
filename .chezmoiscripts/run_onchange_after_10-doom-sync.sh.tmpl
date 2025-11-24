@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-# ABOUTME: Syncs Doom Emacs environment and packages after dotfiles are applied
+# ABOUTME: Syncs Doom Emacs when configuration changes are detected
 # ABOUTME: Runs 'doom env' to generate environment variables and 'doom sync' to sync packages
+#
+# Hash: Doom config files for change detection
+# init.el:    {{ include "dot_doom.d/init.el" | sha256sum }}
+# config.el:  {{ include "dot_doom.d/config.el" | sha256sum }}
+# packages.el: {{ include "dot_doom.d/packages.el" | sha256sum }}
 
 set -euo pipefail
 
