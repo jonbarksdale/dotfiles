@@ -82,6 +82,7 @@ brew "mtr"          # Network diagnostic tool
 brew "go-task"
 brew "starship"     # Shell prompt
 brew "zoxide"
+brew "topgrade"     # Universal package updater
 
 # Documentation and help
 brew "cheat"
