@@ -1,0 +1,50 @@
+#!/bin/bash
+# ABOUTME: Installs cargo packages when the package list changes
+# ABOUTME: Run on change - will reinstall when packages are added/removed
+#
+# Package list hash for chezmoi change detection:
+# choose:choose
+# rip:rm-improved
+# tokei:tokei --features all
+# whyq:whyq
+
+set -euo pipefail
+
+# Ensure cargo is in PATH
+if [[ -f "$HOME/.cargo/env" ]]; then
+    source "$HOME/.cargo/env"
+fi
+
+# Verify cargo is available
+if ! command -v cargo &> /dev/null; then
+    echo "ERROR: cargo not found. Please install Rust first."
+    exit 1
+fi
+
+# Install cargo packages if not already installed
+# Note: xcp is installed via Homebrew for faster installation
+# Using simple arrays instead of associative arrays for bash 3.x compatibility
+
+echo "Installing cargo packages..."
+
+# Array of command:package pairs
+cargo_packages=(
+    "choose:choose"
+    "rip:rm-improved"
+    "tokei:tokei --features all"
+    "whyq:whyq"
+)
+
+for entry in "${cargo_packages[@]}"; do
+    cmd="${entry%%:*}"
+    pkg="${entry#*:}"
+
+    if command -v "$cmd" &> /dev/null; then
+        echo "✓ $cmd is already installed"
+    else
+        echo "Installing $pkg..."
+        cargo install $pkg
+    fi
+done
+
+echo "✓ All cargo packages installed successfully"
