@@ -24,8 +24,8 @@ Plug 'andreshazard/vim-logreview' " syntax for logs
 Plug 'dzeban/vim-log-syntax'
 Plug 'tpope/vim-surround' " surround is magic
 Plug 'tpope/vim-repeat' " allow surround to be repeated
-Plug 'bling/vim-airline' " better statusline
-Plug 'kien/ctrlp.vim' " Open files quicklike
+Plug 'vim-airline/vim-airline' " better statusline
+Plug 'ctrlpvim/ctrlp.vim' " Open files quicklike
 Plug 'mileszs/ack.vim' " Ack/ag
 Plug 'ntpeters/vim-better-whitespace' " Fix whitespace madness
 Plug 'mattn/emmet-vim' " emmet.io aka zen coding
@@ -48,7 +48,6 @@ Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-pencil'
 
 Plug 'cespare/vim-toml' "TOML syntax
-Plug 'leshill/vim-json' "JSON
 
 " Plug 'vimwiki/vimwiki'
 Plug 'fatih/vim-go'
@@ -63,8 +62,6 @@ Plug 'rhysd/vim-grammarous'
 
 " Initialize plugin system
 call plug#end()
-
-let g:vimwiki_list = [{'path': '~/mdwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " support excel style csv
 let g:csv_nl = 1
@@ -135,7 +132,7 @@ set softtabstop=4 "Number of spaces you move when you hit the tab key
 set autoindent " stupid auto indent, simply keeps the level of indentation from the previous line
 
 " Disable encryption - anti idiot measure
-set key=
+" Note: Vim 9.1+ removed encryption support, so 'set key=' no longer exists
 
 " Fix common mistakes
 abbreviate teh the
@@ -167,7 +164,9 @@ let g:netrw_preview = 1
 " set gui font
 if has("gui_running")
     set guifont=Victor_Mono:h12
-    set macligatures
+    if has("gui_macvim")
+        set macligatures
+    endif
 endif
 
 autocmd Filetype gitcommit setlocal spell
