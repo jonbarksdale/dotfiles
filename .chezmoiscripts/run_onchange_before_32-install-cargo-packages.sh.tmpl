@@ -3,6 +3,7 @@
 # ABOUTME: Run on change - will reinstall when packages are added/removed
 #
 # Package list hash for chezmoi change detection:
+# cargo-install-update:cargo-update
 # choose:choose
 # rip:rm-improved
 # tokei:tokei --features all
@@ -29,6 +30,7 @@ echo "Installing cargo packages..."
 
 # Array of command:package pairs
 cargo_packages=(
+    "cargo-install-update:cargo-update"
     "choose:choose"
     "rip:rm-improved"
     "tokei:tokei --features all"
