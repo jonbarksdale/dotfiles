@@ -71,6 +71,7 @@ brew "localstack"
 brew "lazydocker"
 brew "aws-vault"
 brew "docker"
+brew "docker-credential-helper"
 brew "qemu"
 brew "colima"
 
