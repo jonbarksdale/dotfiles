@@ -34,3 +34,7 @@ Brewfile.lock.json
 .chezmoiignore
 .chezmoiscripts/
 .chezmoidata.yaml
+
+# Doom Emacs (self-managed via 'doom upgrade')
+.config/emacs/
+.emacs.d/

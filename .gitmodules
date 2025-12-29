@@ -1,7 +1,3 @@
-[submodule "doom-emacs"]
-	path = doom-emacs
-	url = https://github.com/hlissner/doom-emacs.git
-	branch = master
 [submodule "yazi/flavors"]
 	path = dot_config/yazi/flavors
 	url = https://github.com/yazi-rs/flavors.git

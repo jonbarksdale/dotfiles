@@ -1,49 +1,40 @@
 #!/usr/bin/env bash
-# ABOUTME: Sets up Doom Emacs by symlinking the doom-emacs submodule to ~/.emacs.d
-# ABOUTME: Also initializes git submodules if not already done
+# ABOUTME: Installs Doom Emacs to ~/.config/emacs if not present
+# ABOUTME: Doom manages its own updates via 'doom upgrade'
 
 set -euo pipefail
 
-CHEZMOI_SOURCE="{{ .chezmoi.sourceDir }}"
-DOOM_SUBMODULE="${CHEZMOI_SOURCE}/doom-emacs"
-DOOM_TARGET="${HOME}/.emacs.d"
+DOOM_DIR="${HOME}/.config/emacs"
+DOOM_REPO="https://github.com/doomemacs/doomemacs"
 
-# Initialize submodules if they haven't been initialized yet
-if [[ ! -f "${DOOM_SUBMODULE}/.git" ]] && [[ ! -d "${DOOM_SUBMODULE}/.git" ]]; then
-    echo "Initializing git submodules..."
-    cd "${CHEZMOI_SOURCE}"
-    git submodule update --init --recursive
-    echo "✓ Submodules initialized"
+# Check if doom is already installed
+if [[ -d "${DOOM_DIR}" ]] && [[ -f "${DOOM_DIR}/bin/doom" ]]; then
+    echo "✓ Doom Emacs already installed at ${DOOM_DIR}"
+    exit 0
 fi
 
-# Check if doom-emacs submodule is populated
-if [[ ! -d "${DOOM_SUBMODULE}/bin" ]]; then
-    echo "⚠ Doom Emacs submodule is not properly initialized"
-    echo "  Please run: cd {{ .chezmoi.sourceDir }} && git submodule update --init --recursive"
-    exit 1
+# Handle legacy ~/.emacs.d installation
+if [[ -d "${HOME}/.emacs.d" ]] && [[ -f "${HOME}/.emacs.d/bin/doom" ]]; then
+    echo "Found Doom at legacy location ~/.emacs.d"
+    echo "Consider moving to ~/.config/emacs with: mv ~/.emacs.d ~/.config/emacs"
+    exit 0
 fi
 
-# If ~/.emacs.d already exists and is not a symlink, back it up
-if [[ -e "${DOOM_TARGET}" ]] && [[ ! -L "${DOOM_TARGET}" ]]; then
-    BACKUP="${DOOM_TARGET}.backup.$(date +%Y%m%d_%H%M%S)"
-    echo "Backing up existing ~/.emacs.d to ${BACKUP}"
-    mv "${DOOM_TARGET}" "${BACKUP}"
+# Clean up old symlink if present
+if [[ -L "${HOME}/.emacs.d" ]]; then
+    echo "Removing old symlink at ~/.emacs.d"
+    rm "${HOME}/.emacs.d"
 fi
 
-# Remove existing symlink if it points to the wrong location
-if [[ -L "${DOOM_TARGET}" ]]; then
-    CURRENT_TARGET=$(readlink "${DOOM_TARGET}")
-    if [[ "${CURRENT_TARGET}" != "${DOOM_SUBMODULE}" ]]; then
-        echo "Removing old symlink (pointed to ${CURRENT_TARGET})"
-        rm "${DOOM_TARGET}"
-    fi
-fi
+# Install Doom Emacs
+echo "Installing Doom Emacs to ${DOOM_DIR}..."
+git clone --depth 1 "${DOOM_REPO}" "${DOOM_DIR}"
 
-# Create symlink if it doesn't exist
-if [[ ! -e "${DOOM_TARGET}" ]]; then
-    echo "Creating symlink: ${DOOM_TARGET} -> ${DOOM_SUBMODULE}"
-    ln -s "${DOOM_SUBMODULE}" "${DOOM_TARGET}"
-    echo "✓ Doom Emacs linked successfully"
-else
-    echo "✓ Doom Emacs already linked to ${DOOM_SUBMODULE}"
-fi
+echo ""
+echo "✓ Doom Emacs cloned successfully"
+echo ""
+echo "To complete installation, run:"
+echo "  ${DOOM_DIR}/bin/doom install"
+echo ""
+echo "To update Doom later, run:"
+echo "  doom upgrade"
