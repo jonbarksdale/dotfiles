@@ -4,24 +4,26 @@
 
 set -euo pipefail
 
-# Check if Doom Emacs is installed
-if [[ ! -d "$HOME/.emacs.d/bin" ]]; then
-    echo "⚠ Doom Emacs is not installed at ~/.emacs.d"
+# Find Doom installation
+DOOM_BIN=""
+if [[ -f "$HOME/.config/emacs/bin/doom" ]]; then
+    DOOM_BIN="$HOME/.config/emacs/bin/doom"
+elif [[ -f "$HOME/.emacs.d/bin/doom" ]]; then
+    DOOM_BIN="$HOME/.emacs.d/bin/doom"
+else
+    echo "⚠ Doom Emacs is not installed"
     echo "  Skipping Doom sync"
     exit 0
 fi
-
-# Ensure doom is in PATH for this script
-export PATH="$HOME/.emacs.d/bin:$PATH"
 
 echo "Syncing Doom Emacs..."
 
 # Generate Doom environment variables
 echo "Generating Doom environment..."
-doom env
+"$DOOM_BIN" env
 
 # Sync Doom packages
 echo "Syncing Doom packages..."
-doom sync
+"$DOOM_BIN" sync
 
 echo "✓ Doom Emacs synced successfully"
