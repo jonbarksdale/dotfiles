@@ -100,8 +100,21 @@ When reviewing any work, ask these five questions:
 
 # Context Files
 
-- **Commit messages**: @~/.claude/contexts/commit-message.md - Use when creating git commits
-- **Technical writing**: @~/.claude/contexts/technical-writing.md - Use for documentation
-- **Tool usage**: @~/.claude/contexts/tool-usage.md - Use for file creation and modification standards
 - **Universal prompt template**: @~/.claude/contexts/universal-prompt-template.md - Use for creating/editing new prompts or commands
-- **GitHub CLI**: @~/.claude/contexts/github-cli.md - Use for reviewing PRs and gathering GitHub context
+
+# Skills (Auto-Triggered)
+
+The following skills auto-trigger based on task context:
+- **commit-message** - Git commit message standards
+- **github-cli** - PR review and GitHub context gathering
+- **nodejs-tooling** - Node.js project standards and quality checks
+- **python-tooling** - Python project standards and quality checks
+- **technical-writing** - Documentation and ADR standards
+- **tool-usage** - File creation/modification standards
+
+## Workflow Standards
+
+- NEVER mark work as "done" or "complete" until the PR is merged
+- All verifications listed in the PR template must be completed before submitting
+- Run all tests (unit, E2E) and verify they pass before creating a PR
+
