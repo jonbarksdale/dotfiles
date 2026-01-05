@@ -3,5 +3,11 @@
   "includeCoAuthoredBy": false,
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": null,
-  "pythonToolPreferences": null
+  "pythonToolPreferences": null,
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "bunx ccusage@latest statusline",
+    "padding": 0
+  }
 }

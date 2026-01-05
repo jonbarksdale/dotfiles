@@ -9,6 +9,7 @@ trusted_config_paths = ["~/developer"]
 experimental = true
 
 [tools]
+bun = "latest"
 node = "lts"
 java = "temurin-21"
 maven = "latest"
