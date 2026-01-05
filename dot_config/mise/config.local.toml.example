@@ -1,0 +1,26 @@
+# ABOUTME: Example work-specific mise configuration (not applied by default)
+# ABOUTME: Copy to dotfiles-paypal as dot_config/mise/config.local.toml
+#
+# This file is loaded automatically by mise and overrides settings from config.toml.
+# Use this in your work dotfiles repo to configure corporate mirrors and tools.
+
+[settings]
+# URL replacements for corporate Artifactory mirrors
+# These intercept download URLs and redirect to internal mirrors
+[settings.url_replacements]
+# Node.js downloads from your Artifactory
+"https://nodejs.org/dist" = "https://artifactory.g.devqa.gcp.dev.paypalinc.com/artifactory/nodejs-dist"
+
+# Example: redirect GitHub releases through a corporate mirror
+# "https://github.com" = "https://artifactory.mycompany.com/github-mirror"
+
+[tools]
+# Override with company-provided JDK using path: prefix
+# java = "path:/Library/Java/JavaVirtualMachines/paypal-temurin-21/Contents/Home"
+
+# Or if you symlink your company JDK to mise's install dir:
+#   mkdir -p ~/.local/share/mise/installs/java
+#   ln -s /Library/Java/JavaVirtualMachines/paypal-temurin-21/Contents/Home \
+#         ~/.local/share/mise/installs/java/paypal-21
+# Then reference it by name:
+# java = "paypal-21"

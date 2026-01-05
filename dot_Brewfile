@@ -49,6 +49,7 @@ brew "d12frosted/emacs-plus/emacs-plus@30"  # Native-comp is built-in by default
 
 # Development tools
 brew "direnv"
+brew "mise"          # Polyglot version manager
 brew "pre-commit"
 brew "luarocks"
 brew "uv"           # Python package installer

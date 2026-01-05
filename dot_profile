@@ -14,12 +14,6 @@ if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
-# Volta (Node.js version manager)
-if [ -d "$HOME/.volta" ]; then
-    export VOLTA_HOME="$HOME/.volta"
-    export PATH="$VOLTA_HOME/bin:$PATH"
-fi
-
 # User's personal scripts and binaries
 if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin:$PATH"
@@ -28,11 +22,6 @@ fi
 # User's local binaries
 if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
-fi
-
-# Go binaries
-if [ -d "$HOME/go/bin" ]; then
-    export PATH="$HOME/go/bin:$PATH"
 fi
 
 # Source local profile overrides (e.g., from work dotfiles repo)

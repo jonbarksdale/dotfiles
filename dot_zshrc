@@ -286,10 +286,10 @@ else
   alias e="emacsclient -t -a ''"
 fi
 
-# MAC
-# set java home if we're on a mac
-if [[ -x "/usr/libexec/java_home" ]]; then
-  export JAVA_HOME="$(/usr/libexec/java_home)"
+# JAVA_HOME is primarily managed by mise
+# Fallback to macOS java_home if mise-managed Java not available
+if [[ -z "$JAVA_HOME" ]] && [[ -x "/usr/libexec/java_home" ]]; then
+  export JAVA_HOME="$(/usr/libexec/java_home 2>/dev/null)" || true
 fi
 
 # Copilot aliases are now lazy-loaded above
@@ -305,8 +305,12 @@ else
   zsh_config_error "starship not found - using default prompt"
 fi
 
-# start sdkman if present
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# Initialize mise for tool version management
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+else
+  zsh_config_warn "mise not found - development tool versions may not be available"
+fi
 
 # Set up br alias for broot if available
 [[ -s "$HOME/.config/broot/launcher/bash/br" ]] && source "$HOME/.config/broot/launcher/bash/br"

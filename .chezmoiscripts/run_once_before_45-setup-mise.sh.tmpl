@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# ABOUTME: Configures mise for development tool version management
+# ABOUTME: Installs global tool versions defined in ~/.config/mise/config.toml
+
+set -euo pipefail
+
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f "/usr/local/bin/brew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+if ! command -v mise &> /dev/null; then
+    echo "Warning: mise not found. Run: brew install mise"
+    exit 0
+fi
+
+echo "Setting up mise..."
+mise trust --all
+mise install
+echo "Mise setup complete. Installed tools:"
+mise list

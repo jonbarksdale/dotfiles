@@ -1,0 +1,22 @@
+# ABOUTME: Global mise configuration for development tool versions
+# ABOUTME: Project-level .mise.toml files override these defaults
+#
+# Work-specific overrides (mirrors, custom JDKs) should go in config.local.toml
+# which is loaded automatically by mise and can be managed by a separate repo.
+
+[settings]
+trusted_config_paths = ["~/developer"]
+experimental = true
+
+[tools]
+node = "lts"
+java = "temurin-21"
+maven = "latest"
+gradle = "latest"
+go = "latest"
+
+# To use a locally-installed JDK (e.g., from company tooling), use path: prefix:
+#   java = "path:/Library/Java/JavaVirtualMachines/company-jdk/Contents/Home"
+#
+# Or symlink to ~/.local/share/mise/installs/java/<name> and reference by name:
+#   java = "company-17"
