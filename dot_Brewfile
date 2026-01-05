@@ -153,7 +153,6 @@ cask "logseq"
 cask "cursor"
 cask "cursor-cli"
 cask "little-snitch"
-cask "google-cloud-sdk"
 cask "gcloud-cli"
 
 # Fonts
@@ -175,7 +174,7 @@ cask "font-noto-sans-symbols-2"
 cask "font-maple-mono-nf"
 cask "font-0xproto-nerd-font"
 cask "font-cascadia-mono-nf"
-cask "font-monaspace-nerd-font"
+cask "font-monaspice-nerd-font"
 
 # Kindle
 mas "Amazon Kindle", id: 302584613
