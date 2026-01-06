@@ -7,7 +7,7 @@
   "model": "opus",
   "statusLine": {
     "type": "command",
-    "command": "bunx ccusage@latest statusline",
+    "command": "bunx ccusage@latest statusline --visual-burn-rate emoji",
     "padding": 0
   },
   "hooks": {
