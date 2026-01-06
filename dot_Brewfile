@@ -124,6 +124,7 @@ brew "openssl"
 # Agent stuff
 brew "block-goose-cli"
 brew "claude-squad"
+brew "terminal-notifier"  # macOS notifications for Claude Code hooks
 
 # Casks (macOS applications)
 # Note: Most casks install to ~/Applications, but 1Password requires /Applications

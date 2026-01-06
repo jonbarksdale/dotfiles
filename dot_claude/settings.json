@@ -9,5 +9,27 @@
     "type": "command",
     "command": "bunx ccusage@latest statusline",
     "padding": 0
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/claude-code-notifier.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/claude-code-notifier.sh"
+          }
+        ]
+      }
+    ]
   }
 }
