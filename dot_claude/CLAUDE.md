@@ -105,10 +105,12 @@ When reviewing any work, ask these five questions:
 # Skills (Auto-Triggered)
 
 The following skills auto-trigger based on task context:
-- **commit-message** - Git commit message standards
+- **commit** - Atomic git commits with conventional format (invoke with /commit)
+- **code-review** - Code quality, security, and maintainability review
+- **doc-review** - Documentation clarity and structure review
 - **github-cli** - PR review and GitHub context gathering
-- **nodejs-tooling** - Node.js project standards and quality checks
-- **python-tooling** - Python project standards and quality checks
+- **nodejs** - Node.js development standards and best practices
+- **python** - Python development standards and best practices
 - **technical-writing** - Documentation and ADR standards
 - **tool-usage** - File creation/modification standards
 

@@ -1,6 +1,6 @@
 ---
-name: nodejs-tooling
-description: Node.js development toolchain standards. Use when setting up Node.js projects, configuring build tools, writing tests, or running quality checks. Covers npm, TypeScript, Biome/ESLint, Vitest/Jest, and project structure.
+name: nodejs
+description: Node.js development standards including project structure, quality tools (npm, Biome, Vitest, TypeScript), testing patterns, and best practices.
 ---
 
 # Node.js Development Standards

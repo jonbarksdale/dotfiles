@@ -1,0 +1,15 @@
+# ABOUTME: Specifies files/directories to remove from ~ when they no longer exist in source.
+# ABOUTME: Paths are relative to home directory. Chezmoi deletes these during apply.
+
+# Renamed skills (old names)
+.claude/skills/commit-message
+.claude/skills/python-tooling
+.claude/skills/nodejs-tooling
+
+# Renamed contexts (old names)
+.claude/contexts/commit-message.md
+.claude/contexts/python-tooling.md
+.claude/contexts/nodejs-tooling.md
+
+# Deleted commands (merged into skills)
+.claude/commands/commit.md

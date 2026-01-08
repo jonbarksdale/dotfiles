@@ -1,6 +1,6 @@
 ---
-name: python-tooling
-description: Python development toolchain standards. Use when setting up Python projects, configuring quality tools, writing tests, or running quality checks. Covers uv, ruff, mypy, pytest, and project structure.
+name: python
+description: Python development standards including project structure, quality tools (uv, ruff, mypy, pytest), testing patterns, and best practices.
 ---
 
 # Python Development Standards
