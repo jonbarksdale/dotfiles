@@ -1,7 +1,6 @@
 ---
 name: assess
 description: Self-review completed work with structured verification. Highlights nuances, omissions, and honest quality assessment.
-context: fork
 ---
 
 # ROLE
