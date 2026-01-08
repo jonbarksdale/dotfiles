@@ -113,6 +113,7 @@ The following skills auto-trigger based on task context:
 - **python** - Python development standards and best practices
 - **technical-writing** - Documentation and ADR standards
 - **tool-usage** - File creation/modification standards
+- **confluence** - Atlassian Confluence operations via MCP (read, write, search)
 
 ## Workflow Standards
 
