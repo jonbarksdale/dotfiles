@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+# ABOUTME: Script to create issue links in Jira via REST API.
+# ABOUTME: Used because the Atlassian MCP does not support issue linking.
+
+set -euo pipefail
+
+# Required environment variables:
+#   JIRA_BASE_URL - Atlassian instance URL (e.g., https://company.atlassian.net)
+#   JIRA_USER     - User email for authentication
+#   JIRA_API_TOKEN - API token from Atlassian account settings
+
+usage() {
+    cat <<EOF
+Usage: $(basename "$0") <source-issue> <target-issue> <link-type>
+
+Create a link between two Jira issues.
+
+Arguments:
+    source-issue    Source issue key (e.g., PROJ-123)
+    target-issue    Target issue key (e.g., PROJ-456)
+    link-type       Link type name (e.g., "Depends On", "Blocks", "Relates To")
+
+Common link types:
+    "Depends On"    - Source depends on target
+    "Blocks"        - Source blocks target
+    "Relates To"    - General relationship
+    "Clones"        - Source is a clone of target
+    "Duplicates"    - Source duplicates target
+
+Environment variables required:
+    JIRA_BASE_URL   - Your Atlassian instance URL
+    JIRA_USER       - Your email address
+    JIRA_API_TOKEN  - API token from Atlassian
+
+Examples:
+    jira-link-issues PROJ-123 PROJ-456 "Depends On"
+    jira-link-issues PROJ-100 PROJ-200 "Blocks"
+EOF
+    exit 1
+}
+
+# Check arguments
+if [[ $# -lt 3 ]]; then
+    usage
+fi
+
+SOURCE_ISSUE="$1"
+TARGET_ISSUE="$2"
+LINK_TYPE="$3"
+
+# Validate environment variables
+if [[ -z "${JIRA_BASE_URL:-}" ]]; then
+    echo "Error: JIRA_BASE_URL environment variable is not set" >&2
+    exit 1
+fi
+
+if [[ -z "${JIRA_USER:-}" ]]; then
+    echo "Error: JIRA_USER environment variable is not set" >&2
+    exit 1
+fi
+
+if [[ -z "${JIRA_API_TOKEN:-}" ]]; then
+    echo "Error: JIRA_API_TOKEN environment variable is not set" >&2
+    exit 1
+fi
+
+# Build the JSON payload
+# The "outwardIssue" is the target, "inwardIssue" is the source
+# For "Depends On": source depends on target
+JSON_PAYLOAD=$(cat <<EOF
+{
+    "type": {
+        "name": "${LINK_TYPE}"
+    },
+    "inwardIssue": {
+        "key": "${SOURCE_ISSUE}"
+    },
+    "outwardIssue": {
+        "key": "${TARGET_ISSUE}"
+    }
+}
+EOF
+)
+
+# Make the API request
+RESPONSE=$(curl -s -w "\n%{http_code}" \
+    -X POST \
+    -u "${JIRA_USER}:${JIRA_API_TOKEN}" \
+    -H "Content-Type: application/json" \
+    -d "${JSON_PAYLOAD}" \
+    "${JIRA_BASE_URL}/rest/api/3/issueLink")
+
+# Extract HTTP status code (last line)
+HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+BODY=$(echo "$RESPONSE" | sed '$d')
+
+# Check response
+if [[ "$HTTP_CODE" == "201" ]]; then
+    echo "Successfully linked ${SOURCE_ISSUE} -> ${TARGET_ISSUE} (${LINK_TYPE})"
+    exit 0
+elif [[ "$HTTP_CODE" == "200" ]]; then
+    echo "Successfully linked ${SOURCE_ISSUE} -> ${TARGET_ISSUE} (${LINK_TYPE})"
+    exit 0
+elif [[ "$HTTP_CODE" == "401" ]]; then
+    echo "Error: Authentication failed. Check JIRA_USER and JIRA_API_TOKEN." >&2
+    exit 1
+elif [[ "$HTTP_CODE" == "404" ]]; then
+    echo "Error: Issue not found. Verify ${SOURCE_ISSUE} and ${TARGET_ISSUE} exist." >&2
+    exit 1
+else
+    echo "Error: Failed to create link (HTTP ${HTTP_CODE})" >&2
+    echo "Response: ${BODY}" >&2
+    exit 1
+fi
