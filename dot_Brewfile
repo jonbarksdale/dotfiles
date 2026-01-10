@@ -93,6 +93,7 @@ brew "cheat"
 brew "tealdeer"     # tldr client
 brew "glow"         # Markdown renderer
 brew "mdless"       # Markdown pager
+brew "mermaid-cli"  # Diagram renderer
 brew "proselint"    # Prose linter
 
 # Quality and linting tools
