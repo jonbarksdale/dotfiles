@@ -41,6 +41,7 @@ brew "gh"           # GitHub CLI
 brew "git-delta"    # Better git diff
 brew "lazygit"
 brew "graphite"
+brew "git-filter-repo"  # History rewriting tool
 
 # Editors
 brew "neovim"
