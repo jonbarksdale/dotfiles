@@ -157,6 +157,7 @@ cask "logseq"
 cask "cursor"
 cask "cursor-cli"
 cask "little-snitch"
+cask "jordanbaird-ice@beta"  # Menu bar management
 cask "gcloud-cli"
 
 # Fonts
