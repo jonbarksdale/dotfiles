@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # ABOUTME: Configures mise for development tool version management
 # ABOUTME: Installs global tool versions defined in ~/.config/mise/config.toml
+#
+# chezmoi:onchange-hash:{{ includeTemplate "dot_config/mise/config.toml" | sha256sum }}
 
 set -euo pipefail
 
