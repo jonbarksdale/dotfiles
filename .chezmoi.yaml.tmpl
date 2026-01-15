@@ -1,15 +1,5 @@
 # ABOUTME: Chezmoi configuration file for managing dotfiles across multiple machines
-# ABOUTME: Supports per-machine customization and work-specific configurations
-
-{{- $work := false }}
-{{- if hasKey . "work" }}
-{{-   $work = .work }}
-{{- else if stdinIsATTY }}
-{{-   $work = promptBoolOnce . "work" "Is this a work machine?" false }}
-{{- end }}
-
-data:
-  work: {{ $work }}
+# ABOUTME: Uses delta for diffs and disables auto-commit/push for manual control
 
 diff:
   pager: "delta"

@@ -137,24 +137,20 @@ export CORPO_API_KEY="$(op read 'op://Work/corpo API/credential')"
    chezmoi init --apply https://github.com/yourusername/dotfiles.git
    ```
 
-2. When prompted "Is this a work machine ?", answer **yes**
-   - This sets the `{{ .work }}` variable to `true`
-   - Currently not used but available for future templating
-
-3. Clone work dotfiles (to any location you prefer):
+2. Clone work dotfiles (to any location you prefer):
 
    ```bash
    git clone <your-work-repo-url> ~/path/to/dotfiles-work
    ```
 
-4. Run work setup:
+3. Run work setup:
 
    ```bash
    cd ~/path/to/dotfiles-work
    ./setup.sh
    ```
 
-5. Restart shell to load all configuration
+4. Restart shell to load all configuration
 
 ### On a Personal Machine
 
@@ -164,9 +160,7 @@ export CORPO_API_KEY="$(op read 'op://Work/corpo API/credential')"
    chezmoi init --apply https://github.com/yourusername/dotfiles.git
    ```
 
-2. When prompted "Is this a work machine ?", answer **no**
-
-3. Done! Personal config only, no work overrides
+2. Done! Personal config only, no work overrides
 
 ## Benefits of This Approach
 
@@ -175,23 +169,3 @@ export CORPO_API_KEY="$(op read 'op://Work/corpo API/credential')"
 3. **Flexible** - Can mix and match which work overrides you want
 4. **Standard pattern** - Uses common shell sourcing patterns, no chezmoi magic required
 5. **Easy to disable** - Remove symlinks to disable work config temporarily
-
-## Chezmoi Work Variable
-
-The `.chezmoi.yaml.tmpl` file defines a `{{ .work }}` variable that can be used in templates:
-
-```yaml
-data:
-  work: {{ $work }}  # true or false based on prompt
-```
-
-This variable is currently **not used** but is available for future conditional configuration in chezmoi-managed files. For example:
-
-```bash
-# In a .tmpl file
-{{- if .work }}
-export WORK_MODE=true
-{{- end }}
-```
-
-For now, the two-repository pattern is preferred over templating work config into the personal repo.
