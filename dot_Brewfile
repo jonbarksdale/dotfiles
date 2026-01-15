@@ -95,6 +95,7 @@ brew "cheat"
 brew "tealdeer"     # tldr client
 brew "glow"         # Markdown renderer
 brew "mdless"       # Markdown pager
+brew "pandoc"       # Universal document converter
 brew "proselint"    # Prose linter
 
 # Quality and linting tools
