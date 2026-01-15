@@ -71,6 +71,10 @@ brew install something
 # Linux only
 apt install something
 {{- end }}
+
+{{- if and (eq .chezmoi.os "darwin") (env "WORK_ENV") }}
+# macOS work machine only
+{{- end }}
 ```
 
 ## Template Escaping
@@ -139,6 +143,14 @@ When you rename or delete files in chezmoi source, the old files remain in home.
 
 # Deleted config directories
 .config/deprecated-tool/
+```
+
+For conditional removal, use `.chezmoiremove.tmpl`:
+```go-template
+{{- if eq .chezmoi.os "darwin" }}
+# Only remove on macOS
+.config/linux-only-tool/
+{{- end }}
 ```
 
 Preview removals with `chezmoi diff` before applying.
