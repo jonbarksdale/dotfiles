@@ -30,7 +30,8 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "superpowers@superpowers-marketplace": true
+    "superpowers@superpowers-marketplace": true,
+    "beads@beads-marketplace": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": null,
