@@ -30,3 +30,10 @@ fi
 
 # Install from Brewfile
 brew bundle --file="${BREWFILE}" --verbose
+
+# Create aliases for formulae that conflict with other tools
+# gastown's 'gt' conflicts with graphite's 'gt', so alias it to 'gst'
+if [[ -f "/opt/homebrew/opt/gastown/bin/gt" && ! -L "/opt/homebrew/bin/gst" ]]; then
+    ln -sf /opt/homebrew/opt/gastown/bin/gt /opt/homebrew/bin/gst
+    echo "Created symlink: gst -> gastown's gt"
+fi

@@ -125,6 +125,8 @@ brew "gpg"
 brew "openssl"
 
 # Agent stuff
+brew "beads"          # Distributed graph issue tracker for AI agents
+brew "gastown", link: false  # Multi-agent workspace manager (conflicts with graphite's gt)
 brew "block-goose-cli"
 brew "claude-squad"
 brew "terminal-notifier"  # macOS notifications for Claude Code hooks
