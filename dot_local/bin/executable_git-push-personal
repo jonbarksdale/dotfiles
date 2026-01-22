@@ -1,0 +1,31 @@
+#!/bin/bash
+# ABOUTME: Git subcommand to push using personal GitHub account
+# ABOUTME: Temporarily switches gh auth, pushes, then restores original account
+
+set -euo pipefail
+
+PERSONAL_ACCOUNT="jonbarksdale"
+HOST="github.com"
+
+# Capture current active account
+current=$(gh auth status --active --json hosts --jq ".hosts[\"$HOST\"][] | select(.active) | .login")
+
+if [[ -z "$current" ]]; then
+  echo "Error: Could not determine current GitHub account" >&2
+  exit 1
+fi
+
+# If already on personal account, just push
+if [[ "$current" == "$PERSONAL_ACCOUNT" ]]; then
+  echo "Already using $PERSONAL_ACCOUNT, pushing directly" >&2
+  git push "$@"
+  exit $?
+fi
+
+# Switch to personal, push, switch back
+gh auth switch --user "$PERSONAL_ACCOUNT"
+push_exit=0
+git push "$@" || push_exit=$?
+gh auth switch --user "$current"
+
+exit $push_exit
