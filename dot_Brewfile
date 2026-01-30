@@ -54,6 +54,7 @@ brew "mise"          # Polyglot version manager
 brew "pre-commit"
 brew "luarocks"
 brew "uv"           # Python package installer
+brew "python-argcomplete"  # Shell completion for Python CLI scripts
 
 # Databases
 brew "sqlite"
