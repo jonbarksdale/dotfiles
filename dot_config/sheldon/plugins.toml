@@ -27,9 +27,6 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 
-[plugins.you-should-use]
-github = "MichaelAquilina/zsh-you-should-use"
-
 [plugins.thefuck]
 github = "laggardkernel/zsh-thefuck"
 
