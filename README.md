@@ -5,10 +5,10 @@ Personal dotfiles managed with [chezmoi](https://chezmoi.io). Supports both pers
 ## Features
 
 - 🏠 **Multi-source support**: Separate personal and work configurations
-- 📦 **Automated package management**: Homebrew, Rust, npm, and more
-- 🔧 **Version manager installation**: SDKMAN!, Volta, rustup
+- 📦 **Automated package management**: Homebrew, Rust, and more
+- 🔧 **Version management**: mise (Java, Node.js, Go, etc.) and rustup
 - 🎨 **Modern Unix tools**: bat, eza, ripgrep, fd, and many more
-- ⌨️ **Editor configs**: Neovim, Vim, Doom Emacs, IntelliJ
+- ⌨️ **Editor configs**: Neovim, Vim, Doom Emacs
 - 🐚 **Shell configuration**: Zsh with starship prompt and modern completions
 - 🤖 **Claude Code integration**: Pre-configured agents, commands, and contexts
 
@@ -61,12 +61,11 @@ cd ~/.local/share/dotfiles-work
 
 - **Homebrew**: Package manager with 80+ packages
 - **Rustup**: Rust toolchain
-- **SDKMAN!**: SDK version manager (Java, Kotlin, Groovy)
-- **Volta**: Node.js version manager
+- **mise**: Development tool version manager (Java, Node.js, Go, Bun, Maven, Gradle)
 
 ### Development Tools
 
-- **Editors**: Neovim, Vim, Doom Emacs, IntelliJ
+- **Editors**: Neovim, Vim, Doom Emacs
 - **Version Control**: Git with delta, GitHub CLI
 - **Shells**: Zsh with starship prompt
 - **Containers**: Docker, Colima
