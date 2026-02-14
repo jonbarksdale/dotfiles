@@ -27,6 +27,12 @@
 - NEVER name things as 'improved' or 'new' or 'enhanced', etc. Code naming should be evergreen. What is new today will be "old" someday.
 
 
+## Git Worktree Safety
+
+- When working in git worktrees, always verify your CWD is the worktree directory before making edits, running tests, or committing. Never remove a worktree that is your current working directory.
+- Before making any edits in a worktree session, run `pwd` and `git branch --show-current` to confirm you're in the correct worktree on the correct branch. Do this after every `cd` command.
+- Avoid interactive/stdin-dependent commands. Use API or non-interactive flags when available.
+
 ## Performance Considerations
 
 - Consider latency implications in distributed system changes
