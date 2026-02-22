@@ -1,0 +1,79 @@
+#!/bin/bash
+# ABOUTME: Chezmoi modify_ script for ~/.claude/settings.json
+# ABOUTME: Deep-merges managed base settings while preserving machine-specific additions
+
+# Base settings we want enforced everywhere.
+# Keys here will overwrite the target; keys NOT here are left untouched.
+# For enabledPlugins, base entries are merged in but existing extras are kept.
+#
+# NOTE: The deep merge strategy merges object values recursively but REPLACES
+# arrays and scalars entirely with the base value. This means any machine-specific
+# array entries (e.g., extra hooks) would be overwritten by the base definition.
+# If machine-specific array entries are needed, the deepmerge function below
+# would need to be extended with an array concatenation or dedup strategy.
+BASE_SETTINGS='
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "includeCoAuthoredBy": false,
+  "model": "opus",
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/claude-code-notifier.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/claude-code-notifier.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bunx ccusage@latest statusline --visual-burn-rate emoji",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true,
+    "beads@beads-marketplace": true
+  },
+  "alwaysThinkingEnabled": true
+}
+'
+
+# Read existing settings from stdin (chezmoi pipes current file contents)
+EXISTING="$(cat)"
+
+if [ -z "$EXISTING" ] || [ "$EXISTING" = "{}" ]; then
+  # No existing file — use base settings as-is
+  echo "$BASE_SETTINGS" | jq .
+else
+  # Deep-merge: base settings * existing, then overlay base top-level keys.
+  # Strategy:
+  #   1. Start with existing (preserves machine-specific keys like effortLevel)
+  #   2. Multiply with base to get deep merge (existing enabledPlugins entries kept)
+  #   3. Then overwrite non-object base keys to enforce our values
+  echo "$EXISTING" | jq --argjson base "$BASE_SETTINGS" '
+    # Deep merge: for object values, merge keys; for non-objects, base wins
+    def deepmerge(b):
+      . as $a |
+      b | to_entries | reduce .[] as $e (
+        $a;
+        if ($e.value | type) == "object" and (.[$e.key] | type) == "object"
+        then .[$e.key] = (.[$e.key] | deepmerge($e.value))
+        else .[$e.key] = $e.value
+        end
+      );
+    deepmerge($base)
+  '
+fi
