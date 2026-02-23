@@ -26,6 +26,7 @@ brew "procs"        # Modern ps replacement
 brew "sd"           # Modern sed replacement
 brew "bat"          # Modern cat replacement with syntax highlighting
 brew "bottom"       # Modern top replacement
+brew "btop"         # Resource monitor
 brew "duf"          # Modern df replacement
 
 # File and directory tools
