@@ -1,0 +1,117 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "model",
+        "type": "model",
+        "color": "cyan"
+      },
+      {
+        "id": "flex-1",
+        "type": "flex-separator"
+      },
+      {
+        "id": "ccusage-cost",
+        "type": "custom-command",
+        "commandPath": "~/.claude/ccusage-cost.sh",
+        "preserveColors": false,
+        "timeout": 8000
+      },
+      {
+        "id": "separator-1",
+        "type": "separator"
+      },
+      {
+        "id": "context-bar",
+        "type": "context-bar",
+        "color": "green"
+      }
+    ],
+    [
+      {
+        "id": "cwd",
+        "type": "current-working-dir",
+        "color": "blue"
+      },
+      {
+        "id": "19742db3-ac54-4dad-8d14-b67e882ac0c2",
+        "type": "separator"
+      },
+      {
+        "id": "worktree",
+        "type": "git-worktree",
+        "color": "yellow"
+      },
+      {
+        "id": "24b49aa2-77b4-482d-b8d5-9d071ca06156",
+        "type": "separator"
+      },
+      {
+        "id": "branch",
+        "type": "git-branch",
+        "color": "magenta"
+      },
+      {
+        "id": "12346e18-5ce1-4d24-b739-181d4ab1e213",
+        "type": "separator"
+      },
+      {
+        "id": "changes",
+        "type": "git-changes",
+        "color": "yellow"
+      },
+      {
+        "id": "flex-2",
+        "type": "flex-separator"
+      },
+      {
+        "id": "skills",
+        "type": "skills",
+        "color": "brightBlack"
+      }
+    ],
+    [
+      {
+        "id": "session-usage",
+        "type": "session-usage",
+        "color": "green"
+      },
+      {
+        "id": "7f3aa029-cce1-496a-950f-1cea0c1e0042",
+        "type": "separator"
+      },
+      {
+        "id": "weekly-usage",
+        "type": "weekly-usage",
+        "color": "yellow"
+      },
+      {
+        "id": "99e43206-6f07-492f-b48b-409efcff3ccc",
+        "type": "separator"
+      },
+      {
+        "id": "reset-timer",
+        "type": "reset-timer",
+        "color": "brightBlack"
+      }
+    ]
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false
+  }
+}

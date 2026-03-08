@@ -40,7 +40,7 @@ BASE_SETTINGS='
   },
   "statusLine": {
     "type": "command",
-    "command": "bunx ccusage@latest statusline --visual-burn-rate emoji",
+    "command": "bunx ccstatusline@latest",
     "padding": 0
   },
   "enabledPlugins": {
