@@ -35,8 +35,8 @@
         "color": "blue"
       },
       {
-        "id": "19742db3-ac54-4dad-8d14-b67e882ac0c2",
-        "type": "separator"
+        "id": "flex-2",
+        "type": "flex-separator"
       },
       {
         "id": "worktree",
@@ -62,8 +62,8 @@
         "color": "yellow"
       },
       {
-        "id": "flex-2",
-        "type": "flex-separator"
+        "id": "19742db3-ac54-4dad-8d14-b67e882ac0c2",
+        "type": "separator"
       },
       {
         "id": "skills",
@@ -72,6 +72,10 @@
       }
     ],
     [
+      {
+        "id": "75d9eda6-7571-4b50-9cea-1721c6eb42fc",
+        "type": "flex-separator"
+      },
       {
         "id": "session-usage",
         "type": "session-usage",
