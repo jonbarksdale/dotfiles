@@ -8,6 +8,15 @@
         "color": "cyan"
       },
       {
+        "id": "separator-1",
+        "type": "separator"
+      },
+      {
+        "id": "context-bar",
+        "type": "context-bar",
+        "color": "green"
+      },
+      {
         "id": "flex-1",
         "type": "flex-separator"
       },
@@ -17,15 +26,6 @@
         "commandPath": "~/.claude/ccusage-cost.sh",
         "preserveColors": false,
         "timeout": 8000
-      },
-      {
-        "id": "separator-1",
-        "type": "separator"
-      },
-      {
-        "id": "context-bar",
-        "type": "context-bar",
-        "color": "green"
       }
     ],
     [
@@ -101,9 +101,9 @@
       }
     ]
   ],
-  "flexMode": "full-minus-40",
+  "flexMode": "full-until-compact",
   "compactThreshold": 60,
-  "colorLevel": 2,
+  "colorLevel": 3,
   "inheritSeparatorColors": false,
   "globalBold": false,
   "powerline": {
