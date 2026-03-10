@@ -108,20 +108,21 @@ When reviewing any work, ask these five questions:
 
 - **Universal prompt template**: @~/.claude/contexts/universal-prompt-template.md - Use for creating/editing new prompts or commands
 
-# Skills (Auto-Triggered)
+# Skills
 
-The following skills auto-trigger based on task context:
+The following skills trigger based on task context:
 - **commit** - Atomic git commits with conventional format (invoke with /commit)
 - **code-review** - Code quality, security, and maintainability review
-- **doc-review** - Documentation clarity and structure review
-- **github-cli** - PR review and GitHub context gathering
-- **nodejs** - Node.js development standards and best practices
-- **python** - Python development standards and best practices
-- **technical-writing** - Documentation and ADR standards
-- **tool-usage** - File creation/modification standards
+- **doc-review** - Review existing documentation for clarity and structure
+- **technical-writing** - Create new documentation, ADRs, and technical specs
+- **github-cli** - GitHub CLI (gh) for PRs, issues, and repo context
+- **nodejs** - Node.js/TypeScript development standards and tooling
+- **python** - Python development standards and tooling
+- **tool-usage** - File creation/modification via Write/Edit tools
 - **confluence** - Atlassian Confluence operations via MCP (read, write, search)
 - **jira** - Atlassian Jira operations via MCP (issues, transitions, JQL search)
-- **chezmoi** - Dotfiles management with chezmoi (auto-triggers in dotfiles repos)
+- **chezmoi** - Dotfiles management with chezmoi for cross-machine config
+- **neovim-config** - Neovim plugin installation and LazyVim configuration
 
 ## Workflow Standards
 
