@@ -195,7 +195,8 @@ clear, natural writing. Source: <https://tropes.fyi>
   Use commas, parentheses, or separate sentences instead
 - **Bold-first bullets**: Every list item starting with bolded lead-in
 - **Unicode decoration**: Arrows (→), smart quotes, special characters
-  that wouldn't be typed naturally
+  that wouldn't be typed naturally. Use ASCII ligature sequences instead
+  (e.g., -> for arrows, => for fat arrows, != for not-equal)
 
 ### Composition
 
