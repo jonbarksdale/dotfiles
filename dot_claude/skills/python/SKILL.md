@@ -1,6 +1,6 @@
 ---
 name: python
-description: Python development standards including project structure, quality tools (uv, ruff, mypy, pytest), testing patterns, and best practices.
+description: Python development standards including project structure, quality tools (uv, ruff, mypy, pytest), testing patterns, and best practices. Use whenever working in a project with pyproject.toml, setup.py, requirements.txt, or Python source files. Triggers on Python development, testing, linting, or packaging tasks.
 ---
 
 # Python Development Standards

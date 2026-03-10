@@ -3,11 +3,7 @@
 
 ---
 name: neovim-config
-description: Neovim plugin installation and configuration for LazyVim-based setup. Auto-triggers when working in nvim config directories.
-triggers:
-  - path: "**/dot_config/nvim/**"
-  - path: "**/.config/nvim/**"
-  - keywords: ["neovim", "nvim", "lazyvim", "nvim plugin"]
+description: Neovim plugin installation and configuration for LazyVim-based setup. Use whenever working with nvim config files (dot_config/nvim/, .config/nvim/), adding or modifying neovim plugins, configuring keybindings in nvim, or when the user mentions neovim, nvim, lazyvim, or vim plugins.
 ---
 
 # Neovim Configuration Skill

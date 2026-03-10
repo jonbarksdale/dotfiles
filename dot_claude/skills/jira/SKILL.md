@@ -1,6 +1,6 @@
 ---
 name: jira
-description: Atlassian Jira integration via MCP. Auto-triggers when working with Jira issues, tickets, epics, or project management. Supports searching, creating, updating issues, transitions, comments, and linking.
+description: Atlassian Jira integration via MCP. Use when working with Jira issues, tickets, epics, sprints, or project management. Supports searching, creating, updating issues, transitions, comments, and linking. Triggers when the user mentions Jira, tickets, issues, or project tracking.
 context: fork
 ---
 

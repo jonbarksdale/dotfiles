@@ -1,6 +1,6 @@
 ---
 name: tool-usage
-description: File creation and modification standards. Use when creating or modifying files to ensure proper tool usage. Requires using Write, Edit, or MultiEdit tools instead of bash commands like echo or cat with heredoc.
+description: File creation and modification standards. Use whenever creating new files, editing existing files, or writing content to disk. Requires using Write, Edit, or MultiEdit tools instead of bash commands like echo, cat with heredoc, or sed. Triggers on any file creation or modification task.
 ---
 
 # Tool Usage Standards

@@ -1,6 +1,6 @@
 ---
 name: technical-writing
-description: Technical documentation and writing standards. Use when creating documentation, writing ADRs (Architecture Decision Records), or reviewing technical documents. Covers document structure, quality requirements, and review process.
+description: Technical documentation creation and writing standards. Use when creating new documentation, writing ADRs (Architecture Decision Records), drafting technical specs, or structuring new technical documents. Covers document structure, quality requirements, and the writing process. For reviewing existing docs, use the doc-review skill instead.
 ---
 
 # Technical Writing Standards

@@ -1,6 +1,6 @@
 ---
 name: confluence
-description: Atlassian Confluence integration via MCP. Auto-triggers when working with Confluence wiki pages, documentation, or content management. Supports searching, reading, creating, updating pages, comments, and Jira linking.
+description: Atlassian Confluence integration via MCP. Use when working with Confluence wiki pages, spaces, documentation, or content management. Supports searching, reading, creating, updating pages, comments, and Jira linking. Triggers when the user mentions Confluence, wiki pages, or knowledge base content.
 context: fork
 ---
 

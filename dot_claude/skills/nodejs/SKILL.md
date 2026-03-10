@@ -1,6 +1,6 @@
 ---
 name: nodejs
-description: Node.js development standards including project structure, quality tools (npm, Biome, Vitest, TypeScript), testing patterns, and best practices.
+description: Node.js and TypeScript development standards including project structure, quality tools (npm, Biome, Vitest, TypeScript), testing patterns, and best practices. Use whenever working in a project with package.json, tsconfig.json, or Node.js/TypeScript source files. Triggers on JavaScript, TypeScript, npm, or Node.js development tasks.
 ---
 
 # Node.js Development Standards

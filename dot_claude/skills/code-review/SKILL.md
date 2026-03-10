@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Code review standards for quality, security, and maintainability. Auto-triggers during PR reviews and code analysis.
+description: Code review standards for quality, security, and maintainability. Use when reviewing code changes, analyzing PRs, auditing code quality, or when asked to review, critique, or assess code. Triggers on any code review, PR analysis, or code quality assessment task.
 ---
 
 # Code Review Standards

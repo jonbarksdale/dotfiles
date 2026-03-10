@@ -1,6 +1,6 @@
 ---
 name: doc-review
-description: Documentation review standards for clarity, structure, and reader value. Auto-triggers when reviewing docs, ADRs, or technical writing.
+description: Documentation review standards for clarity, structure, and reader value. Use when reviewing existing documentation, ADRs, READMEs, wikis, or technical writing for quality. Triggers when asked to review, critique, or improve written documentation. For creating new docs, use the technical-writing skill instead.
 ---
 
 # Documentation Review Standards

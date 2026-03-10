@@ -3,11 +3,7 @@
 
 ---
 name: chezmoi
-description: Dotfiles management with chezmoi. Auto-triggers when working in dotfiles repos or chezmoi source directory.
-triggers:
-  - path: "**/dotfiles/**"
-  - path: "**/.local/share/chezmoi/**"
-  - keywords: ["dotfiles", "chezmoi", ".zshrc", ".vimrc", ".config"]
+description: Dotfiles management with chezmoi for cross-machine configuration. Use whenever working in a dotfiles repo, chezmoi source directory, or managing config files like .zshrc, .vimrc, .config/*, .gitconfig, or any home directory dotfiles. Also triggers when the user mentions chezmoi, dotfiles, or cross-machine config sync.
 ---
 
 # Chezmoi Dotfiles Management
