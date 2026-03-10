@@ -1,0 +1,17 @@
+# ABOUTME: Global markdownlint-cli2 configuration for markdown linting defaults
+# ABOUTME: Sets 120-char line length and disables noisy rules for practical use
+
+config:
+  # Line length: 120 characters, allow long lines in tables and code blocks
+  MD013:
+    line_length: 120
+    tables: false
+    code_blocks: false
+    headings: 120
+
+  # Allow duplicate headings in different sections (common in reference docs)
+  MD024:
+    siblings_only: true
+
+  # Allow inline HTML (needed for some documentation)
+  MD033: false
