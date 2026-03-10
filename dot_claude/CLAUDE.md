@@ -113,8 +113,7 @@ When reviewing any work, ask these five questions:
 The following skills trigger based on task context:
 - **commit** - Atomic git commits with conventional format (invoke with /commit)
 - **code-review** - Code quality, security, and maintainability review
-- **doc-review** - Review existing documentation for clarity and structure
-- **technical-writing** - Create new documentation, ADRs, and technical specs
+- **technical-writing** - Documentation standards for writing and reviewing (includes AI anti-patterns)
 - **github-cli** - GitHub CLI (gh) for PRs, issues, and repo context
 - **nodejs** - Node.js/TypeScript development standards and tooling
 - **python** - Python development standards and tooling
