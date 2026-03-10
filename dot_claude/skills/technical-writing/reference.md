@@ -27,6 +27,7 @@ When reviewing or self-editing any documentation, ask:
 ## Document Structure
 
 ### Technical Documents
+
 1. **Executive Summary** (write last, after content is complete)
 2. **Purpose Statement** - Clear document goal
 3. **Problem Statement** - From customer's perspective
@@ -36,7 +37,9 @@ When reviewing or self-editing any documentation, ask:
 7. **Appendix** - FAQ, glossary, alternatives, references
 
 ### Architecture Decision Records (ADRs)
+
 Follow enhanced MADR format:
+
 - **Status**: Proposed | Accepted | Deprecated | Superseded
 - **Date**: When decision was made
 - **Context**: Forces at play, problem statement
@@ -60,12 +63,15 @@ Follow enhanced MADR format:
 ## Clarity Standards
 
 ### Acronyms and Terminology
+
 - Define every acronym at first usage
 - Don't assume domain knowledge without stating assumptions
 - Include a glossary for documents with many terms
 
 ### Weasel Words to Flag
+
 Vague qualifiers that should be replaced with specifics:
+
 - "Significantly" → quantify the improvement
 - "Generally" → specify the conditions
 - "Many" → give actual numbers or percentages
@@ -74,6 +80,7 @@ Vague qualifiers that should be replaced with specifics:
 - "Fast" → how fast? Measured how?
 
 ### Structure for Clarity
+
 - Don't bury the lede - lead with conclusions
 - Use headings liberally for scannability
 - One idea per paragraph
@@ -82,16 +89,19 @@ Vague qualifiers that should be replaced with specifics:
 ## Reader Value Standards
 
 ### Optimize for Reader's Time
+
 - Put the most important information first
 - Use formatting to enable skimming
 - Include a TL;DR for long documents
 
 ### Don't Make Readers Work
+
 - Include calculations (don't expect readers to do math)
 - Duplicate small content if it saves jumping between sections
 - Provide concrete examples, not just abstract descriptions
 
 ### Completeness Checks
+
 - Can someone new follow this without asking questions?
 - Are edge cases and exceptions documented?
 - Are next steps or action items clear?
@@ -99,12 +109,14 @@ Vague qualifiers that should be replaced with specifics:
 ## Formatting Standards
 
 ### Markdown Linting
+
 - Line length: 120 characters max
 - One blank line between sections
 - Consistent heading hierarchy (don't skip levels)
 - Code blocks with language specifier
 
 ### Diagram Standards
+
 - Include a legend unless following strict UML
 - Keep colors, shapes, sizes consistent
 - Prefer sequence diagrams for call ordering
@@ -113,6 +125,7 @@ Vague qualifiers that should be replaced with specifics:
 ## Common Issues to Flag
 
 ### Anti-Patterns
+
 - Wall of text without headings or breaks
 - Assumptions about reader knowledge without stating them
 - Passive voice hiding who does what
@@ -120,6 +133,7 @@ Vague qualifiers that should be replaced with specifics:
 - Broken links or references
 
 ### Missing Elements
+
 - No version or date information
 - No owner or point of contact
 - No status indicator (draft, final, deprecated)
@@ -128,9 +142,10 @@ Vague qualifiers that should be replaced with specifics:
 ## AI Writing Anti-Patterns
 
 These patterns are tells of AI-generated text. Avoid them to produce
-clear, natural writing. Source: https://tropes.fyi
+clear, natural writing. Source: <https://tropes.fyi>
 
 ### Word Choice
+
 - **Overused adverbs**: "quietly," "deeply," "fundamentally,"
   "remarkably," "arguably" — drop them or use specifics
 - **Overused verbs/adjectives**: "delve," "utilize," "leverage,"
@@ -141,6 +156,7 @@ clear, natural writing. Source: https://tropes.fyi
   as," "marks," or "represents"
 
 ### Sentence Structure
+
 - **"It's not X — it's Y"**: False profundity via negation-reframe
 - **"Not X. Not Y. Just Z."**: Dramatic countdown for manufactured
   tension
@@ -156,6 +172,7 @@ clear, natural writing. Source: https://tropes.fyi
 - **Gerund fragment litany**: Verbless gerund fragments strung together
 
 ### Tone
+
 - **False suspense**: "Here's the kicker," "Here's the thing," "Here's
   where it gets interesting"
 - **Patronizing analogies**: "Think of it as..." assuming readers need
@@ -173,6 +190,7 @@ clear, natural writing. Source: https://tropes.fyi
   paradox" or "acceleration trap" without grounding
 
 ### Formatting
+
 - **Em dash overuse**: One or two per document is fine; more is a tell.
   Use commas, parentheses, or separate sentences instead
 - **Bold-first bullets**: Every list item starting with bolded lead-in
@@ -180,6 +198,7 @@ clear, natural writing. Source: https://tropes.fyi
   that wouldn't be typed naturally
 
 ### Composition
+
 - **Fractal summaries**: Repeating "what I'll tell you; what I'm
   telling you; what I told you" at every level
 - **Dead metaphors**: Beating a single metaphor across an entire piece

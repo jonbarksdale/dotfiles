@@ -26,6 +26,9 @@ dotbot-brew/
 dotbot-rust/
 dotbot-gh-extension/
 
+# Linter configs (deployed via dot_ prefixed versions)
+.markdownlint-cli2.yaml
+
 # Homebrew
 Brewfile.lock.json
 

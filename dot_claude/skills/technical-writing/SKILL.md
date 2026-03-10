@@ -48,14 +48,21 @@ When reviewing documentation, check:
 
 Avoid these common AI writing tropes (see reference.md for full list):
 
-**Word choice**: Don't use "delve," "leverage," "robust," "harness," "tapestry," "landscape," "paradigm." Don't replace "is" with "serves as" or "stands as."
+**Word choice**: Don't use "delve," "leverage," "robust," "harness," "tapestry," "landscape,"
+"paradigm." Don't replace "is" with "serves as" or "stands as."
 
-**Sentence structure**: Avoid "It's not X — it's Y" reframes, dramatic countdowns ("Not X. Not Y. Just Z."), rhetorical self-questions ("The result? Devastating."), and filler transitions ("It's worth noting," "Importantly").
+**Sentence structure**: Avoid "It's not X, it's Y" reframes, dramatic countdowns
+("Not X. Not Y. Just Z."), rhetorical self-questions ("The result? Devastating."),
+and filler transitions ("It's worth noting," "Importantly").
 
-**Tone**: No false suspense ("Here's the kicker"), no patronizing analogies ("Think of it as..."), no stakes inflation. Don't "unpack" or "break down" for expert audiences.
+**Tone**: No false suspense ("Here's the kicker"), no patronizing analogies
+("Think of it as..."), no stakes inflation. Don't "unpack" or "break down" for
+expert audiences.
 
-**Formatting**: Don't overuse em dashes (—). One or two per document is fine; more than that is a tell. Use commas, parentheses, or separate sentences instead.
+**Formatting**: Don't overuse em dashes. One or two per document is fine; more than
+that is a tell. Use commas, parentheses, or separate sentences instead.
 
-**Composition**: Don't repeat yourself at every level (fractal summaries). Don't announce conclusions ("In conclusion"). State things once, clearly.
+**Composition**: Don't repeat yourself at every level (fractal summaries). Don't
+announce conclusions ("In conclusion"). State things once, clearly.
 
 See [reference.md](./reference.md) for complete standards, weasel word list, and full AI anti-patterns catalog.
