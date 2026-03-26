@@ -3,3 +3,6 @@ font-family = "Maple Mono NF"
 
 # make select copy to the system clipboard as well as the selection clipboard in Ghostty 
 copy-on-select = "clipboard"
+
+# Apparently ghostty is stupid about vi mode line editor. This seems to fix it, so fzf and other keybinds work correctly.
+keybind = ctrl+[=text:\x1b
