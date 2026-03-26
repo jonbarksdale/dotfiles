@@ -1,0 +1,6 @@
+// ABOUTME: Zellij terminal multiplexer configuration
+// ABOUTME: Uses unlock-first preset to avoid keybind conflicts with zsh vi-mode, FZF, and neovim
+
+// Start in locked mode so all keys pass through to the shell/editor by default.
+// Press Ctrl+G to unlock and access zellij keybinds, then press the mode key.
+default_mode "locked"
