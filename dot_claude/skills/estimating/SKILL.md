@@ -43,11 +43,14 @@ Whether to act immediately depends on execution context:
 
 ## Scoring Signals
 
+Start from the anchor that best describes the core task, then apply modifiers as shifts in judgment — not a linear sum. Three or more +1 modifiers is a strong signal to step up to the next score level, not to add three points.
+
 | Signal | Pushes toward |
 |--------|---------------|
 | Single file or function touched | 0–1 |
 | New module/component with clear spec | 2 |
 | Multiple modules + shared state coordination | 3 |
+| Scope explicitly fuzzy ("potentially other components", "and anything else affected") | +1 |
 | A decision must be made before implementation can start | +1 |
 | External service account or credentials required | +1 |
 | Cross-environment verification needed (devices, browsers, OS) | +1 |
@@ -71,7 +74,7 @@ Score 8?   → Stop. File sub-issues. Re-estimate the pieces.
 
 These are from real experience, not speculation:
 
-- **Underestimating problems with known hidden complexity** — e.g., gesture/scroll conflict in mobile drawers looks like a 1 but is a 3. Ask: does this problem domain have a known hard edge case?
+- **Underestimating problems with known hidden complexity** — e.g., gesture/scroll conflict in mobile drawers looks like a 1 but is a 3, and can reach 5 once cross-device testing, headless limitations, and a library decision are also in play. Ask: does this problem domain have a known hard edge case? Then count the other modifiers.
 - **Ignoring external setup steps** — if a human needs to create accounts, add secrets, or approve access before work can complete, add 1 point. Coordination overhead is real effort.
 - **Estimating implementation only** — include tests, integration verification, and review in the estimate. They are not free.
 - **Not acting on 0s** — if it's genuinely zero effort, fix it in the conversation rather than creating ticket churn.
