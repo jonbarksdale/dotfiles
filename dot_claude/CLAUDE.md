@@ -47,6 +47,20 @@
 - If the logs are supposed to contain errors, capture and test it.
 - NO EXCEPTIONS POLICY: Under no circumstances should you mark any test type as "not applicable". Every project, regardless of size or complexity, MUST have unit tests, integration tests, AND end-to-end tests. If you believe a test type doesn't apply, you need the human to say exactly "I AUTHORIZE YOU TO SKIP WRITING TESTS THIS TIME"
 
+## Test Discipline
+
+- NEVER dismiss a test failure as "pre-existing" or "unrelated" without root-cause investigation.
+  Investigate: check worktree env files, recent schema/seed changes, and whether the failure
+  reproduces on main with the same setup. Only skip after confirming it pre-exists and is
+  out of scope for the current task.
+- Every failing test is a real signal until proven otherwise.
+
+## Session Start
+
+When starting a session that involves MCP servers (Linear, Supabase, etc.), run /preflight
+before beginning real work. This surfaces expired auth tokens and environment drift before
+they interrupt mid-task.
+
 # Agent Verification Standards
 
 ## CRITICAL: Test Before Claiming Complete
@@ -122,6 +136,8 @@ The following skills trigger based on task context:
 - **jira** - Atlassian Jira operations via MCP (issues, transitions, JQL search)
 - **chezmoi** - Dotfiles management with chezmoi for cross-machine config
 - **neovim-config** - Neovim plugin installation and LazyVim configuration
+- **preflight** - Session start check: MCP auth, git state, worktree env
+- **finish-ticket** - Complete a ticket: tests → lint → commit → merge → update issue tracker
 
 ## Workflow Standards
 
