@@ -38,6 +38,9 @@ Brewfile.lock.json
 .chezmoiscripts/
 .chezmoidata.yaml
 
+# Nvim spell compiled binaries (auto-generated from .add files by nvim on load)
+.config/nvim/spell/*.spl
+
 # Doom Emacs (self-managed via 'doom upgrade')
 .config/emacs/
 .emacs.d/
