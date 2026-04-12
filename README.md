@@ -55,6 +55,29 @@ cd ~/.local/share/dotfiles-work
 
 **Note**: Your personal `.zshrc` and `.gitconfig` are already configured to source work-specific override files (`~/.zshrc_local`, `~/.gitconfig-local`) if they exist, so the work configuration integrates seamlessly.
 
+## Machine-Specific Configuration
+
+After `chezmoi init`, create `~/.config/chezmoi/chezmoi.yaml` to configure machine-specific behavior:
+
+```yaml
+diff:
+  pager: "delta"
+
+git:
+  autoCommit: false
+  autoPush: false
+
+data:
+  # Set to true on machines with a Claude Max subscription.
+  # Controls whether session usage, weekly usage, and reset timer
+  # widgets appear in the ccstatusline status bar.
+  hasClaudeSubscription: true   # or false for work/no-subscription machines
+```
+
+| Variable | Values | Effect |
+|----------|--------|--------|
+| `hasClaudeSubscription` | `true` / `false` | Show/hide Claude usage widgets in status line |
+
 ## What Gets Installed
 
 ### Package Managers & Tools
