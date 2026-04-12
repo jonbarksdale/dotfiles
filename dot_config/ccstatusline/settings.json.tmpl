@@ -8,6 +8,22 @@
         "color": "cyan"
       },
       {
+        "id": "9cdb1bdf-7c7d-4eb7-8eea-fdefb2c94bb6",
+        "type": "separator"
+      },
+      {
+        "id": "830830c4-df6d-4e33-9682-bd380e0e9e09",
+        "type": "git-root-dir"
+      },
+      {
+        "id": "0a63b4b3-869d-419b-9322-549e098f92ab",
+        "type": "separator"
+      },
+      {
+        "id": "3606f863-db89-48b8-aac3-cdafcb1c69a3",
+        "type": "git-branch"
+      },
+      {
         "id": "separator-1",
         "type": "separator"
       },
@@ -17,8 +33,8 @@
         "color": "green"
       },
       {
-        "id": "flex-1",
-        "type": "flex-separator"
+        "id": "96cc872d-28b6-4af0-8663-c82a5bd71eae",
+        "type": "separator"
       },
       {
         "id": "ccusage-cost",
@@ -26,80 +42,32 @@
         "commandPath": "~/.claude/ccusage-cost.sh",
         "preserveColors": false,
         "timeout": 8000
-      }
-    ],
-    [
+      }{{ if .hasClaudeSubscription }},
       {
-        "id": "cwd",
-        "type": "current-working-dir",
-        "color": "blue"
-      },
-      {
-        "id": "flex-2",
-        "type": "flex-separator"
-      },
-      {
-        "id": "worktree",
-        "type": "git-worktree",
-        "color": "yellow"
-      },
-      {
-        "id": "24b49aa2-77b4-482d-b8d5-9d071ca06156",
+        "id": "d8471ce5-37e0-4aa9-9eac-d4ff697456af",
         "type": "separator"
       },
       {
-        "id": "branch",
-        "type": "git-branch",
-        "color": "magenta"
+        "id": "3ef04e4b-c1f9-4a27-9650-a1238a6cdd66",
+        "type": "session-usage"
       },
       {
-        "id": "12346e18-5ce1-4d24-b739-181d4ab1e213",
+        "id": "892e1bea-2211-4bca-8ee1-f43b663f6e42",
         "type": "separator"
       },
       {
-        "id": "changes",
-        "type": "git-changes",
-        "color": "yellow"
+        "id": "e5e408a9-174e-4942-8d30-d3344240210e",
+        "type": "weekly-usage"
       },
       {
-        "id": "19742db3-ac54-4dad-8d14-b67e882ac0c2",
+        "id": "56981f72-2ca8-4bd3-8bdc-acd6ddced1f4",
         "type": "separator"
       },
       {
-        "id": "skills",
-        "type": "skills",
-        "color": "brightBlack"
-      }
-    ]{{ if .hasClaudeSubscription }},
-    [
-      {
-        "id": "75d9eda6-7571-4b50-9cea-1721c6eb42fc",
-        "type": "flex-separator"
-      },
-      {
-        "id": "session-usage",
-        "type": "session-usage",
-        "color": "green"
-      },
-      {
-        "id": "7f3aa029-cce1-496a-950f-1cea0c1e0042",
-        "type": "separator"
-      },
-      {
-        "id": "weekly-usage",
-        "type": "weekly-usage",
-        "color": "yellow"
-      },
-      {
-        "id": "99e43206-6f07-492f-b48b-409efcff3ccc",
-        "type": "separator"
-      },
-      {
-        "id": "reset-timer",
-        "type": "reset-timer",
-        "color": "brightBlack"
-      }
-    ]{{ end }}
+        "id": "c8cb2dcd-31cf-4d45-a342-0cdda1feab9b",
+        "type": "reset-timer"
+      }{{ end }}
+    ]
   ],
   "flexMode": "full-until-compact",
   "compactThreshold": 60,
