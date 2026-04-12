@@ -136,6 +136,7 @@ The following skills trigger based on task context:
 - **jira** - Atlassian Jira operations via MCP (issues, transitions, JQL search)
 - **chezmoi** - Dotfiles management with chezmoi for cross-machine config
 - **neovim-config** - Neovim plugin installation and LazyVim configuration
+- **estimating** - Effort estimation using fibonacci scale calibrated to AI session planning
 - **preflight** - Session start check: MCP auth, git state, worktree env
 - **finish-ticket** - Complete a ticket: tests → lint → commit → merge → update issue tracker
 
