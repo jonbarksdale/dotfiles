@@ -46,6 +46,10 @@ github = "zpm-zsh/ls"
 [plugins.ls.hooks]
 pre = 'export ZSH_LS_BACKEND=eza'
 
+# loads forgecode zsh plugin and theme via inline eval
+[plugins.forgecode]
+inline = 'if (( $+commands[forge] )); then eval "$(forge zsh plugin)"; eval "$(forge zsh theme)"; fi'
+
 # For example:
 #
 # [plugins.base16]
