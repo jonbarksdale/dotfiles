@@ -37,6 +37,15 @@ Work configuration integrates through runtime file sourcing. The personal dotfil
 
 The git include happens **last**, so work settings override personal settings.
 
+### AI Tool Provider Configuration
+
+ForgeCode uses `forge provider login` for all provider authentication. Credentials are stored in forge's own secure store, not environment variables.
+
+| Environment | How to configure |
+|-------------|-----------------|
+| **Work** | Run `forge provider login anthropic_compatible` — enter your custom endpoint URL and API key |
+| **Home** | Run `forge provider login anthropic` — authenticate with your Claude subscription |
+
 ## Work Repo Structure
 
 Recommended structure for your work dotfiles repository:
