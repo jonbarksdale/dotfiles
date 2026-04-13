@@ -4,3 +4,5 @@
 // Start in locked mode so all keys pass through to the shell/editor by default.
 // Press Ctrl+G to unlock and access zellij keybinds, then press the mode key.
 default_mode "locked"
+
+theme "ayu_dark"
