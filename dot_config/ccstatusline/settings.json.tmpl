@@ -42,7 +42,7 @@
         "commandPath": "~/.claude/ccusage-cost.sh",
         "preserveColors": false,
         "timeout": 8000
-      }{{ if .hasClaudeSubscription }},
+      }{{ if (index . "hasClaudeSubscription" | default false) }},
       {
         "id": "d8471ce5-37e0-4aa9-9eac-d4ff697456af",
         "type": "separator"
