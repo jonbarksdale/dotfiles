@@ -1,0 +1,11 @@
+# ABOUTME: ForgeCode CLI configuration for shared settings across machines
+# ABOUTME: Provider credentials are managed via env vars or `forge provider login`
+
+# Limit requests per conversation turn to manage resource usage
+max_requests_per_turn: 50
+
+# Stop after this many consecutive tool failures
+max_tool_failure_per_turn: 5
+
+# Limit file system traversal depth
+max_walker_depth: 10
