@@ -150,6 +150,11 @@ When `gt restack` hits a conflict:
 
 **"PR already exists"**: `gt submit` will update it rather than create a new one. Use `--update-only` to be explicit.
 
+## Full Documentation
+
+If a question arises that this skill doesn't cover, fetch the full Graphite docs for LLMs:
+`https://graphite.com/docs/llms-full.txt`
+
 ## When NOT to Use Graphite
 
 - Personal/solo repos where PRs aren't part of the workflow — use plain Git
