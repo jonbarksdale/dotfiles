@@ -27,8 +27,8 @@ Key terms:
 
 ```bash
 gt sync                    # Pull trunk, clean up merged branches, restack
-gt create -m "description" # Create a new branch on top of current, stage all changes
-gt create                  # Interactive: prompts for branch name and message
+gt create -am "description" # Create a new branch, stage all changes, commit with message
+gt create                   # Interactive: prompts for branch name and message
 ```
 
 ### Navigating the Stack
@@ -64,7 +64,7 @@ gt submit --no-edit        # Skip the PR body editor
 ### Keeping Up to Date
 
 ```bash
-gt sync                    # Pull trunk + clean merged branches + restack
+# gt sync (see Starting Work) covers pulling trunk + cleanup + restack
 gt restack                 # Rebase the current branch and everything upstack onto their parents
 ```
 
@@ -74,9 +74,10 @@ gt restack                 # Rebase the current branch and everything upstack on
 gt move                    # Move current branch to a different parent
 gt fold                    # Merge current branch into its parent
 gt pop                     # Delete branch, keeping changes as uncommitted diffs
-gt reorder                 # Interactively reorder branches in the stack
-gt split                   # Split current branch into multiple branches
 gt squash                  # Squash all commits on current branch into one
+# Interactive commands — hand these to the user, they require stdin:
+# gt reorder               # Interactively reorder branches in the stack
+# gt split                 # Split current branch into multiple branches
 ```
 
 ### Recovery
