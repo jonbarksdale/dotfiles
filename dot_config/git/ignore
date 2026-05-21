@@ -12,3 +12,4 @@ out/
 .aider*
 
 **/.claude/settings.local.json
+.worktrees/
