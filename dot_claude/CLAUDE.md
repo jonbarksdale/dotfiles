@@ -121,4 +121,6 @@ The following skills trigger based on task context:
 - NEVER mark work as "done" or "complete" until the PR is merged
 - All verifications listed in the PR template must be completed before submitting
 - Run all tests (unit, E2E) and verify they pass before creating a PR
-
+# graphify
+- **graphify** (`~/.claude/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
+When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
