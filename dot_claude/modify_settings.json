@@ -64,7 +64,6 @@ BASE_SETTINGS='
     "padding": 0
   },
   "enabledPlugins": {
-    "beads@beads-marketplace": true,
     "security-guidance@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
