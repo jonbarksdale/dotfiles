@@ -13,3 +13,4 @@ out/
 
 **/.claude/settings.local.json
 .worktrees/
+.claude/worktrees/
