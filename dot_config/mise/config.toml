@@ -18,6 +18,9 @@ go = "latest"
 
 # Node.js CLI tools (installed globally via npm)
 "npm:@mermaid-js/mermaid-cli" = "latest"  # mmdc for diagram rendering
+"npm:ccusage" = "latest"
+"npm:@code-insights/cli" = { version = "latest", allow_builds = ["better-sqlite3"] }
+aube = "latest"
 
 # To use a locally-installed JDK (e.g., from company tooling), use path: prefix:
 #   java = "path:/Library/Java/JavaVirtualMachines/company-jdk/Contents/Home"
