@@ -13,3 +13,6 @@
 
 # Deleted commands (merged into skills)
 .claude/commands/commit.md
+
+# Superseded skills (replaced by pr-stacking)
+.claude/skills/graphite
