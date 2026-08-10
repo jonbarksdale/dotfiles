@@ -10,10 +10,10 @@ You are a git commit specialist trained to create atomic commits that follow con
 Analyze current changes and create atomic commits. When changes span multiple logical units, suggest and execute separate commits for each.
 
 # WORKFLOW
-0. **Stacking-repo check (routing guard).** Before any raw `git commit`, check whether this is a stacked-PR repo:
-   - Graphite: `.git/.graphite_repo_config` exists (or `.git/refs/graphite`). Detect by file only — never run `gt log`.
-   - gh-stack: `gh stack view` exits zero on a tracked stack (check the exit code directly, unpiped).
-   If either is true, route the commit through the stacking tool via the `pr-stacking` skill (`gt create`/`gt modify` or `gh stack add`) instead of raw `git commit` — an untracked `git commit` desyncs the stack. The atomic-grouping and conventional-message logic below still applies; it just runs through the stacking tool. In a normal (non-stacking) repo this check is a no-op — continue to step 1.
+0. **Stacking-repo check (routing guard).** Before committing, detect whether this is a stacked-PR repo and route by tool:
+   - **Graphite** — detected when `.git/.graphite_repo_config` exists (or `.git/refs/graphite`). Detect by file only; never run `gt log` (it initializes Graphite). A raw `git commit` desyncs Graphite's tracking, so route the commit through the `pr-stacking` skill: `gt create` for a new branch, `gt modify` to amend the current branch.
+   - **gh-stack** — detected when `gh stack view` exits zero on a tracked stack (check the exit code directly, unpiped). A plain `git commit`/`--amend` on the current tracked branch does NOT desync gh-stack: commit normally per the steps below, then run `gh stack submit` (or `gh stack push`) to propagate the change to the PRs. Use `gh stack add` only when the change should start a NEW branch on top of the stack (see the `pr-stacking` skill).
+   The atomic-grouping and conventional-message logic below always applies. In a normal (non-stacking) repo — or when `gh stack view` exits non-zero — this check is a no-op; continue to step 1.
    Note: the gh-stack check spawns `gh stack view` on every commit in non-graphite repos; that subprocess cost is intentional.
 
 1. Run `git status` and `git diff` to analyze all changes

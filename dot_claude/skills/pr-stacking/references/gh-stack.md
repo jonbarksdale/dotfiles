@@ -32,8 +32,14 @@ Within a git repo, `gh stack view` exits non-zero when the current branch is not
 `--auto` skips the editor (required for agent use); without it, `gh stack submit` opens an interactive single-screen editor — **hand that form to the user.** With `--auto`, new PRs are created as drafts unless `--open` is passed.
 
 ## Staying Up to Date
+- `gh stack push` — push the stack's active branches to the remote (updates PR branches without the full submit/reconcile that `gh stack sync` does).
 - `gh stack sync` — fetch, reconcile with remote stack, fast-forward trunk, cascade-rebase, push atomically, sync PR state. `--prune` deletes local branches for merged PRs. Prompts interactively on divergence — hand to user if it prompts.
 - `gh stack rebase` — cascading rebase across the stack. `--downstack` (trunk→current), `--upstack` (current→top), `--no-trunk` (inter-branch only), `--continue`, `--abort`.
+
+## Amending / Editing an Existing Branch
+- To change an existing branch in the stack: check it out (`gh stack checkout <branch>` or `git checkout`), make edits, then `git commit` or `git commit --amend` on that branch — this is plain git and does NOT desync gh-stack (there is no `gh stack` verb for committing onto an existing branch).
+- Propagate to PRs and cascade upstack: `gh stack submit` (or `gh stack push` to just push branches), then `gh stack sync`/`gh stack rebase` to rebase upstack branches onto the amended one.
+- Contrast: use `gh stack add` ONLY to start a NEW branch on top of the stack, never to modify an existing one.
 
 ## Restructuring
 **Interactive TUI — hand to user:** `gh stack modify` (drop/fold/insert/reorder/rename; apply with Ctrl+S). `--continue` / `--abort` resume or restore a modify session.
