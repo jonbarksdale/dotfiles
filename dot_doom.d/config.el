@@ -317,3 +317,8 @@
       "s-k" #'scroll-other-window-down
       "s-j" #'scroll-other-window
       )
+
+(use-package! valign
+  :hook (markdown-mode . valign-mode)
+  :config
+  (setq valign-fancy-bar t))

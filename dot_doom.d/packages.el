@@ -89,3 +89,5 @@
 
 ;; provides time format functions I use in snippets
 (package! ts)
+
+(package! valign)
