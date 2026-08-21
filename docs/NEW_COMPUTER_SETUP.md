@@ -196,24 +196,45 @@ Fix any reported issues.
 Skills for Claude Code come from two places, both landing in `~/.claude/skills`:
 
 - **Hand-written skills** are tracked in this repo under `dot_claude/skills/`.
-- **Third-party skills** are installed by the [skills CLI](https://skills.sh/) and pinned in
-  `~/.agents/.skill-lock.json`, which this repo tracks. `run_onchange_after_50-install-agent-skills.sh`
-  reinstalls them on apply. Only the lockfile is tracked, not the skill folders, so that
-  `npx skills update` does not fight `chezmoi apply` — the same approach used for nvim's
-  `lazy-lock.json`.
+- **Third-party skills** are installed by the [skills CLI](https://skills.sh/) and listed in
+  `~/.agents/.skill-lock.json`, which this repo tracks.
+  `run_onchange_after_50-install-agent-skills.sh` reinstalls them on apply.
 
-Confirm every pinned skill is present:
+Only the lockfile is tracked, not the skill folders, so that `npx skills update` does not
+fight `chezmoi apply` over the folder contents.
+
+Two caveats worth knowing:
+
+- **The lockfile is an inventory, not a version lock.** Its entries carry no commit or tag —
+  `skillFolderHash` is a content hash recorded at install time, and `sourceUrl` has no ref. A
+  restore therefore fetches whatever is on the source repo's default branch today, which may
+  not be what this machine has. Reverting the lockfile does not roll skills back.
+- **The lockfile itself can drift.** `npx skills` rewrites it on every install, so after a
+  fresh apply `chezmoi status` will show it modified. If you update skills and forget the
+  `chezmoi re-add` below, the next apply silently restores the old lockfile while leaving the
+  updated skills on disk; nothing reconciles that, because the restore script only checks
+  whether each skill is present.
+
+Confirm every listed skill is present:
 
 ```bash
 for n in $(jq -r '.skills | keys[]' ~/.agents/.skill-lock.json); do
-  [ -d ~/.claude/skills/"$n" ] || echo "MISSING: $n"
+  [ -f ~/.claude/skills/"$n"/SKILL.md ] || echo "MISSING: $n"
 done
 ```
 
-To update third-party skills and re-pin them:
+To update third-party skills and record the result:
 
 ```bash
 npx skills update
+chezmoi re-add ~/.agents/.skill-lock.json
+```
+
+If a skill has been removed or renamed upstream, the restore script fails and prints the
+command to drop it:
+
+```bash
+npx skills remove --global --skill <name> -y
 chezmoi re-add ~/.agents/.skill-lock.json
 ```
 
