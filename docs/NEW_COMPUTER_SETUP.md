@@ -191,6 +191,32 @@ Test with Cmd+Space.
 
 Fix any reported issues.
 
+### Verify Agent Skills
+
+Skills for Claude Code come from two places, both landing in `~/.claude/skills`:
+
+- **Hand-written skills** are tracked in this repo under `dot_claude/skills/`.
+- **Third-party skills** are installed by the [skills CLI](https://skills.sh/) and pinned in
+  `~/.agents/.skill-lock.json`, which this repo tracks. `run_onchange_after_50-install-agent-skills.sh`
+  reinstalls them on apply. Only the lockfile is tracked, not the skill folders, so that
+  `npx skills update` does not fight `chezmoi apply` — the same approach used for nvim's
+  `lazy-lock.json`.
+
+Confirm every pinned skill is present:
+
+```bash
+for n in $(jq -r '.skills | keys[]' ~/.agents/.skill-lock.json); do
+  [ -d ~/.claude/skills/"$n" ] || echo "MISSING: $n"
+done
+```
+
+To update third-party skills and re-pin them:
+
+```bash
+npx skills update
+chezmoi re-add ~/.agents/.skill-lock.json
+```
+
 ## Corporate-Specific Setup
 
 Install corporate-required tool versions using SDKMAN!:
