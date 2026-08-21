@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# ABOUTME: Reinstalls the agent skills pinned in ~/.agents/.skill-lock.json via the skills CLI
+# ABOUTME: Skills land as directories in ~/.claude/skills alongside the hand-written ones
+#
+# chezmoi:onchange-hash:{{ includeTemplate "dot_agents/dot_skill-lock.json" | sha256sum }}
+
+set -euo pipefail
+
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f "/usr/local/bin/brew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+LOCKFILE="$HOME/.agents/.skill-lock.json"
+SKILLS_DIR="$HOME/.claude/skills"
+
+if [[ ! -f "$LOCKFILE" ]]; then
+    echo "⚠ No skill lockfile at $LOCKFILE"
+    echo "  Skipping agent skill restoration"
+    exit 0
+fi
+
+if ! command -v jq &> /dev/null; then
+    echo "⚠ jq not found. Run: brew bundle"
+    echo "  Skipping agent skill restoration"
+    exit 0
+fi
+
+# The skills CLI runs through npx, which comes from the node that mise provisions.
+# 45-setup-mise runs before any files are applied, so on a first-ever apply it sees no
+# ~/.config/mise/config.toml and installs nothing. This script runs after files are in
+# place, so it can install node itself. Scope the install to node: a bare 'mise install'
+# also builds unrelated tools whose failure would abort the apply.
+if command -v npx &> /dev/null; then
+    NPX=(npx)
+elif command -v mise &> /dev/null; then
+    echo "npx not on PATH; installing node via mise..."
+    mise install node@lts
+    NPX=(mise exec node@lts -- npx)
+else
+    echo "⚠ Neither npx nor mise found. Run: brew bundle && mise install"
+    echo "  Skipping agent skill restoration"
+    exit 0
+fi
+
+echo "Restoring agent skills from lockfile..."
+
+# 'skills experimental_install' only restores a project-level skills-lock.json, not this
+# global one, so reinstall per source repo. One invocation per repo, with a repeated
+# --skill flag per skill: the flag takes a single name, and a comma-separated list is
+# silently treated as no match.
+while read -r source; do
+    args=()
+    for name in $(jq -r --arg s "$source" '.skills | to_entries | map(select(.value.source == $s)) | .[].key' "$LOCKFILE"); do
+        [[ -d "$SKILLS_DIR/$name" ]] || args+=(--skill "$name")
+    done
+
+    if [[ ${#args[@]} -eq 0 ]]; then
+        echo "✓ $source: all skills already installed"
+        continue
+    fi
+
+    echo "Installing ${#args[@]} skill(s) from $source..."
+    # The agent is 'claude-code'; an unrecognised name makes the CLI install nothing.
+    "${NPX[@]}" -y skills add "$source" --global "${args[@]}" --agent claude-code --yes < /dev/null
+done < <(jq -r '[.skills[].source] | unique | .[]' "$LOCKFILE")
+
+# The CLI exits 0 even when it installs nothing, so trust the filesystem, not the status.
+# A skill can also disappear from its upstream repo after being pinned here.
+missing=()
+for name in $(jq -r '.skills | keys[]' "$LOCKFILE"); do
+    [[ -d "$SKILLS_DIR/$name" ]] || missing+=("$name")
+done
+
+if [[ ${#missing[@]} -gt 0 ]]; then
+    echo "⚠ ${#missing[@]} pinned skill(s) could not be installed: ${missing[*]}"
+    echo "  They may have been renamed or removed upstream. Check: npx skills find"
+    exit 1
+fi
+
+echo "✓ All $(jq -r '.skills | length' "$LOCKFILE") pinned agent skills present"
