@@ -12,8 +12,10 @@ fi
 
 # Add marketplaces (idempotent - fails silently if already present)
 claude plugin marketplace add https://github.com/steveyegge/beads 2>/dev/null || true
+claude plugin marketplace add https://github.com/DrCatHicks/learning-opportunities.git 2>/dev/null || true
 
 # Install plugins (idempotent - fails silently if already installed)
 claude plugin install beads@beads-marketplace 2>/dev/null || true
+claude plugin install learning-opportunities@learning-opportunities 2>/dev/null || true
 
 echo "Claude plugins installation complete"
