@@ -16,3 +16,6 @@
 
 # Superseded skills (replaced by pr-stacking)
 .claude/skills/graphite
+
+# Writing standards moved into the technical-writing skill
+.claude/contexts/technical-writing.md
